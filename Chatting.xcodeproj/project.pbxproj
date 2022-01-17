@@ -14,6 +14,22 @@
 		E88D58982794FC80003A4910 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E88D58962794FC80003A4910 /* Main.storyboard */; };
 		E88D589A2794FC81003A4910 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E88D58992794FC81003A4910 /* Assets.xcassets */; };
 		E88D589D2794FC81003A4910 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E88D589B2794FC81003A4910 /* LaunchScreen.storyboard */; };
+		E88D58AA2794FEFB003A4910 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58A82794FEFB003A4910 /* ChatCell.swift */; };
+		E88D58AB2794FEFB003A4910 /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E88D58A92794FEFB003A4910 /* ChatCell.xib */; };
+		E88D58B62794FF56003A4910 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58AE2794FF55003A4910 /* ColorManager.swift */; };
+		E88D58B72794FF56003A4910 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E88D58B02794FF56003A4910 /* NotoSansKR-Light.otf */; };
+		E88D58B82794FF56003A4910 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E88D58B12794FF56003A4910 /* NotoSansKR-Bold.otf */; };
+		E88D58B92794FF56003A4910 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E88D58B22794FF56003A4910 /* NotoSansKR-Thin.otf */; };
+		E88D58BA2794FF56003A4910 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E88D58B32794FF56003A4910 /* NotoSansKR-Black.otf */; };
+		E88D58BB2794FF56003A4910 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E88D58B42794FF56003A4910 /* NotoSansKR-Medium.otf */; };
+		E88D58BC2794FF56003A4910 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E88D58B52794FF56003A4910 /* NotoSansKR-Regular.otf */; };
+		E88D58C12794FF89003A4910 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58C02794FF89003A4910 /* ApiService.swift */; };
+		E88D58C5279522C9003A4910 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58C4279522C9003A4910 /* ChatModel.swift */; };
+		E88D58CD27952420003A4910 /* VC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58CC27952420003A4910 /* VC+TableView.swift */; };
+		E88D58CF2795259B003A4910 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58CE2795259B003A4910 /* ChatViewModel.swift */; };
+		E88D58D1279525BE003A4910 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58D0279525BE003A4910 /* ViewModel.swift */; };
+		E88D58D327953059003A4910 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58D227953059003A4910 /* ChatView.swift */; };
+		E88D58D527953065003A4910 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E88D58D427953065003A4910 /* ChatView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +44,22 @@
 		E88D58992794FC81003A4910 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E88D589C2794FC81003A4910 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E88D589E2794FC81003A4910 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E88D58A82794FEFB003A4910 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		E88D58A92794FEFB003A4910 /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
+		E88D58AE2794FF55003A4910 /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		E88D58B02794FF56003A4910 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		E88D58B12794FF56003A4910 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		E88D58B22794FF56003A4910 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+		E88D58B32794FF56003A4910 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		E88D58B42794FF56003A4910 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		E88D58B52794FF56003A4910 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		E88D58C02794FF89003A4910 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		E88D58C4279522C9003A4910 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		E88D58CC27952420003A4910 /* VC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+TableView.swift"; sourceTree = "<group>"; };
+		E88D58CE2795259B003A4910 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		E88D58D0279525BE003A4910 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		E88D58D227953059003A4910 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		E88D58D427953065003A4910 /* ChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +80,6 @@
 				213B4E9FBF39D670DA3FC778 /* Pods-Chatting.debug.xcconfig */,
 				24E52B00F0A1EFEBA9136B74 /* Pods-Chatting.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,15 +112,127 @@
 		E88D588F2794FC80003A4910 /* Chatting */ = {
 			isa = PBXGroup;
 			children = (
-				E88D58902794FC80003A4910 /* AppDelegate.swift */,
-				E88D58922794FC80003A4910 /* SceneDelegate.swift */,
-				E88D58942794FC80003A4910 /* ViewController.swift */,
-				E88D58962794FC80003A4910 /* Main.storyboard */,
+				E88D58BE2794FF7D003A4910 /* Model */,
+				E88D58BD2794FF75003A4910 /* ViewModel */,
+				E88D58AC2794FF31003A4910 /* Resource */,
+				E88D58A52794FE32003A4910 /* View */,
+				E88D58A42794FE24003A4910 /* AppDelegate */,
+				E88D58A62794FE3F003A4910 /* Controller */,
 				E88D58992794FC81003A4910 /* Assets.xcassets */,
-				E88D589B2794FC81003A4910 /* LaunchScreen.storyboard */,
 				E88D589E2794FC81003A4910 /* Info.plist */,
 			);
 			path = Chatting;
+			sourceTree = "<group>";
+		};
+		E88D58A42794FE24003A4910 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58902794FC80003A4910 /* AppDelegate.swift */,
+				E88D58922794FC80003A4910 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		E88D58A52794FE32003A4910 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58A72794FEE5003A4910 /* CustomCell */,
+				E88D58C327950661003A4910 /* CustomView */,
+				E88D58962794FC80003A4910 /* Main.storyboard */,
+				E88D589B2794FC81003A4910 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E88D58A62794FE3F003A4910 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58942794FC80003A4910 /* ViewController.swift */,
+				E88D58CC27952420003A4910 /* VC+TableView.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E88D58A72794FEE5003A4910 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58C22795064D003A4910 /* ChatCell */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		E88D58AC2794FF31003A4910 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58AD2794FF55003A4910 /* Color */,
+				E88D58AF2794FF56003A4910 /* Font */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		E88D58AD2794FF55003A4910 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58AE2794FF55003A4910 /* ColorManager.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		E88D58AF2794FF56003A4910 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58B02794FF56003A4910 /* NotoSansKR-Light.otf */,
+				E88D58B12794FF56003A4910 /* NotoSansKR-Bold.otf */,
+				E88D58B22794FF56003A4910 /* NotoSansKR-Thin.otf */,
+				E88D58B32794FF56003A4910 /* NotoSansKR-Black.otf */,
+				E88D58B42794FF56003A4910 /* NotoSansKR-Medium.otf */,
+				E88D58B52794FF56003A4910 /* NotoSansKR-Regular.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		E88D58BD2794FF75003A4910 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58CE2795259B003A4910 /* ChatViewModel.swift */,
+				E88D58D0279525BE003A4910 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E88D58BE2794FF7D003A4910 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58BF2794FF81003A4910 /* Service */,
+				E88D58C4279522C9003A4910 /* ChatModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E88D58BF2794FF81003A4910 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58C02794FF89003A4910 /* ApiService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E88D58C22795064D003A4910 /* ChatCell */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58A82794FEFB003A4910 /* ChatCell.swift */,
+				E88D58A92794FEFB003A4910 /* ChatCell.xib */,
+			);
+			path = ChatCell;
+			sourceTree = "<group>";
+		};
+		E88D58C327950661003A4910 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58D227953059003A4910 /* ChatView.swift */,
+				E88D58D427953065003A4910 /* ChatView.xib */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,8 +296,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E88D589D2794FC81003A4910 /* LaunchScreen.storyboard in Resources */,
+				E88D58D527953065003A4910 /* ChatView.xib in Resources */,
+				E88D58B92794FF56003A4910 /* NotoSansKR-Thin.otf in Resources */,
+				E88D58B72794FF56003A4910 /* NotoSansKR-Light.otf in Resources */,
+				E88D58BB2794FF56003A4910 /* NotoSansKR-Medium.otf in Resources */,
+				E88D58BC2794FF56003A4910 /* NotoSansKR-Regular.otf in Resources */,
+				E88D58AB2794FEFB003A4910 /* ChatCell.xib in Resources */,
 				E88D589A2794FC81003A4910 /* Assets.xcassets in Resources */,
+				E88D58B82794FF56003A4910 /* NotoSansKR-Bold.otf in Resources */,
 				E88D58982794FC80003A4910 /* Main.storyboard in Resources */,
+				E88D58BA2794FF56003A4910 /* NotoSansKR-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +359,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E88D58952794FC80003A4910 /* ViewController.swift in Sources */,
+				E88D58B62794FF56003A4910 /* ColorManager.swift in Sources */,
+				E88D58C12794FF89003A4910 /* ApiService.swift in Sources */,
+				E88D58C5279522C9003A4910 /* ChatModel.swift in Sources */,
+				E88D58D327953059003A4910 /* ChatView.swift in Sources */,
+				E88D58CD27952420003A4910 /* VC+TableView.swift in Sources */,
+				E88D58AA2794FEFB003A4910 /* ChatCell.swift in Sources */,
 				E88D58912794FC80003A4910 /* AppDelegate.swift in Sources */,
+				E88D58CF2795259B003A4910 /* ChatViewModel.swift in Sources */,
+				E88D58D1279525BE003A4910 /* ViewModel.swift in Sources */,
 				E88D58932794FC80003A4910 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
