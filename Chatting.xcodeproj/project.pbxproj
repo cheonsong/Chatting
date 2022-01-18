@@ -27,9 +27,13 @@
 		E88D58C5279522C9003A4910 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58C4279522C9003A4910 /* ChatModel.swift */; };
 		E88D58CD27952420003A4910 /* VC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58CC27952420003A4910 /* VC+TableView.swift */; };
 		E88D58CF2795259B003A4910 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58CE2795259B003A4910 /* ChatViewModel.swift */; };
-		E88D58D1279525BE003A4910 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58D0279525BE003A4910 /* ViewModel.swift */; };
+		E88D58D1279525BE003A4910 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58D0279525BE003A4910 /* ViewModelType.swift */; };
 		E88D58D327953059003A4910 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58D227953059003A4910 /* ChatView.swift */; };
 		E88D58D527953065003A4910 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E88D58D427953065003A4910 /* ChatView.xib */; };
+		E88D58D727964917003A4910 /* ChatView+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58D627964917003A4910 /* ChatView+Table.swift */; };
+		E88D58D9279693C0003A4910 /* ChatView+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58D8279693C0003A4910 /* ChatView+Scroll.swift */; };
+		E88D58DB2796975F003A4910 /* ChatView+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58DA2796975F003A4910 /* ChatView+Keyboard.swift */; };
+		E88D58E02796AE79003A4910 /* ChatView+gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58DF2796AE79003A4910 /* ChatView+gesture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,9 +61,13 @@
 		E88D58C4279522C9003A4910 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		E88D58CC27952420003A4910 /* VC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+TableView.swift"; sourceTree = "<group>"; };
 		E88D58CE2795259B003A4910 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
-		E88D58D0279525BE003A4910 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		E88D58D0279525BE003A4910 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		E88D58D227953059003A4910 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		E88D58D427953065003A4910 /* ChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
+		E88D58D627964917003A4910 /* ChatView+Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+Table.swift"; sourceTree = "<group>"; };
+		E88D58D8279693C0003A4910 /* ChatView+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+Scroll.swift"; sourceTree = "<group>"; };
+		E88D58DA2796975F003A4910 /* ChatView+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+Keyboard.swift"; sourceTree = "<group>"; };
+		E88D58DF2796AE79003A4910 /* ChatView+gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+gesture.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				E88D58CE2795259B003A4910 /* ChatViewModel.swift */,
-				E88D58D0279525BE003A4910 /* ViewModel.swift */,
+				E88D58D0279525BE003A4910 /* ViewModelType.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -220,8 +228,8 @@
 		E88D58C22795064D003A4910 /* ChatCell */ = {
 			isa = PBXGroup;
 			children = (
-				E88D58A82794FEFB003A4910 /* ChatCell.swift */,
 				E88D58A92794FEFB003A4910 /* ChatCell.xib */,
+				E88D58A82794FEFB003A4910 /* ChatCell.swift */,
 			);
 			path = ChatCell;
 			sourceTree = "<group>";
@@ -229,10 +237,22 @@
 		E88D58C327950661003A4910 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				E88D58D227953059003A4910 /* ChatView.swift */,
-				E88D58D427953065003A4910 /* ChatView.xib */,
+				E88D58DC2796A271003A4910 /* ChatView */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		E88D58DC2796A271003A4910 /* ChatView */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58D427953065003A4910 /* ChatView.xib */,
+				E88D58D227953059003A4910 /* ChatView.swift */,
+				E88D58D8279693C0003A4910 /* ChatView+Scroll.swift */,
+				E88D58D627964917003A4910 /* ChatView+Table.swift */,
+				E88D58DA2796975F003A4910 /* ChatView+Keyboard.swift */,
+				E88D58DF2796AE79003A4910 /* ChatView+gesture.swift */,
+			);
+			path = ChatView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,11 +383,15 @@
 				E88D58C12794FF89003A4910 /* ApiService.swift in Sources */,
 				E88D58C5279522C9003A4910 /* ChatModel.swift in Sources */,
 				E88D58D327953059003A4910 /* ChatView.swift in Sources */,
+				E88D58E02796AE79003A4910 /* ChatView+gesture.swift in Sources */,
+				E88D58D727964917003A4910 /* ChatView+Table.swift in Sources */,
 				E88D58CD27952420003A4910 /* VC+TableView.swift in Sources */,
 				E88D58AA2794FEFB003A4910 /* ChatCell.swift in Sources */,
 				E88D58912794FC80003A4910 /* AppDelegate.swift in Sources */,
+				E88D58DB2796975F003A4910 /* ChatView+Keyboard.swift in Sources */,
+				E88D58D9279693C0003A4910 /* ChatView+Scroll.swift in Sources */,
 				E88D58CF2795259B003A4910 /* ChatViewModel.swift in Sources */,
-				E88D58D1279525BE003A4910 /* ViewModel.swift in Sources */,
+				E88D58D1279525BE003A4910 /* ViewModelType.swift in Sources */,
 				E88D58932794FC80003A4910 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,6 +542,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZK7Q3JHK4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chatting/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -546,6 +571,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZK7Q3JHK4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chatting/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

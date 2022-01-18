@@ -12,4 +12,14 @@ class ChatModel {
     var chat: String?
     var nickname: String?
     var image: UIImage?
+    
+    init() {
+        self.chat = ""
+        self.nickname = "cheonsong"
+    }
+    
+    init(chat: String) {
+        self.chat = chat
+        self.nickname = "cheonsong"
+    }
 }

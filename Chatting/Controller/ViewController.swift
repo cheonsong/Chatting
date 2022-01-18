@@ -11,21 +11,30 @@ import RxCocoa
 
 class ViewController: UIViewController {
     
-    var list = [ChatModel]()
-    let placeholder = "대화를 입력하세요"
-    
     private lazy var chatView = ChatView(frame: self.view.frame)
-    let viewModel = ChatViewModel()
     
     let disposeBag = DisposeBag()
-    
+    //let touch: UITapGestureRecognizer
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        chatView.textView.layer.cornerRadius = 18
-        //chatView.sendButton.isHidden = true
-        self.view = chatView
+        
+        let image = UIImage(named: "background")
+        let imageView = UIImageView()
+        imageView.image = image
+        imageView.frame = self.view.bounds
+        
+        view.insertSubview(imageView, at: 0)
+        
+        view.addSubview(chatView)
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        if let touch = touches.first , touch.view == chatView {
+            print("touch")
+        }
+    }
+    
 }
 
