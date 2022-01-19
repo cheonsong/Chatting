@@ -13,4 +13,10 @@ extension ChatView: UIGestureRecognizerDelegate {
         self.view?.endEditing(true)
         return true
     }
+    
+    func setGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.delegate = self
+        self.tableView?.addGestureRecognizer(tapGesture)
+    }
 }

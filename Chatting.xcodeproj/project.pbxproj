@@ -122,11 +122,10 @@
 			children = (
 				E88D58BE2794FF7D003A4910 /* Model */,
 				E88D58BD2794FF75003A4910 /* ViewModel */,
-				E88D58AC2794FF31003A4910 /* Resource */,
 				E88D58A52794FE32003A4910 /* View */,
-				E88D58A42794FE24003A4910 /* AppDelegate */,
 				E88D58A62794FE3F003A4910 /* Controller */,
-				E88D58992794FC81003A4910 /* Assets.xcassets */,
+				E88D58AC2794FF31003A4910 /* Resource */,
+				E88D58A42794FE24003A4910 /* AppDelegate */,
 				E88D589E2794FC81003A4910 /* Info.plist */,
 			);
 			path = Chatting;
@@ -172,6 +171,7 @@
 		E88D58AC2794FF31003A4910 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E88D58992794FC81003A4910 /* Assets.xcassets */,
 				E88D58AD2794FF55003A4910 /* Color */,
 				E88D58AF2794FF56003A4910 /* Font */,
 			);

@@ -16,6 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatView" customModule="Chatting" customModuleProvider="target">
             <connections>
                 <outlet property="bottomConstraint" destination="WW1-7C-j5F" id="ERE-bB-Fan"/>
+                <outlet property="cancelButton" destination="dFg-Tb-S4W" id="HSS-qJ-MwD"/>
                 <outlet property="chatSuperView" destination="Z9n-CR-2L3" id="Tid-pf-MUJ"/>
                 <outlet property="downButton" destination="dst-dt-02P" id="q4h-av-lYA"/>
                 <outlet property="likeButton" destination="vPV-c1-nkt" id="ysa-uu-vP7"/>
@@ -100,6 +101,11 @@
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="bubble_scr_down"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFg-Tb-S4W">
+                    <rect key="frame" x="337" y="18" width="30" height="30"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="btn_broad_cls"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80303267927359268" colorSpace="custom" customColorSpace="sRGB"/>
@@ -109,6 +115,8 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rQz-94-nQb" secondAttribute="trailing" id="Gb9-Zn-E4Q"/>
                 <constraint firstItem="8m3-b3-3Q5" firstAttribute="top" secondItem="dst-dt-02P" secondAttribute="bottom" constant="15" id="LbO-ch-52H"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8m3-b3-3Q5" secondAttribute="bottom" constant="15" id="WW1-7C-j5F"/>
+                <constraint firstItem="dFg-Tb-S4W" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="18" id="Wec-ez-kYv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dFg-Tb-S4W" secondAttribute="trailing" constant="8" id="X4e-dD-Ae0"/>
                 <constraint firstItem="8m3-b3-3Q5" firstAttribute="top" secondItem="rQz-94-nQb" secondAttribute="bottom" constant="15" id="jSD-p4-0gp"/>
                 <constraint firstItem="rQz-94-nQb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="l1p-Zd-2un"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8m3-b3-3Q5" secondAttribute="trailing" id="mOd-bd-lba"/>
@@ -123,6 +131,7 @@
         <tapGestureRecognizer id="NxE-5y-DxR"/>
     </objects>
     <resources>
+        <image name="btn_broad_cls" width="30" height="30"/>
         <image name="btn_bt_heart_off" width="36" height="36"/>
         <image name="btn_bt_heart_on" width="36" height="36"/>
         <image name="btn_bt_send" width="64" height="36"/>
