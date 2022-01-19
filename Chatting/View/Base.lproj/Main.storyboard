@@ -24,12 +24,23 @@
                                     <action selector="tapChatRoom:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DJf-xb-z89"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBG-9o-qhi">
+                                <rect key="frame" x="100" y="281" width="175" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" 회원가입"/>
+                                <connections>
+                                    <action selector="tapJoinButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fH0-7O-rXQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Np3-af-1FU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="7m5-Jd-jVa"/>
+                            <constraint firstItem="GBG-9o-qhi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Jnm-co-RyA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GBG-9o-qhi" secondAttribute="trailing" constant="100" id="OKZ-AR-5rO"/>
                             <constraint firstItem="Np3-af-1FU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="cao-Vk-h79"/>
+                            <constraint firstItem="GBG-9o-qhi" firstAttribute="top" secondItem="Np3-af-1FU" secondAttribute="bottom" constant="100" id="sHc-Zo-VrQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Np3-af-1FU" secondAttribute="trailing" constant="100" id="yYe-5W-JSK"/>
                         </constraints>
                     </view>

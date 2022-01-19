@@ -34,6 +34,15 @@
 		E88D58D9279693C0003A4910 /* ChatView+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58D8279693C0003A4910 /* ChatView+Scroll.swift */; };
 		E88D58DB2796975F003A4910 /* ChatView+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58DA2796975F003A4910 /* ChatView+Keyboard.swift */; };
 		E88D58E02796AE79003A4910 /* ChatView+gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58DF2796AE79003A4910 /* ChatView+gesture.swift */; };
+		E8CA3C542797D7BA00FE85F8 /* JoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C532797D7BA00FE85F8 /* JoinViewModel.swift */; };
+		E8CA3C562797D7C500FE85F8 /* JoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C552797D7C500FE85F8 /* JoinModel.swift */; };
+		E8CA3C5A2797D7E600FE85F8 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C592797D7E600FE85F8 /* JoinView.swift */; };
+		E8CA3C5C2797D83400FE85F8 /* JoinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CA3C5B2797D83400FE85F8 /* JoinView.xib */; };
+		E8CA3C642797E7BC00FE85F8 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C602797E7BC00FE85F8 /* Gradient.swift */; };
+		E8CA3C652797E7BC00FE85F8 /* LetterSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C612797E7BC00FE85F8 /* LetterSpacing.swift */; };
+		E8CA3C662797E7BC00FE85F8 /* AddBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C622797E7BC00FE85F8 /* AddBorder.swift */; };
+		E8CA3C672797E7BC00FE85F8 /* DateComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C632797E7BC00FE85F8 /* DateComparison.swift */; };
+		E8CA3C692797EEFF00FE85F8 /* JoinView+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C682797EEFF00FE85F8 /* JoinView+Keyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +77,15 @@
 		E88D58D8279693C0003A4910 /* ChatView+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+Scroll.swift"; sourceTree = "<group>"; };
 		E88D58DA2796975F003A4910 /* ChatView+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+Keyboard.swift"; sourceTree = "<group>"; };
 		E88D58DF2796AE79003A4910 /* ChatView+gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+gesture.swift"; sourceTree = "<group>"; };
+		E8CA3C532797D7BA00FE85F8 /* JoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewModel.swift; sourceTree = "<group>"; };
+		E8CA3C552797D7C500FE85F8 /* JoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinModel.swift; sourceTree = "<group>"; };
+		E8CA3C592797D7E600FE85F8 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
+		E8CA3C5B2797D83400FE85F8 /* JoinView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinView.xib; sourceTree = "<group>"; };
+		E8CA3C602797E7BC00FE85F8 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		E8CA3C612797E7BC00FE85F8 /* LetterSpacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterSpacing.swift; sourceTree = "<group>"; };
+		E8CA3C622797E7BC00FE85F8 /* AddBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBorder.swift; sourceTree = "<group>"; };
+		E8CA3C632797E7BC00FE85F8 /* DateComparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComparison.swift; sourceTree = "<group>"; };
+		E8CA3C682797EEFF00FE85F8 /* JoinView+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JoinView+Keyboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +138,7 @@
 		E88D588F2794FC80003A4910 /* Chatting */ = {
 			isa = PBXGroup;
 			children = (
+				E8CA3C5F2797E7BC00FE85F8 /* Util */,
 				E88D58BE2794FF7D003A4910 /* Model */,
 				E88D58BD2794FF75003A4910 /* ViewModel */,
 				E88D58A52794FE32003A4910 /* View */,
@@ -204,6 +223,7 @@
 			children = (
 				E88D58CE2795259B003A4910 /* ChatViewModel.swift */,
 				E88D58D0279525BE003A4910 /* ViewModelType.swift */,
+				E8CA3C532797D7BA00FE85F8 /* JoinViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -213,6 +233,7 @@
 			children = (
 				E88D58BF2794FF81003A4910 /* Service */,
 				E88D58C4279522C9003A4910 /* ChatModel.swift */,
+				E8CA3C552797D7C500FE85F8 /* JoinModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,6 +258,7 @@
 		E88D58C327950661003A4910 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				E8CA3C522797D7AB00FE85F8 /* JoinView */,
 				E88D58DC2796A271003A4910 /* ChatView */,
 			);
 			path = CustomView;
@@ -253,6 +275,27 @@
 				E88D58DF2796AE79003A4910 /* ChatView+gesture.swift */,
 			);
 			path = ChatView;
+			sourceTree = "<group>";
+		};
+		E8CA3C522797D7AB00FE85F8 /* JoinView */ = {
+			isa = PBXGroup;
+			children = (
+				E8CA3C592797D7E600FE85F8 /* JoinView.swift */,
+				E8CA3C5B2797D83400FE85F8 /* JoinView.xib */,
+				E8CA3C682797EEFF00FE85F8 /* JoinView+Keyboard.swift */,
+			);
+			path = JoinView;
+			sourceTree = "<group>";
+		};
+		E8CA3C5F2797E7BC00FE85F8 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E8CA3C602797E7BC00FE85F8 /* Gradient.swift */,
+				E8CA3C612797E7BC00FE85F8 /* LetterSpacing.swift */,
+				E8CA3C622797E7BC00FE85F8 /* AddBorder.swift */,
+				E8CA3C632797E7BC00FE85F8 /* DateComparison.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +362,7 @@
 				E88D58D527953065003A4910 /* ChatView.xib in Resources */,
 				E88D58B92794FF56003A4910 /* NotoSansKR-Thin.otf in Resources */,
 				E88D58B72794FF56003A4910 /* NotoSansKR-Light.otf in Resources */,
+				E8CA3C5C2797D83400FE85F8 /* JoinView.xib in Resources */,
 				E88D58BB2794FF56003A4910 /* NotoSansKR-Medium.otf in Resources */,
 				E88D58BC2794FF56003A4910 /* NotoSansKR-Regular.otf in Resources */,
 				E88D58AB2794FEFB003A4910 /* ChatCell.xib in Resources */,
@@ -379,20 +423,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				E88D58952794FC80003A4910 /* ViewController.swift in Sources */,
+				E8CA3C662797E7BC00FE85F8 /* AddBorder.swift in Sources */,
 				E88D58B62794FF56003A4910 /* ColorManager.swift in Sources */,
 				E88D58C12794FF89003A4910 /* ApiService.swift in Sources */,
 				E88D58C5279522C9003A4910 /* ChatModel.swift in Sources */,
 				E88D58D327953059003A4910 /* ChatView.swift in Sources */,
+				E8CA3C642797E7BC00FE85F8 /* Gradient.swift in Sources */,
+				E8CA3C692797EEFF00FE85F8 /* JoinView+Keyboard.swift in Sources */,
 				E88D58E02796AE79003A4910 /* ChatView+gesture.swift in Sources */,
 				E88D58D727964917003A4910 /* ChatView+Table.swift in Sources */,
 				E88D58CD27952420003A4910 /* VC+TableView.swift in Sources */,
 				E88D58AA2794FEFB003A4910 /* ChatCell.swift in Sources */,
 				E88D58912794FC80003A4910 /* AppDelegate.swift in Sources */,
+				E8CA3C5A2797D7E600FE85F8 /* JoinView.swift in Sources */,
+				E8CA3C542797D7BA00FE85F8 /* JoinViewModel.swift in Sources */,
+				E8CA3C562797D7C500FE85F8 /* JoinModel.swift in Sources */,
 				E88D58DB2796975F003A4910 /* ChatView+Keyboard.swift in Sources */,
 				E88D58D9279693C0003A4910 /* ChatView+Scroll.swift in Sources */,
 				E88D58CF2795259B003A4910 /* ChatViewModel.swift in Sources */,
+				E8CA3C672797E7BC00FE85F8 /* DateComparison.swift in Sources */,
 				E88D58D1279525BE003A4910 /* ViewModelType.swift in Sources */,
 				E88D58932794FC80003A4910 /* SceneDelegate.swift in Sources */,
+				E8CA3C652797E7BC00FE85F8 /* LetterSpacing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

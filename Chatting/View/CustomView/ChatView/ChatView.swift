@@ -51,11 +51,6 @@ class ChatView: UIView {
         print("===============ChatView init===============")
     }
     
-    deinit {
-        removeKeyboardNoti()
-        print("===============ChatView Deinit===============")
-    }
-    
     // MARK: Function
     private func initialize() {
         self.view = Bundle.main.loadNibNamed("ChatView", owner: self, options: nil)?.first as? UIView
