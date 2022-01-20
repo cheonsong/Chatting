@@ -50,6 +50,8 @@
 		E8CA3C782798FA8400FE85F8 /* JoinView+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C772798FA8400FE85F8 /* JoinView+Gesture.swift */; };
 		E8CA3C7A2799151600FE85F8 /* JoinView+PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C792799151600FE85F8 /* JoinView+PickerView.swift */; };
 		E8CA3C7C279915EA00FE85F8 /* JoinView+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C7B279915EA00FE85F8 /* JoinView+Init.swift */; };
+		E8CA3C7E2799490A00FE85F8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C7D2799490A00FE85F8 /* WebViewController.swift */; };
+		E8CA3C8027994B1000FE85F8 /* WebVC+WKHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA3C7F27994B1000FE85F8 /* WebVC+WKHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		E8CA3C772798FA8400FE85F8 /* JoinView+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JoinView+Gesture.swift"; sourceTree = "<group>"; };
 		E8CA3C792799151600FE85F8 /* JoinView+PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JoinView+PickerView.swift"; sourceTree = "<group>"; };
 		E8CA3C7B279915EA00FE85F8 /* JoinView+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JoinView+Init.swift"; sourceTree = "<group>"; };
+		E8CA3C7D2799490A00FE85F8 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		E8CA3C7F27994B1000FE85F8 /* WebVC+WKHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebVC+WKHandler.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				E88D58942794FC80003A4910 /* ViewController.swift */,
+				E8CA3C7D2799490A00FE85F8 /* WebViewController.swift */,
+				E8CA3C7F27994B1000FE85F8 /* WebVC+WKHandler.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -469,6 +475,7 @@
 				E88D58912794FC80003A4910 /* AppDelegate.swift in Sources */,
 				E8CA3C5A2797D7E600FE85F8 /* JoinView.swift in Sources */,
 				E8CA3C542797D7BA00FE85F8 /* JoinViewModel.swift in Sources */,
+				E8CA3C8027994B1000FE85F8 /* WebVC+WKHandler.swift in Sources */,
 				E8CA3C562797D7C500FE85F8 /* JoinModel.swift in Sources */,
 				E88D58DB2796975F003A4910 /* ChatView+Keyboard.swift in Sources */,
 				E8CA3C702798D92000FE85F8 /* JoinApiManager.swift in Sources */,
@@ -479,6 +486,7 @@
 				E8CA3C762798F42900FE85F8 /* getRootVC.swift in Sources */,
 				E88D58D1279525BE003A4910 /* ViewModelType.swift in Sources */,
 				E88D58932794FC80003A4910 /* SceneDelegate.swift in Sources */,
+				E8CA3C7E2799490A00FE85F8 /* WebViewController.swift in Sources */,
 				E8CA3C652797E7BC00FE85F8 /* LetterSpacing.swift in Sources */,
 				E8CA3C7C279915EA00FE85F8 /* JoinView+Init.swift in Sources */,
 			);
