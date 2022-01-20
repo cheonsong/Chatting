@@ -18,6 +18,8 @@ extension ChatView {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        updateTableContentInset()
+        
 //        self.tableView.rx.setDelegate(self).disposed(by: disposeBag)
 //
 //        Observable.of(list)
@@ -25,6 +27,20 @@ extension ChatView {
 //                cell.chat.text = element.chat!
 //                cell.nickname.text = element.nickname!
 //            }.disposed(by: disposeBag)
+    }
+    
+    // 채팅이 아래서부터 올라오도록 업데이트
+    func updateTableContentInset() {
+        let numRows = self.tableView.numberOfRows(inSection: 0)
+        var contentInsetTop = self.tableView.bounds.size.height
+        for i in 0..<numRows {
+            let rowRect = self.tableView.rectForRow(at: IndexPath(item: i, section: 0))
+            contentInsetTop -= rowRect.size.height
+            if contentInsetTop <= 0 {
+                contentInsetTop = 0
+            }
+        }
+        self.tableView.contentInset = UIEdgeInsets(top: contentInsetTop,left: 0,bottom: 0,right: 0)
     }
     
 }

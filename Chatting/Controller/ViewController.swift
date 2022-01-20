@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     private lazy var chatView = ChatView(frame: self.view.frame)
     private lazy var joinView = JoinView(frame: self.view.frame)
+    
     @IBAction func tapChatRoom(_ sender: Any) {
         view.addSubview(chatView)
     }

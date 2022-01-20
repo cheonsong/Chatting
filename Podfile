@@ -12,6 +12,8 @@ target 'Chatting' do
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
   pod 'Socket.IO-Client-Swift', '~> 15.2.0'
-	
+  pod 'KakaoSDK'
+  pod 'naveridlogin-sdk-ios'	
+  pod 'XHQWebViewJavascriptBridge'
 
 end

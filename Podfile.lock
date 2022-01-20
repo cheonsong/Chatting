@@ -1,5 +1,38 @@
 PODS:
   - Alamofire (5.5.0)
+  - KakaoSDK (2.8.4):
+    - KakaoSDKAuth (= 2.8.4)
+    - KakaoSDKCommon (= 2.8.4)
+    - KakaoSDKLink (= 2.8.4)
+    - KakaoSDKNavi (= 2.8.4)
+    - KakaoSDKStory (= 2.8.4)
+    - KakaoSDKTalk (= 2.8.4)
+    - KakaoSDKTemplate (= 2.8.4)
+    - KakaoSDKUser (= 2.8.4)
+  - KakaoSDKAuth (2.8.4):
+    - KakaoSDKCommon (= 2.8.4)
+  - KakaoSDKCommon (2.8.4):
+    - KakaoSDKCommon/Common (= 2.8.4)
+    - KakaoSDKCommon/Network (= 2.8.4)
+  - KakaoSDKCommon/Common (2.8.4)
+  - KakaoSDKCommon/Network (2.8.4):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.8.4)
+  - KakaoSDKLink (2.8.4):
+    - KakaoSDKCommon (= 2.8.4)
+    - KakaoSDKTemplate (= 2.8.4)
+  - KakaoSDKNavi (2.8.4):
+    - KakaoSDKCommon/Common (= 2.8.4)
+  - KakaoSDKStory (2.8.4):
+    - KakaoSDKUser (= 2.8.4)
+  - KakaoSDKTalk (2.8.4):
+    - KakaoSDKTemplate (= 2.8.4)
+    - KakaoSDKUser (= 2.8.4)
+  - KakaoSDKTemplate (2.8.4):
+    - KakaoSDKCommon/Common (= 2.8.4)
+  - KakaoSDKUser (2.8.4):
+    - KakaoSDKAuth (= 2.8.4)
+  - naveridlogin-sdk-ios (4.1.3)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -10,33 +43,59 @@ PODS:
     - Starscream (~> 3.1)
   - Starscream (3.1.1)
   - SwiftyJSON (4.3.0)
+  - XHQWebViewJavascriptBridge (0.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
+  - KakaoSDK
+  - naveridlogin-sdk-ios
   - RxCocoa (= 6.5.0)
   - RxSwift (= 6.5.0)
   - Socket.IO-Client-Swift (~> 15.2.0)
   - SwiftyJSON (~> 4.0)
+  - XHQWebViewJavascriptBridge
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - KakaoSDK
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKLink
+    - KakaoSDKNavi
+    - KakaoSDKStory
+    - KakaoSDKTalk
+    - KakaoSDKTemplate
+    - KakaoSDKUser
+    - naveridlogin-sdk-ios
     - RxCocoa
     - RxRelay
     - RxSwift
     - Socket.IO-Client-Swift
     - Starscream
     - SwiftyJSON
+    - XHQWebViewJavascriptBridge
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  KakaoSDK: f80dbd5e4e8db058c9f1cd48356329f11fd6e281
+  KakaoSDKAuth: b9b693995f98b1821ccd22b39d383e1dede5ca45
+  KakaoSDKCommon: 33c9902ee9ce13e9d1cac3549896406229836ff5
+  KakaoSDKLink: 588e425cb30df37b3404662170f2d0bdda7af7ae
+  KakaoSDKNavi: 46060633e4a41682bb8ed086372526412fcffda2
+  KakaoSDKStory: b1d287251c6c35dcf7b04e94e3107b6cc7236495
+  KakaoSDKTalk: ac4d2ec8b7323a50f98d74e6358fc8a296107566
+  KakaoSDKTemplate: 23ff3023d189f0962d28e34627a19c0eb8c1c7a6
+  KakaoSDKUser: d878977e0ba6b365cfeac3b6319cdf4231713bea
+  naveridlogin-sdk-ios: b9d7c20677981177ed994ecb1c8c2b49f223277d
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  XHQWebViewJavascriptBridge: 0ab54a0d091d90434bf1832a0e2bb0ce562449d0
 
-PODFILE CHECKSUM: d7b60f42f482b63f3fbdfd0f89aeaea0cbbd7eac
+PODFILE CHECKSUM: de931abe8878c0815d00b43e05ff77fee48d942c
 
 COCOAPODS: 1.11.2

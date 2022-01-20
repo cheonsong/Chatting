@@ -26,5 +26,8 @@ struct CustomColor {
     let gradientStartColor = UIColor(red: 133/255, green: 129/255, blue: 255/255, alpha: 1)
     let gradientFinishColor = UIColor(red: 152/255, green: 107/255, blue: 255/255, alpha: 1)
     let fmColor = UIColor(red: 241/255, green: 238/255, blue: 255/255, alpha: 1)
+    let manButtonColor = UIColor(red: 184/255, green: 217/255, blue: 255/255, alpha: 1)
+    let womanButtonColor = UIColor(red: 255/255, green: 230/255, blue: 240/255, alpha: 1)
+    let womanButtonBorder = UIColor(red: 255/255, green: 152/255, blue: 193/255, alpha: 1)
 }
 

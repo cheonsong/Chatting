@@ -10,17 +10,7 @@ import UIKit
 
 extension JoinView {
     
-    func setKeyboardNoti() {
-        //키보드 알림 등록
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(adjustInputView),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(adjustInputView),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-    }
+    
     
     func removeKeyboardNoti() {
         NotificationCenter.default.addObserver(self,
@@ -50,6 +40,28 @@ extension JoinView {
             introduceTextView.textColor = CustomColor.instance.color203
             if(introduceTextView.text.isEmpty) {
                 introduceTextView.text = placeholder
+            }
+        }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.frame.origin.y == 0{
+                self.frame.origin.y -= keyboardSize.height
+                if placeholder == introduceTextView.text {
+                    introduceTextView.text = ""
+                    introduceTextView.textColor = CustomColor.instance.color17
+                }
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.frame.origin.y != 0 {
+            self.frame.origin.y = 0
+            if introduceTextView.text.isEmpty {
+                introduceTextView.text = placeholder
+                introduceTextView.textColor = CustomColor.instance.color191
             }
         }
     }
