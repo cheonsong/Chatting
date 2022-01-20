@@ -21,7 +21,6 @@ class JoinViewModel: ViewModelType {
         var dayButtonClicked: Observable<Void>
         var introduceText: Observable<String>
         var joinButtonClicked: Observable<Void>
-        
     }
     
     struct Output {
@@ -33,6 +32,7 @@ class JoinViewModel: ViewModelType {
         var monthPick: PublishRelay<Void>
         var dayPick: PublishRelay<Void>
         var textCount: PublishRelay<String>
+        var userInfo: PublishRelay<Void>
     }
     
     let disposeBag = DisposeBag()
@@ -42,9 +42,10 @@ class JoinViewModel: ViewModelType {
     let checkWomanButton = PublishRelay<Void>()
     let imagePick = PublishRelay<Void>()
     let yearPick = PublishRelay<Void>()
-    var monthPick = PublishRelay<Void>()
-    var dayPick = PublishRelay<Void>()
-    var textCount = PublishRelay<String>()
+    let monthPick = PublishRelay<Void>()
+    let dayPick = PublishRelay<Void>()
+    let textCount = PublishRelay<String>()
+    let userInfo = PublishRelay<Void>()
     
     func transform(input: Input) -> Output {
         input.backButtonClicked
@@ -80,7 +81,11 @@ class JoinViewModel: ViewModelType {
             .bind(to: textCount)
             .disposed(by: disposeBag)
         
-        return Output(deleteView: deleteView, checkManButton: checkManButton, checkWomanButton: checkWomanButton, imagePick: imagePick, yearPick: yearPick, monthPick: monthPick, dayPick: dayPick, textCount: textCount
+        input.joinButtonClicked
+            .bind(to: userInfo)
+            .disposed(by: disposeBag)
+        
+        return Output(deleteView: deleteView, checkManButton: checkManButton, checkWomanButton: checkWomanButton, imagePick: imagePick, yearPick: yearPick, monthPick: monthPick, dayPick: dayPick, textCount: textCount, userInfo: userInfo
         )
     }
     

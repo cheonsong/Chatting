@@ -17,6 +17,7 @@ class JoinView: UIView {
     let viewModel = JoinViewModel()
     let disposeBag = DisposeBag()
     let imagePicker = UIImagePickerController()
+    var userInfo: JoinModel?
     
     
     let yearPickerView = UIPickerView()
@@ -41,7 +42,7 @@ class JoinView: UIView {
     // 상위뷰
     @IBOutlet weak var superView: UIView!
     @IBOutlet weak var topView: UIView!
-   
+    
     // 닉네임
     @IBOutlet weak var textField: UITextField!
     
@@ -68,7 +69,7 @@ class JoinView: UIView {
     // 가입완료
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-
+    
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -99,7 +100,8 @@ class JoinView: UIView {
     
     // MARK: Function
     func bindToViewModel() {
-        let input = JoinViewModel.Input(imagePickButtonClicked: imagePickButton.rx.tap.asObservable(),
+        let input = JoinViewModel.Input(
+                                        imagePickButtonClicked: imagePickButton.rx.tap.asObservable(),
                                         backButtonClicked: backButton.rx.tap.asObservable(),
                                         manButtonClicked: manButton.rx.tap.asObservable(),
                                         womanButtonClicked: womanButton.rx.tap.asObservable(),
@@ -107,7 +109,9 @@ class JoinView: UIView {
                                         monthButtonClicked: monthButton.rx.tap.asObservable(),
                                         dayButtonClicked: dayButton.rx.tap.asObservable(),
                                         introduceText: introduceTextView.rx.text.orEmpty.asObservable(),
-                                        joinButtonClicked: joinButton.rx.tap.asObservable())
+                                        joinButtonClicked: joinButton.rx.tap.asObservable()
+                                        
+        )
         
         let output = viewModel.transform(input: input)
         
@@ -125,6 +129,7 @@ class JoinView: UIView {
                 self.womanButton.backgroundColor = UIColor.white
                 self.manButton.isSelected = true
                 self.womanButton.isSelected = false
+                print(self.validation())
             })
             .disposed(by: disposeBag)
         
@@ -136,12 +141,14 @@ class JoinView: UIView {
                 self.womanButton.backgroundColor = CustomColor.instance.womanButtonColor
                 self.manButton.isSelected = false
                 self.womanButton.isSelected = true
+                print(self.validation())
             })
             .disposed(by: disposeBag)
         
         output.imagePick
             .subscribe(onNext: { _ in
                 self.openLibrary()
+                print(self.validation())
             })
             .disposed(by: disposeBag)
         
@@ -149,6 +156,7 @@ class JoinView: UIView {
             .subscribe(onNext: { _ in
                 self.view?.addSubview(self.yearPickerView)
                 self.view?.addSubview(self.pickerToolbar)
+                print(self.validation())
             })
             .disposed(by: disposeBag)
         
@@ -156,6 +164,7 @@ class JoinView: UIView {
             .subscribe(onNext: { _ in
                 self.view?.addSubview(self.monthPickerView)
                 self.view?.addSubview(self.pickerToolbar)
+                print(self.validation())
             })
             .disposed(by: disposeBag)
         
@@ -163,6 +172,7 @@ class JoinView: UIView {
             .subscribe(onNext: { _ in
                 self.view?.addSubview(self.dayPickerView)
                 self.view?.addSubview(self.pickerToolbar)
+                print(self.validation())
             })
             .disposed(by: disposeBag)
         
@@ -170,12 +180,42 @@ class JoinView: UIView {
             .bind(to: remainTextLabel.rx.text)
             .disposed(by: disposeBag)
         
+        output.textCount
+            .subscribe(onNext: { _ in
+                print(self.validation())
+            })
+            .disposed(by: disposeBag)
+        
+        output.userInfo
+            .subscribe(onNext: { _ in
+                self.userInfo = self.setUserInfo()
+                print(self.userInfo!)
+            })
+            .disposed(by: disposeBag)
+        
     }
     
-    func validation()-> Bool {
+    func validation() -> Bool{
         
-        
-        
+        if !textField.text!.isEmpty && (manButton.isSelected || womanButton.isSelected) && yearLabel.text!.count > 1 && monthLabel.text!.count > 1 && dayLabel.text!.count > 1 && !introduceTextView.text!.isEmpty {
+            joinButton.isEnabled = true
+            joinButton.backgroundColor = .purple
+            return true
+        }
+        joinButton.isEnabled = false
+        joinButton.backgroundColor = .gray
         return false
+    }
+    
+    func setUserInfo() -> JoinModel {
+        let userInfo = JoinModel()
+        
+        userInfo.name = textField.text
+        userInfo.profileImg = imageView.image
+        userInfo.age = nil
+        userInfo.costs = introduceTextView.text
+        userInfo.gender = manButton.isSelected ? "M" : "F"
+        
+        return userInfo
     }
 }
