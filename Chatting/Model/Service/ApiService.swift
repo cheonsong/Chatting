@@ -15,6 +15,12 @@ protocol ApiService {
         parameters: [String: Any]?,
         completion: ((_ response: Any?) ->Void)?
     )
+    
+    func requestApiMultiPart(
+        url: String,
+        parameters: [String : Any]?,
+        completion: ((_ response: Any?) ->Void)?
+    )
 }
 
 

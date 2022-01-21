@@ -22,7 +22,38 @@ class APIServiceProvider: ApiService {
                 print("🚫 http Body Error")
             }
         }
-            AF.request(request).responseJSON(completionHandler: completion!)
-            
-        }
+        AF.request(request).responseJSON(completionHandler: completion!)
+        
     }
+    
+    func requestApiMultiPart(url: String, parameters: [String : Any]?, completion: ((_ response: Any?) ->Void)?){
+        let url = url
+        let headers: HTTPHeaders = [
+            "Content-type": "multipart/form-data"
+        ]
+        
+        let image = parameters!["profile_img"] as? Data
+        
+        let param: Parameters = [
+            "email" : parameters!["email"] as Any,
+            "name" : parameters!["name"] as Any,
+            "age" : parameters!["age"] as Any,
+            "costs" : parameters!["costs"] as Any
+        ]
+        
+        
+        AF.upload(multipartFormData: { multiPart in
+            for (k, v) in param {
+                if let temp = v as? String {
+                    multiPart.append(temp.data(using: .utf8)!, withName: k)
+                }
+            }
+            multiPart.append(image!, withName: "profile_img", fileName: "name.png", mimeType: "image/jpeg")
+        }, to: url, headers: headers)
+            .uploadProgress(queue: .main, closure: { progress in
+                print("Upload Progress: \(progress.fractionCompleted)")
+            })
+            .responseJSON(completionHandler: completion!)
+    }
+}
+

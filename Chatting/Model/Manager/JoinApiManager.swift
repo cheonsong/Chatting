@@ -26,7 +26,7 @@ class JoinApiManager: JoinApiService {
             switch (response?.result) {
             case .success(let res):
                 print("========================회원 여부 확인 완료========================")
-                result = JSON(res)["is_member"].rawValue as! Bool
+                result = JSON(res)["is_member"].rawValue as? Bool
             case .failure(let err):
                 print("🚫 Alamofire Request Error\nCode:\(err._code), Message: \(err.errorDescription!)")
             default:
@@ -36,30 +36,50 @@ class JoinApiManager: JoinApiService {
         })
     }
     
-//    // 비제이에게 사연 보내기
-//    func postStoryToBJ(_ story: String ,completion: (() -> Void)?) {
-//
-//        let parameters: [String: Any]? = [ "send_mem_gender": "M",
-//                                           "send_mem_no": 4521,
-//                                           "send_chat_name": "천송",
-//                                           "send_mem_photo": "",
-//                                           "story_conts": story,
-//                                           "bj_id": "cheonsong"]
-//
-//        self.apiServiceProvider?.requestApi(url: "http://babyhoney.kr/api/story", method: .post, parameters: parameters, completion: { data in
-//            // data는 Any 타입이므로 이를 사용하기 위해 다운캐스팅 진행
-//            let response = data as? DataResponse<Any, AFError>
-//
-//            switch (response?.result) {
-//            case .success:
-//                print("POST 성공")
-//            case .failure(let err):
-//                print("🚫 Alamofire Request Error\nCode:\(err._code), Message: \(err.errorDescription!)")
-//            default:
-//                print("default")
-//            }
-//
-//        })
-//    }
+    func postUserInfo(_ userInfo: JoinModel, completion: (()-> Void)?) {
+        
+        let imageData = userInfo.profileImg?.jpegData(compressionQuality: 1)!
+        
+        let parameters: [String: Any]? =  [
+            "email" : userInfo.email as Any,
+            "name" : userInfo.name as Any,
+            "age" : userInfo.age as Any,
+            "costs" : userInfo.costs as Any,
+            "profile_img" : imageData as Any
+        ]
+        
+        self.apiServiceProvider?.requestApiMultiPart(url: "http://babyhoney.kr/api/member", parameters: parameters, completion: { data in
+            let response = data as? DataResponse<Any, AFError>
+            
+            switch (response?.result) {
+            case .success(let res):
+                print("========================회원가입 요청 완료 (\(res))========================")
+                
+            case .failure(let err):
+                print("🚫 Alamofire Request Error\nCode:\(err._code), Message: \(err.errorDescription!)")
+            default:
+                print("default")
+            }
+        })
+        
+    }
+    
+    func getChattingList(_ email: String, completion: (() -> Void)?) {
+        self.apiServiceProvider?.requestApi(url: "http://babyhoney.kr/api/member/list/\(email)", method: .get, parameters: nil, completion: {
+            data in
+                let response = data as? DataResponse<Any, AFError>
+                
+                switch (response?.result) {
+                case .success(let res):
+                    print("========================채팅 리스트 요청 성공========================")
+                    print(res)
+                    
+                case .failure(let err):
+                    print("🚫 Alamofire Request Error\nCode:\(err._code), Message: \(err.errorDescription!)")
+                default:
+                    print("default")
+                }
+        })
+    }
     
 }

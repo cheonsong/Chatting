@@ -18,4 +18,10 @@ protocol JoinApiService {
     
     // 회원가입 여부 확인 GET
     func getMembershipStatus(_ email: String, completion: ((Bool)-> Void)?)
+    
+    // 회원가입 POST
+    func postUserInfo(_ userInfo: JoinModel, completion: (()-> Void)?)
+    
+    // 채팅방리스트 요청 GET
+    func getChattingList(_ email: String, completion: (()->Void)?)
 }

@@ -18,6 +18,9 @@ class JoinView: UIView {
     let disposeBag = DisposeBag()
     let imagePicker = UIImagePickerController()
     var userInfo: JoinModel?
+    var imageName: String?
+    let apiManager = JoinApiManager(service: APIServiceProvider())
+    var kakaoEmail: String?
     
     
     let yearPickerView = UIPickerView()
@@ -189,7 +192,8 @@ class JoinView: UIView {
         output.userInfo
             .subscribe(onNext: { _ in
                 self.userInfo = self.setUserInfo()
-                print(self.userInfo!)
+                self.apiManager.postUserInfo(self.userInfo!, completion: nil)
+                self.removeFromSuperview()
             })
             .disposed(by: disposeBag)
         
@@ -210,9 +214,10 @@ class JoinView: UIView {
     func setUserInfo() -> JoinModel {
         let userInfo = JoinModel()
         
+        userInfo.email = kakaoEmail
         userInfo.name = textField.text
         userInfo.profileImg = imageView.image
-        userInfo.age = nil
+        userInfo.age = "26"
         userInfo.costs = introduceTextView.text
         userInfo.gender = manButton.isSelected ? "M" : "F"
         

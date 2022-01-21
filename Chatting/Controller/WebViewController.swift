@@ -18,6 +18,7 @@ class WebViewController: UIViewController {
     var naverEmail: String?
     var apiManager: JoinApiService?
     private lazy var joinView = JoinView(frame: self.view.frame)
+    private lazy var profileView = ProfileView(frame: self.view.frame)
     
     @IBOutlet weak var wk: WKWebView!
 
@@ -38,12 +39,16 @@ class WebViewController: UIViewController {
                         self.kakaoEmail = user?.kakaoAccount?.email
                         print(self.kakaoEmail!)
                         self.apiManager?.getMembershipStatus(self.kakaoEmail!, completion: { result in
+                            print(result)
                             result ? self.goToChattingList() : self.goToJoinView()
                         })
                     })
                 })
             case "loginNaver":
                 print("naver")
+            case "open_profile":
+                print("Open Profile")
+                self.view.addSubview(self.profileView)
             default:
                 print("default")
             }
@@ -70,11 +75,12 @@ class WebViewController: UIViewController {
     }
     
     func goToJoinView() {
-        joinView.textField.text = kakaoEmail!
+        joinView.kakaoEmail = kakaoEmail!
         self.view.addSubview(joinView)
     }
     
     func goToChattingList() {
         print("gotochat")
+        wk.load(URLRequest(url: URL(string: "http://babyhoney.kr/member/list/\(kakaoEmail ?? "")")!))
     }
 }

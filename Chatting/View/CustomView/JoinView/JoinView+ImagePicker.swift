@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SafariServices
+import Photos
 
 extension JoinView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -17,6 +18,12 @@ extension JoinView: UIImagePickerControllerDelegate, UINavigationControllerDeleg
             imageView.image = image
             addImageLabel.isHidden = true
             pictureView.layer.borderColor = UIColor.clear.cgColor
+        }
+        
+        if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
+            if let fileName = (asset.value(forKey: "filename")) as? String {
+                print(fileName)
+            }
         }
         
         let vc = getRootViewController()

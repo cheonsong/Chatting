@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Bold.otf">
+            <string>NotoSansKR-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Web View Controller-->
         <scene sceneID="A6G-iI-oTc">
@@ -17,21 +22,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiO-9T-7iU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8k-sl-ZIi">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.72722514770000002" green="0.85734261010000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="UhC-7t-HP9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="채팅방 입장">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6kc-7G-Tu0"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6kc-7G-Tu0" firstAttribute="trailing" secondItem="XiO-9T-7iU" secondAttribute="trailing" id="BoV-8l-ncx"/>
+                            <constraint firstItem="x8k-sl-ZIi" firstAttribute="leading" secondItem="6kc-7G-Tu0" secondAttribute="leading" id="F0k-i8-PEi"/>
                             <constraint firstItem="XiO-9T-7iU" firstAttribute="top" secondItem="6kc-7G-Tu0" secondAttribute="top" id="Q2u-MS-TgZ"/>
                             <constraint firstItem="XiO-9T-7iU" firstAttribute="leading" secondItem="6kc-7G-Tu0" secondAttribute="leading" id="QWm-oJ-aSo"/>
-                            <constraint firstItem="6kc-7G-Tu0" firstAttribute="bottom" secondItem="XiO-9T-7iU" secondAttribute="bottom" id="epn-gg-u55"/>
+                            <constraint firstItem="x8k-sl-ZIi" firstAttribute="top" secondItem="XiO-9T-7iU" secondAttribute="bottom" id="ZGh-cH-U1v"/>
+                            <constraint firstItem="x8k-sl-ZIi" firstAttribute="bottom" secondItem="6kc-7G-Tu0" secondAttribute="bottom" id="rld-5G-Eej"/>
+                            <constraint firstItem="6kc-7G-Tu0" firstAttribute="trailing" secondItem="x8k-sl-ZIi" secondAttribute="trailing" id="rop-tS-wZ0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -40,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrs-re-Nlc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-711" y="137"/>
+            <point key="canvasLocation" x="-711.20000000000005" y="136.28185907046478"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
