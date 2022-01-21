@@ -16,8 +16,25 @@ class JoinApiManager: JoinApiService {
     init(service: ApiService) {
         self.apiServiceProvider = service
     }
-    
-    
+
+    func getMembershipStatus(_ email: String, completion: ((Bool) -> Void)?) {
+        self.apiServiceProvider?.requestApi(url: "http://babyhoney.kr/api/member/\(email)", method: .get, parameters: nil,
+                                            completion: { data in
+            let response = data as? DataResponse<Any, AFError>
+            var result: Bool?
+            
+            switch (response?.result) {
+            case .success(let res):
+                print("========================회원 여부 확인 완료========================")
+                result = JSON(res)["is_member"].rawValue as! Bool
+            case .failure(let err):
+                print("🚫 Alamofire Request Error\nCode:\(err._code), Message: \(err.errorDescription!)")
+            default:
+                print("default")
+            }
+            completion!(result!)
+        })
+    }
     
 //    // 비제이에게 사연 보내기
 //    func postStoryToBJ(_ story: String ,completion: (() -> Void)?) {

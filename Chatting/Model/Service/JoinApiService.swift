@@ -15,4 +15,7 @@ protocol JoinApiService {
 //
 //    // 사연 보내기 POST
 //    func postStoryToBJ(_ story: String, completion: (() -> Void)?)
+    
+    // 회원가입 여부 확인 GET
+    func getMembershipStatus(_ email: String, completion: ((Bool)-> Void)?)
 }
