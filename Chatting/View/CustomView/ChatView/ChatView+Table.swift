@@ -13,20 +13,20 @@ extension ChatView {
     func setTableView() {
         self.tableView.register(UINib(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.backgroundColor = .clear
+        self.tableView.backgroundColor = UIColor.clear
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         updateTableContentInset()
         
-//        self.tableView.rx.setDelegate(self).disposed(by: disposeBag)
-//
-//        Observable.of(list)
-//            .bind(to: self.tableView.rx.items(cellIdentifier: "ChatCell", cellType: ChatCell.self)) { index, element, cell in
-//                cell.chat.text = element.chat!
-//                cell.nickname.text = element.nickname!
-//            }.disposed(by: disposeBag)
+        let gradient = CAGradientLayer()
+        
+        gradient.frame = tableView.superview?.bounds ?? CGRect.null
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.0, 0.15]
+        tableView.superview?.layer.mask = gradient
+        
     }
     
     // 채팅이 아래서부터 올라오도록 업데이트
@@ -62,6 +62,10 @@ extension ChatView: UITableViewDataSource {
         cell.nickname.text = chat.nickname!
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
     }
     
     

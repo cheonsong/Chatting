@@ -10,6 +10,9 @@ import WebKit
 import UIKit
 import XHQWebViewJavascriptBridge
 import KakaoSDKUser
+import SwiftyJSON
+import RxSwift
+import RxCocoa
 
 class WebViewController: UIViewController {
     
@@ -19,9 +22,15 @@ class WebViewController: UIViewController {
     var apiManager: JoinApiService?
     private lazy var joinView = JoinView(frame: self.view.frame)
     private lazy var profileView = ProfileView(frame: self.view.frame)
+    private lazy var chatView = ChatView(frame: self.view.frame)
     
     @IBOutlet weak var wk: WKWebView!
+    @IBOutlet weak var chatButton: UIButton!
 
+    @IBAction func tapChatButton(_ sender: Any) {
+        self.view.addSubview(chatView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,20 +44,44 @@ class WebViewController: UIViewController {
             case "loginKakao":
                 UserApi.shared.loginWithKakaoAccount(scopes: ["account_email"], completion: { (token, err) in
                     UserApi.shared.me(completion: { (user, err) in
-                        print("******************************Kakao Email**************************************")
+                        print("******************************카카오 이메일**************************************")
                         self.kakaoEmail = user?.kakaoAccount?.email
                         print(self.kakaoEmail!)
                         self.apiManager?.getMembershipStatus(self.kakaoEmail!, completion: { result in
                             print(result)
-                            result ? self.goToChattingList() : self.goToJoinView()
+                            result["is_member"].rawValue as! Bool ? self.goToProfileList() : self.goToJoinView()
                         })
                     })
                 })
+                
             case "loginNaver":
                 print("naver")
+                
             case "open_profile":
-                print("Open Profile")
-                self.view.addSubview(self.profileView)
+                guard let userInfo = data["userInfo"] else { return }
+                print("******************************프로필 열람**************************************")
+                self.apiManager?.getMembershipStatus(userInfo, completion: { data in
+                    let userInfo = data["mem_info"]
+                    self.profileView.nameLabel.text = userInfo["name"].stringValue
+                    self.profileView.ageLabel.text = userInfo["age"].stringValue
+                    self.profileView.introduceLabel.text = userInfo["contents"].stringValue
+                    do {
+                        let imageData = try Data(contentsOf: URL(string: userInfo["profile_image"].stringValue)!)
+                        self.profileView.profileImage.image = UIImage(data: imageData)
+                    } catch {
+                        self.profileView.profileImage.image = UIImage()
+                    }
+                    if userInfo["gender"].stringValue == "M" {
+                        self.profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
+                        self.profileView.sexImage.image = UIImage(named: "ico_sex_m")
+                        self.profileView.sexAgeView.layer.borderColor = CustomColor.instance.profileManSexAgeBorderColor.cgColor
+                        self.profileView.ageLabel.textColor = CustomColor.instance.profileSexLabeltextColor
+                    }
+                    
+                    self.view.addSubview(self.profileView)
+                })
+                
+                
             default:
                 print("default")
             }
@@ -60,7 +93,6 @@ class WebViewController: UIViewController {
         })
         
         load()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,8 +111,9 @@ class WebViewController: UIViewController {
         self.view.addSubview(joinView)
     }
     
-    func goToChattingList() {
+    func goToProfileList() {
         print("gotochat")
         wk.load(URLRequest(url: URL(string: "http://babyhoney.kr/member/list/\(kakaoEmail ?? "")")!))
+        chatButton.isHidden = false
     }
 }

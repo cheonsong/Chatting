@@ -30,7 +30,9 @@ struct CustomColor {
     let womanButtonColor = UIColor(red: 255/255, green: 230/255, blue: 240/255, alpha: 1)
     let womanButtonBorder = UIColor(red: 255/255, green: 152/255, blue: 193/255, alpha: 1)
     let profileLikeBorderColor = UIColor(red: 255/255, green: 228/255, blue: 228/255, alpha: 1)
-    let profileSexAgeBorderColor = UIColor(red: 251/255, green: 194/255, blue: 206/255, alpha: 1)
+    let profileWomanSexAgeBorderColor = UIColor(red: 251/255, green: 194/255, blue: 206/255, alpha: 1)
     let locationViewBorderColor = UIColor(red: 202/255, green: 221/255, blue: 239/255, alpha: 1)
+    let profileSexLabeltextColor = UIColor(red: 93/255, green: 126/255, blue: 232/255, alpha: 1)
+    let profileManSexAgeBorderColor = UIColor(red: 200/255, green: 211/255, blue: 249/255, alpha: 1)
 }
 

@@ -35,6 +35,8 @@ class ChatView: UIView {
     @IBOutlet weak var downButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var blurView: UIView!
     
     // MARK: init & deinit
     override init(frame: CGRect) {
@@ -66,6 +68,7 @@ class ChatView: UIView {
         setKeyboardNoti()
         
         setBackground()
+        
     }
     
     private func bindViewModel() {
@@ -132,7 +135,10 @@ class ChatView: UIView {
         imageView.image = image
         imageView.frame = self.bounds
         insertSubview(imageView, at: 0)
+        
+        
     }
+    
     
     private func setTextView() {
         textView.backgroundColor = .white

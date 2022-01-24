@@ -29,7 +29,7 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8k-sl-ZIi">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8k-sl-ZIi">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.72722514770000002" green="0.85734261010000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -40,6 +40,9 @@
                                 <state key="normal" title="채팅방 입장">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapChatButton:" destination="fCz-dv-XOH" eventType="touchUpInside" id="IEb-8Z-KEM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6kc-7G-Tu0"/>
@@ -55,53 +58,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="chatButton" destination="x8k-sl-ZIi" id="IOE-yp-HL4"/>
                         <outlet property="wk" destination="XiO-9T-7iU" id="1Ny-EE-rgp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrs-re-Nlc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-711.20000000000005" y="136.28185907046478"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Chatting" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Np3-af-1FU">
-                                <rect key="frame" x="100" y="150" width="175" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="채팅방 접속"/>
-                                <connections>
-                                    <action selector="tapChatRoom:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DJf-xb-z89"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBG-9o-qhi">
-                                <rect key="frame" x="100" y="281" width="175" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title=" 회원가입"/>
-                                <connections>
-                                    <action selector="tapJoinButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fH0-7O-rXQ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Np3-af-1FU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="7m5-Jd-jVa"/>
-                            <constraint firstItem="GBG-9o-qhi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Jnm-co-RyA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GBG-9o-qhi" secondAttribute="trailing" constant="100" id="OKZ-AR-5rO"/>
-                            <constraint firstItem="Np3-af-1FU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="cao-Vk-h79"/>
-                            <constraint firstItem="GBG-9o-qhi" firstAttribute="top" secondItem="Np3-af-1FU" secondAttribute="bottom" constant="100" id="sHc-Zo-VrQ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Np3-af-1FU" secondAttribute="trailing" constant="100" id="yYe-5W-JSK"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="71.014492753623188" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>

@@ -17,16 +17,16 @@ class JoinApiManager: JoinApiService {
         self.apiServiceProvider = service
     }
 
-    func getMembershipStatus(_ email: String, completion: ((Bool) -> Void)?) {
+    func getMembershipStatus(_ email: String, completion: ((JSON) -> Void)?) {
         self.apiServiceProvider?.requestApi(url: "http://babyhoney.kr/api/member/\(email)", method: .get, parameters: nil,
                                             completion: { data in
             let response = data as? DataResponse<Any, AFError>
-            var result: Bool?
+            var result: JSON?
             
             switch (response?.result) {
             case .success(let res):
                 print("========================회원 여부 확인 완료========================")
-                result = JSON(res)["is_member"].rawValue as? Bool
+                result = JSON(res)
             case .failure(let err):
                 print("🚫 Alamofire Request Error\nCode:\(err._code), Message: \(err.errorDescription!)")
             default:

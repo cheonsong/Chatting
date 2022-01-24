@@ -8,17 +8,40 @@
 import UIKit
 
 class ProfileView: UIView {
-
+    
+    // MARK: Property
     var view: UIView?
     
+    // MARK: IBOutlet
+    // 바뀌지 않는 뷰
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var likeLabel: UIView!
-    @IBOutlet weak var sexAgeSuperView: UIView!
-    @IBOutlet weak var sexAgeView: UIView!
     @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var introduceView: UIView!
+
+    
+    // 사람에 따라 바뀌어야할 뷰
+    // 성별, 이름
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var sexImage: UIImageView!
+    @IBOutlet weak var sexAgeSuperView: UIView!
+    @IBOutlet weak var sexAgeView: UIView!
+    @IBOutlet weak var ageLabel: UILabel!
+    
+    // 좋아요
+
+    @IBAction func tapLikeButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    
+    // 프로필
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileBorderImage: UIImageView!
+    
+    // 소개글
+    @IBOutlet weak var introduceLabel: UILabel!
     
     // MARK: Init
     override init(frame: CGRect) {
@@ -42,37 +65,4 @@ class ProfileView: UIView {
         setBackgroundColor()
     }
     
-    func setBackgroundColor() {
-        sexAgeView.backgroundColor = .white
-        locationView.backgroundColor = .white
-        sexAgeSuperView.backgroundColor = .white
-    }
-    
-    func setCornerRadius() {
-        likeLabel.layer.cornerRadius = likeLabel.frame.height / 2
-        bottomView.layer.cornerRadius = 25
-        sexAgeView.layer.cornerRadius = sexAgeView.frame.height / 2
-        locationView.layer.cornerRadius = locationView.frame.height / 2
-        introduceView.layer.cornerRadius = 4
-    }
-    
-    func setBorder() {
-        sexAgeView.layer.borderColor = CustomColor.instance.profileSexAgeBorderColor.cgColor
-        sexAgeView.layer.borderWidth = 1
-        
-        likeLabel.layer.borderColor = CustomColor.instance.profileLikeBorderColor.cgColor
-        likeLabel.layer.borderWidth = 1
-        
-        locationView.layer.borderColor = CustomColor.instance.locationViewBorderColor.cgColor
-        locationView.layer.borderWidth = 1
-        
-        introduceView.layer.borderColor = CustomColor.instance.color238.cgColor
-        introduceView.layer.borderWidth = 1
-    }
-    
-    func setGestureRecognizer() {
-        let tapGesture = UITapGestureRecognizer()
-        tapGesture.delegate = self
-        self.topView.addGestureRecognizer(tapGesture)
-    }
 }

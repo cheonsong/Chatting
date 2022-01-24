@@ -26,3 +26,16 @@ extension UIButton {
     }
     
 }
+
+extension UIView {
+    func setViewGradient(color1:UIColor,color2:UIColor) {
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.frame = bounds
+        
+        layer.mask = gradient
+    }
+}

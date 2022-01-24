@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 protocol JoinApiService {
 
@@ -17,7 +18,7 @@ protocol JoinApiService {
 //    func postStoryToBJ(_ story: String, completion: (() -> Void)?)
     
     // 회원가입 여부 확인 GET
-    func getMembershipStatus(_ email: String, completion: ((Bool)-> Void)?)
+    func getMembershipStatus(_ email: String, completion: ((JSON)-> Void)?)
     
     // 회원가입 POST
     func postUserInfo(_ userInfo: JoinModel, completion: (()-> Void)?)

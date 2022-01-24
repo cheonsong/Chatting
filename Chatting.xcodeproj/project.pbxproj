@@ -11,6 +11,9 @@
 		E86FB4A8279A7A220076F549 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4A7279A7A220076F549 /* ProfileView.swift */; };
 		E86FB4AA279A7A2C0076F549 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4A9279A7A2C0076F549 /* ProfileView.xib */; };
 		E86FB4AC279A81FF0076F549 /* ProfileView+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */; };
+		E86FB4AE279A997B0076F549 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4AD279A997B0076F549 /* ProfileViewModel.swift */; };
+		E86FB4B0279A9A470076F549 /* ProfileView+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4AF279A9A470076F549 /* ProfileView+Init.swift */; };
+		E86FB4B2279AA9EA0076F549 /* roundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4B1279AA9EA0076F549 /* roundCorner.swift */; };
 		E88D58912794FC80003A4910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58902794FC80003A4910 /* AppDelegate.swift */; };
 		E88D58932794FC80003A4910 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58922794FC80003A4910 /* SceneDelegate.swift */; };
 		E88D58952794FC80003A4910 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58942794FC80003A4910 /* ViewController.swift */; };
@@ -63,6 +66,9 @@
 		E86FB4A7279A7A220076F549 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E86FB4A9279A7A2C0076F549 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+Gesture.swift"; sourceTree = "<group>"; };
+		E86FB4AD279A997B0076F549 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		E86FB4AF279A9A470076F549 /* ProfileView+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+Init.swift"; sourceTree = "<group>"; };
+		E86FB4B1279AA9EA0076F549 /* roundCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundCorner.swift; sourceTree = "<group>"; };
 		E88D588D2794FC80003A4910 /* Chatting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88D58902794FC80003A4910 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E88D58922794FC80003A4910 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,9 +148,10 @@
 		E86FB4A4279A7A040076F549 /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
-				E86FB4A7279A7A220076F549 /* ProfileView.swift */,
 				E86FB4A9279A7A2C0076F549 /* ProfileView.xib */,
+				E86FB4A7279A7A220076F549 /* ProfileView.swift */,
 				E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */,
+				E86FB4AF279A9A470076F549 /* ProfileView+Init.swift */,
 			);
 			path = ProfileView;
 			sourceTree = "<group>";
@@ -256,6 +263,7 @@
 				E88D58CE2795259B003A4910 /* ChatViewModel.swift */,
 				E8CA3C532797D7BA00FE85F8 /* JoinViewModel.swift */,
 				E88D58D0279525BE003A4910 /* ViewModelType.swift */,
+				E86FB4AD279A997B0076F549 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -334,6 +342,7 @@
 				E8CA3C622797E7BC00FE85F8 /* AddBorder.swift */,
 				E8CA3C632797E7BC00FE85F8 /* DateComparison.swift */,
 				E8CA3C752798F42900FE85F8 /* getRootVC.swift */,
+				E86FB4B1279AA9EA0076F549 /* roundCorner.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -480,6 +489,7 @@
 				E88D58C12794FF89003A4910 /* ApiService.swift in Sources */,
 				E88D58C5279522C9003A4910 /* ChatModel.swift in Sources */,
 				E88D58D327953059003A4910 /* ChatView.swift in Sources */,
+				E86FB4B0279A9A470076F549 /* ProfileView+Init.swift in Sources */,
 				E8CA3C742798F1CA00FE85F8 /* JoinView+ImagePicker.swift in Sources */,
 				E8CA3C642797E7BC00FE85F8 /* Gradient.swift in Sources */,
 				E8CA3C692797EEFF00FE85F8 /* JoinView+Keyboard.swift in Sources */,
@@ -502,7 +512,9 @@
 				E8CA3C762798F42900FE85F8 /* getRootVC.swift in Sources */,
 				E88D58D1279525BE003A4910 /* ViewModelType.swift in Sources */,
 				E88D58932794FC80003A4910 /* SceneDelegate.swift in Sources */,
+				E86FB4AE279A997B0076F549 /* ProfileViewModel.swift in Sources */,
 				E8CA3C7E2799490A00FE85F8 /* WebViewController.swift in Sources */,
+				E86FB4B2279AA9EA0076F549 /* roundCorner.swift in Sources */,
 				E8CA3C652797E7BC00FE85F8 /* LetterSpacing.swift in Sources */,
 				E8CA3C7C279915EA00FE85F8 /* JoinView+Init.swift in Sources */,
 			);

@@ -31,10 +31,42 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rQz-94-nQb">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="582"/>
-                    <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-4b-hDx">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFg-Tb-S4W">
+                            <rect key="frame" x="337" y="18" width="30" height="30"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="btn_broad_cls"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="dFg-Tb-S4W" secondAttribute="bottom" constant="26.5" id="33B-Xv-X2H"/>
+                        <constraint firstAttribute="trailing" secondItem="dFg-Tb-S4W" secondAttribute="trailing" constant="8" id="Frx-sZ-tPM"/>
+                        <constraint firstItem="dFg-Tb-S4W" firstAttribute="top" secondItem="7UK-4b-hDx" secondAttribute="top" constant="18" id="O90-zE-S7S"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="364-DT-nbg">
+                    <rect key="frame" x="0.0" y="74.5" width="375" height="507.5"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rQz-94-nQb">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="507.5"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="rQz-94-nQb" firstAttribute="top" secondItem="364-DT-nbg" secondAttribute="top" id="7cx-ZO-hDp"/>
+                        <constraint firstItem="rQz-94-nQb" firstAttribute="leading" secondItem="364-DT-nbg" secondAttribute="leading" id="8UO-Oa-TDN"/>
+                        <constraint firstAttribute="bottom" secondItem="rQz-94-nQb" secondAttribute="bottom" id="A03-FH-rhg"/>
+                        <constraint firstAttribute="trailing" secondItem="rQz-94-nQb" secondAttribute="trailing" id="AZn-ie-NUX"/>
+                    </constraints>
+                </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dst-dt-02P">
+                    <rect key="frame" x="108.5" y="528" width="158" height="54"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="bubble_scr_down"/>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8m3-b3-3Q5">
                     <rect key="frame" x="0.0" y="597" width="375" height="55"/>
                     <subviews>
@@ -96,37 +128,28 @@
                         <constraint firstAttribute="bottom" secondItem="vPV-c1-nkt" secondAttribute="bottom" id="vSW-nV-e86"/>
                     </constraints>
                 </view>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dst-dt-02P">
-                    <rect key="frame" x="108.5" y="528" width="158" height="54"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="bubble_scr_down"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFg-Tb-S4W">
-                    <rect key="frame" x="337" y="18" width="30" height="30"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="btn_broad_cls"/>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80303267927359268" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="rQz-94-nQb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="2XG-YS-CpI"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rQz-94-nQb" secondAttribute="trailing" id="Gb9-Zn-E4Q"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="364-DT-nbg" secondAttribute="trailing" id="B1l-2A-yQD"/>
+                <constraint firstItem="8m3-b3-3Q5" firstAttribute="top" secondItem="364-DT-nbg" secondAttribute="bottom" constant="15" id="GVz-Wj-2ws"/>
                 <constraint firstItem="8m3-b3-3Q5" firstAttribute="top" secondItem="dst-dt-02P" secondAttribute="bottom" constant="15" id="LbO-ch-52H"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7UK-4b-hDx" secondAttribute="trailing" id="PyH-gg-CZA"/>
+                <constraint firstItem="7UK-4b-hDx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ul4-LS-25j"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8m3-b3-3Q5" secondAttribute="bottom" constant="15" id="WW1-7C-j5F"/>
-                <constraint firstItem="dFg-Tb-S4W" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="18" id="Wec-ez-kYv"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dFg-Tb-S4W" secondAttribute="trailing" constant="8" id="X4e-dD-Ae0"/>
-                <constraint firstItem="8m3-b3-3Q5" firstAttribute="top" secondItem="rQz-94-nQb" secondAttribute="bottom" constant="15" id="jSD-p4-0gp"/>
-                <constraint firstItem="rQz-94-nQb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="l1p-Zd-2un"/>
+                <constraint firstItem="364-DT-nbg" firstAttribute="top" secondItem="7UK-4b-hDx" secondAttribute="bottom" id="Y3f-Ot-Evs"/>
+                <constraint firstItem="7UK-4b-hDx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="e3G-gE-5cb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8m3-b3-3Q5" secondAttribute="trailing" id="mOd-bd-lba"/>
+                <constraint firstItem="364-DT-nbg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mQD-GS-Hs5"/>
                 <constraint firstItem="dst-dt-02P" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ol4-rH-HeJ"/>
                 <constraint firstItem="8m3-b3-3Q5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rNJ-II-8pv"/>
             </constraints>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="NxE-5y-DxR" appends="YES" id="F8J-f4-0oo"/>
             </connections>
-            <point key="canvasLocation" x="222" y="151"/>
+            <point key="canvasLocation" x="221.59999999999999" y="150.67466266866569"/>
         </view>
         <tapGestureRecognizer id="NxE-5y-DxR"/>
     </objects>
