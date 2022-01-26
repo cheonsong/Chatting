@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import RxCocoa
 import RxSwift
+import SocketIO
+import SwiftyJSON
 
 class ChatView: UIView {
     
@@ -20,8 +22,10 @@ class ChatView: UIView {
     var list = [ChatModel]() {
         didSet {
             self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: self.list.count - 1, section: 0), at: .bottom, animated: true)
         }
     }
+    var memInfo = MemberInfo()
     
     let disposeBag = DisposeBag()
     
@@ -35,8 +39,6 @@ class ChatView: UIView {
     @IBOutlet weak var downButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var blurView: UIView!
     
     // MARK: init & deinit
     override init(frame: CGRect) {
@@ -69,6 +71,8 @@ class ChatView: UIView {
         
         setBackground()
         
+        setSocketHandler()
+        
     }
     
     private func bindViewModel() {
@@ -97,14 +101,15 @@ class ChatView: UIView {
         // ChatModel을 ChatList에 추가
         output.addChatList
             .subscribe(onNext: {
-                self.list.append($0)
+                ChatSocketManager.instance.sendChatMessage($0.chat!)
             })
             .disposed(by: disposeBag)
         
         // scrollDown
         // 아래로버튼 클릭 시 가장 최근에 대화로 이동
         output.scrollDown
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.tableView.scrollToRow(at: IndexPath(row: self.list.count - 1, section: 0), at: .bottom, animated: true)
             })
             .disposed(by: disposeBag)
@@ -113,20 +118,55 @@ class ChatView: UIView {
         // 사연을 보내면 입력창의 텍스트 초기화
         // 가장 최신 대화로 이동
         output.removeTextInTextView
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.textView.text = ""
-                self.tableView.scrollToRow(at: IndexPath(row: self.list.count - 1, section: 0), at: .bottom, animated: true)
             })
             .disposed(by: disposeBag)
         
         // deleteView
         // 채팅방 나가기
         output.deleteView
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.removeFromSuperview()
+                ChatSocketManager.instance.roomOut()
+                self.list.removeAll()
             })
             .disposed(by: disposeBag)
         
+        output.likeAnimation
+            .subscribe(onNext: { [weak self] in
+                //guard let self = self else { return }
+                ChatSocketManager.instance.sendLike()
+            })
+            .disposed(by: disposeBag)
+        
+    }
+    
+    func setSocketHandler() {
+        ChatSocketManager.instance.serviceProvider?.socket?.on("message", callback: { data, ack in
+            print(data)
+            guard let dataInfo = data.first else { return }
+            let json = JSON(dataInfo)
+            switch (json["cmd"].stringValue) {
+            case "rcvSystemMsg":
+                let chat = ChatModel(chat: json["msg"].stringValue)
+                chat.type = .system
+                self.list.append(chat)
+                
+            case "rcvChatMsg":
+                let chat = ChatModel(chat: json["msg"].stringValue)
+                chat.type = .user
+                chat.nickname = json["from"]["chat_name"].stringValue
+                chat.imageLink = json["from"]["mem_photo"].stringValue
+                self.list.append(chat)
+                
+                
+            default:
+                print("default")
+            }
+        })
     }
     
     private func setBackground() {
@@ -135,8 +175,6 @@ class ChatView: UIView {
         imageView.image = image
         imageView.frame = self.bounds
         insertSubview(imageView, at: 0)
-        
-        
     }
     
     
@@ -145,5 +183,4 @@ class ChatView: UIView {
         textSuperView.layer.cornerRadius = 18
         textView.text = placeholder
     }
-    
 }

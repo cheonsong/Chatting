@@ -12,6 +12,7 @@ extension ChatView {
     
     func setTableView() {
         self.tableView.register(UINib(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
+        self.tableView.register(UINib(nibName: "SystemChatCell", bundle: nil), forCellReuseIdentifier: "SystemChatCell")
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.backgroundColor = UIColor.clear
         
@@ -38,10 +39,12 @@ extension ChatView {
             contentInsetTop -= rowRect.size.height
             if contentInsetTop <= 0 {
                 contentInsetTop = 0
+                break
             }
         }
         self.tableView.contentInset = UIEdgeInsets(top: contentInsetTop,left: 0,bottom: 0,right: 0)
     }
+    
     
 }
 
@@ -57,11 +60,21 @@ extension ChatView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat = self.list[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
-        cell.chat.text = chat.chat!
-        cell.nickname.text = chat.nickname!
+        switch (chat.type) {
+        case .system:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SystemChatCell") as! SystemChatCell
+            cell.message.text = chat.chat!
+            return cell
+        case .user:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
+            cell.chat.text = chat.chat!
+            cell.nickname.text = chat.nickname!
+            cell.profileImage.image = chat.image
+            return cell
+        default:
+            return UITableViewCell()
+        }
         
-        return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

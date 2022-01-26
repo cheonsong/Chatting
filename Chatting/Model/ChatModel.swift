@@ -9,17 +9,29 @@ import Foundation
 import UIKit
 
 class ChatModel {
+    var type: ChatType?
     var chat: String?
     var nickname: String?
+    var imageLink: String? {
+        didSet {
+            image = UIImage(data: try! Data(contentsOf: URL(string: imageLink!)!))
+        }
+    }
     var image: UIImage?
     
     init() {
         self.chat = ""
-        self.nickname = "cheonsong"
+        self.nickname = "System"
     }
     
     init(chat: String) {
         self.chat = chat
-        self.nickname = "cheonsong"
+        self.nickname = "User"
+        self.type = .user
+    }
+    
+    enum ChatType {
+        case system
+        case user
     }
 }

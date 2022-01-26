@@ -25,6 +25,7 @@ class ChatViewModel: ViewModelType{
         var scrollDown: PublishRelay<Void>
         var removeTextInTextView: PublishRelay<Void>
         var deleteView: PublishRelay<Void>
+        var likeAnimation: PublishRelay<Void>
     }
     
     var disposeBag = DisposeBag()
@@ -34,6 +35,7 @@ class ChatViewModel: ViewModelType{
     private let scrollDown = PublishRelay<Void>()
     private let removeTextInTextView = PublishRelay<Void>()
     private let deleteView = PublishRelay<Void>()
+    private let likeAnimation = PublishRelay<Void>()
     
     
     /// Input 값을 입력 받아 처리 후 Output값을 출력
@@ -76,7 +78,11 @@ class ChatViewModel: ViewModelType{
             .bind(to: deleteView)
             .disposed(by: disposeBag)
         
-        return Output(addChatList: addChatList, likeFlag: likeFlag, scrollDown: scrollDown, removeTextInTextView: removeTextInTextView, deleteView: deleteView
+        input.taplikeButton
+            .bind(to: likeAnimation)
+            .disposed(by: disposeBag)
+        
+        return Output(addChatList: addChatList, likeFlag: likeFlag, scrollDown: scrollDown, removeTextInTextView: removeTextInTextView, deleteView: deleteView, likeAnimation: likeAnimation
         )
     }
 }

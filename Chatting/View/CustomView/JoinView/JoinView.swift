@@ -21,7 +21,7 @@ class JoinView: UIView {
     var imageName: String?
     let apiManager = JoinApiManager(service: APIServiceProvider())
     var kakaoEmail: String?
-    
+    var naverEmail: String?
     
     let yearPickerView = UIPickerView()
     let monthPickerView = UIPickerView()
@@ -214,7 +214,7 @@ class JoinView: UIView {
     func setUserInfo() -> JoinModel {
         let userInfo = JoinModel()
         
-        userInfo.email = kakaoEmail
+        userInfo.email = kakaoEmail == "" ? naverEmail! : kakaoEmail!
         userInfo.name = textField.text
         userInfo.profileImg = imageView.image
         userInfo.age = "26"

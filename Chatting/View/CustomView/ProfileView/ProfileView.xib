@@ -41,7 +41,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmw-Cd-Rfy">
-                    <rect key="frame" x="0.0" y="44" width="414" height="453.5"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="439"/>
                     <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
                     <connections>
@@ -49,7 +49,7 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qIR-1Y-sa7">
-                    <rect key="frame" x="0.0" y="467.5" width="414" height="394.5"/>
+                    <rect key="frame" x="0.0" y="453" width="414" height="409"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tn-N2-Rat">
                             <rect key="frame" x="366" y="15" width="34" height="34"/>
@@ -67,7 +67,7 @@
                                     <rect key="frame" x="8" y="8" width="18" height="18"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100K" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMm-Nq-BaC">
-                                    <rect key="frame" x="30.5" y="8.5" width="30.5" height="17"/>
+                                    <rect key="frame" x="29" y="8.5" width="32" height="17"/>
                                     <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="13"/>
                                     <color key="textColor" red="1" green="0.25490196078431371" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -86,7 +86,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Kz-r9-JZv">
-                            <rect key="frame" x="168" y="77.5" width="78" height="27"/>
+                            <rect key="frame" x="167" y="77.5" width="80" height="27"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Guf-Zf-dRg">
                                     <rect key="frame" x="0.0" y="4.5" width="39" height="20"/>
@@ -115,7 +115,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ww5-Qp-yrM">
-                                    <rect key="frame" x="43" y="0.0" width="35" height="27"/>
+                                    <rect key="frame" x="43" y="0.0" width="37" height="27"/>
                                     <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -133,25 +133,25 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AAi-V1-l78">
-                            <rect key="frame" x="161.5" y="110.5" width="91" height="26"/>
+                            <rect key="frame" x="160" y="110.5" width="94.5" height="26"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_loca" translatesAutoresizingMaskIntoConstraints="NO" id="psm-ga-vWm">
                                     <rect key="frame" x="6" y="6" width="11" height="15"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ND-zs-wAh">
-                                    <rect key="frame" x="21" y="4.5" width="21" height="17"/>
+                                    <rect key="frame" x="21" y="4.5" width="22.5" height="17"/>
                                     <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="12"/>
                                     <color key="textColor" red="0.46274509803921571" green="0.62352941176470589" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="강남구" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUm-Gd-2Kx">
-                                    <rect key="frame" x="50.5" y="4.5" width="31.5" height="17"/>
+                                    <rect key="frame" x="52" y="4.5" width="33.5" height="17"/>
                                     <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="12"/>
                                     <color key="textColor" red="0.46274509803921571" green="0.62352941176470589" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bullet_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="w28-T9-DdK">
-                                    <rect key="frame" x="43" y="9.5" width="6" height="8"/>
+                                    <rect key="frame" x="44.5" y="9.5" width="6" height="8"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" red="0.792156862745098" green="0.8666666666666667" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -173,16 +173,16 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소개글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8L-OT-vbi">
-                            <rect key="frame" x="20" y="144.5" width="34" height="15.5"/>
+                            <rect key="frame" x="20" y="144.5" width="36" height="19"/>
                             <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="13"/>
                             <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7V-vU-Vdg">
-                            <rect key="frame" x="21" y="162" width="371.5" height="65.5"/>
+                            <rect key="frame" x="21" y="165.5" width="371.5" height="76.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개소개" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoF-f8-wX0">
-                                    <rect key="frame" x="46" y="10" width="264" height="45.5"/>
+                                    <rect key="frame" x="46" y="10" width="264" height="56.5"/>
                                     <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="13"/>
                                     <color key="textColor" red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -215,10 +215,10 @@
                     </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_profile_line_fm" translatesAutoresizingMaskIntoConstraints="NO" id="Tm4-rM-Rjj">
-                    <rect key="frame" x="150.5" y="419.5" width="113" height="113"/>
+                    <rect key="frame" x="150.5" y="405" width="113" height="113"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V7w-Bs-rUl">
-                    <rect key="frame" x="160" y="428.5" width="94" height="94"/>
+                    <rect key="frame" x="160" y="414" width="94" height="94"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="94" id="4gN-NY-kSn"/>
                         <constraint firstAttribute="height" constant="94" id="AwT-MV-CKd"/>

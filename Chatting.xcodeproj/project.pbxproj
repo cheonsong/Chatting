@@ -14,6 +14,12 @@
 		E86FB4AE279A997B0076F549 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4AD279A997B0076F549 /* ProfileViewModel.swift */; };
 		E86FB4B0279A9A470076F549 /* ProfileView+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4AF279A9A470076F549 /* ProfileView+Init.swift */; };
 		E86FB4B2279AA9EA0076F549 /* roundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4B1279AA9EA0076F549 /* roundCorner.swift */; };
+		E86FB4B6279F6B640076F549 /* SystemChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4B4279F6B640076F549 /* SystemChatCell.swift */; };
+		E86FB4B7279F6B640076F549 /* SystemChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4B5279F6B640076F549 /* SystemChatCell.xib */; };
+		E86FB4B9279F77560076F549 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4B8279F77560076F549 /* SocketManager.swift */; };
+		E86FB4BB279F77910076F549 /* SocketServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4BA279F77910076F549 /* SocketServiceProvider.swift */; };
+		E86FB4BD279F78FA0076F549 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4BC279F78FA0076F549 /* SocketService.swift */; };
+		E86FB4C3279F813F0076F549 /* MemberInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4C2279F813F0076F549 /* MemberInfo.swift */; };
 		E88D58912794FC80003A4910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58902794FC80003A4910 /* AppDelegate.swift */; };
 		E88D58932794FC80003A4910 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58922794FC80003A4910 /* SceneDelegate.swift */; };
 		E88D58952794FC80003A4910 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58942794FC80003A4910 /* ViewController.swift */; };
@@ -69,6 +75,12 @@
 		E86FB4AD279A997B0076F549 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E86FB4AF279A9A470076F549 /* ProfileView+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+Init.swift"; sourceTree = "<group>"; };
 		E86FB4B1279AA9EA0076F549 /* roundCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundCorner.swift; sourceTree = "<group>"; };
+		E86FB4B4279F6B640076F549 /* SystemChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemChatCell.swift; sourceTree = "<group>"; };
+		E86FB4B5279F6B640076F549 /* SystemChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SystemChatCell.xib; sourceTree = "<group>"; };
+		E86FB4B8279F77560076F549 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		E86FB4BA279F77910076F549 /* SocketServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketServiceProvider.swift; sourceTree = "<group>"; };
+		E86FB4BC279F78FA0076F549 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
+		E86FB4C2279F813F0076F549 /* MemberInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfo.swift; sourceTree = "<group>"; };
 		E88D588D2794FC80003A4910 /* Chatting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88D58902794FC80003A4910 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E88D58922794FC80003A4910 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +168,50 @@
 			path = ProfileView;
 			sourceTree = "<group>";
 		};
+		E86FB4B3279F6B3B0076F549 /* SystemChatCell */ = {
+			isa = PBXGroup;
+			children = (
+				E86FB4B5279F6B640076F549 /* SystemChatCell.xib */,
+				E86FB4B4279F6B640076F549 /* SystemChatCell.swift */,
+			);
+			path = SystemChatCell;
+			sourceTree = "<group>";
+		};
+		E86FB4BE279F80E30076F549 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				E86FB4B8279F77560076F549 /* SocketManager.swift */,
+				E86FB4BA279F77910076F549 /* SocketServiceProvider.swift */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
+		E86FB4BF279F81010076F549 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E8CA3C6D2798D92000FE85F8 /* ApiServiceProvider.swift */,
+				E8CA3C6E2798D92000FE85F8 /* JoinApiManager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		E86FB4C0279F810A0076F549 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E8CA3C6A2798D8F800FE85F8 /* JoinApiService.swift */,
+				E88D58C02794FF89003A4910 /* ApiService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		E86FB4C1279F81180076F549 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				E86FB4BC279F78FA0076F549 /* SocketService.swift */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
 		E88D58842794FC80003A4910 = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +277,7 @@
 		E88D58A72794FEE5003A4910 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				E86FB4B3279F6B3B0076F549 /* SystemChatCell */,
 				E88D58C22795064D003A4910 /* ChatCell */,
 			);
 			path = CustomCell;
@@ -275,6 +332,7 @@
 				E88D58BF2794FF81003A4910 /* Service */,
 				E88D58C4279522C9003A4910 /* ChatModel.swift */,
 				E8CA3C552797D7C500FE85F8 /* JoinModel.swift */,
+				E86FB4C2279F813F0076F549 /* MemberInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,8 +340,8 @@
 		E88D58BF2794FF81003A4910 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				E8CA3C6A2798D8F800FE85F8 /* JoinApiService.swift */,
-				E88D58C02794FF89003A4910 /* ApiService.swift */,
+				E86FB4C0279F810A0076F549 /* API */,
+				E86FB4C1279F81180076F549 /* Socket */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -350,8 +408,8 @@
 		E8CA3C6C2798D92000FE85F8 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				E8CA3C6D2798D92000FE85F8 /* ApiServiceProvider.swift */,
-				E8CA3C6E2798D92000FE85F8 /* JoinApiManager.swift */,
+				E86FB4BF279F81010076F549 /* API */,
+				E86FB4BE279F80E30076F549 /* Socket */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -416,6 +474,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E86FB4B7279F6B640076F549 /* SystemChatCell.xib in Resources */,
 				E86FB4AA279A7A2C0076F549 /* ProfileView.xib in Resources */,
 				E88D589D2794FC81003A4910 /* LaunchScreen.storyboard in Resources */,
 				E88D58D527953065003A4910 /* ChatView.xib in Resources */,
@@ -481,17 +540,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E86FB4BD279F78FA0076F549 /* SocketService.swift in Sources */,
 				E88D58952794FC80003A4910 /* ViewController.swift in Sources */,
 				E8CA3C662797E7BC00FE85F8 /* AddBorder.swift in Sources */,
 				E8CA3C7A2799151600FE85F8 /* JoinView+PickerView.swift in Sources */,
 				E8CA3C782798FA8400FE85F8 /* JoinView+Gesture.swift in Sources */,
 				E88D58B62794FF56003A4910 /* ColorManager.swift in Sources */,
 				E88D58C12794FF89003A4910 /* ApiService.swift in Sources */,
+				E86FB4C3279F813F0076F549 /* MemberInfo.swift in Sources */,
+				E86FB4BB279F77910076F549 /* SocketServiceProvider.swift in Sources */,
+				E86FB4B9279F77560076F549 /* SocketManager.swift in Sources */,
 				E88D58C5279522C9003A4910 /* ChatModel.swift in Sources */,
 				E88D58D327953059003A4910 /* ChatView.swift in Sources */,
 				E86FB4B0279A9A470076F549 /* ProfileView+Init.swift in Sources */,
 				E8CA3C742798F1CA00FE85F8 /* JoinView+ImagePicker.swift in Sources */,
 				E8CA3C642797E7BC00FE85F8 /* Gradient.swift in Sources */,
+				E86FB4B6279F6B640076F549 /* SystemChatCell.swift in Sources */,
 				E8CA3C692797EEFF00FE85F8 /* JoinView+Keyboard.swift in Sources */,
 				E8CA3C6F2798D92000FE85F8 /* ApiServiceProvider.swift in Sources */,
 				E88D58E02796AE79003A4910 /* ChatView+gesture.swift in Sources */,
