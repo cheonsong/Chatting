@@ -27,6 +27,7 @@ class JoinApiManager: JoinApiService {
             case .success(let res):
                 print("========================회원 여부 확인 완료========================")
                 result = JSON(res)
+                print(result)
             case .failure(let err):
                 print("🚫 Alamofire Request Error\nCode:\(err._code), Message: \(err.errorDescription!)")
             default:

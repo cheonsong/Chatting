@@ -7,6 +7,7 @@
 
 import Foundation
 import SocketIO
+import RxCocoa
 
 class ChatSocketManager {
     
@@ -29,10 +30,9 @@ class ChatSocketManager {
     }
     
     
-    func roomOut() {
-        serviceProvider?.socket?.emit(event, ["cmd" : "reqRoomOut"]) {
-            print("Emit : roomOut")
-        }
+    func roomOut(_ callback: @escaping AckCallback) {
+        serviceProvider?.socket?.emitWithAck(event, ["cmd" : "reqRoomOut"])
+            .timingOut(after: 1.0, callback: callback)
     }
     
     

@@ -22,13 +22,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="428" height="105"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BLK-TN-erm">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zor-UI-oYc">
                         <rect key="frame" x="24" y="3" width="34" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="34" id="Mad-Q9-gcB"/>
-                            <constraint firstAttribute="height" constant="34" id="o3Y-e2-Cbw"/>
+                            <constraint firstAttribute="width" constant="34" id="3HV-fQ-0sx"/>
+                            <constraint firstAttribute="height" constant="34" id="hgf-c7-0no"/>
                         </constraints>
-                    </imageView>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="ico_like"/>
+                        <connections>
+                            <action selector="showMiniProfile:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pCz-PF-bza"/>
+                        </connections>
+                    </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frame_s01" highlightedImage="frame_s01" translatesAutoresizingMaskIntoConstraints="NO" id="gFS-b8-phg">
                         <rect key="frame" x="24" y="0.0" width="34" height="42"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,13 +66,12 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PEO-Ed-44b" secondAttribute="trailing" constant="24" id="9I9-iu-xT6"/>
-                    <constraint firstItem="BLK-TN-erm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="CAU-uR-x9o"/>
-                    <constraint firstItem="BLK-TN-erm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="DJJ-by-cra"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PEO-Ed-44b" secondAttribute="bottom" id="FN0-eD-eLm"/>
                     <constraint firstItem="PEO-Ed-44b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="67" id="JYJ-ew-IC7"/>
                     <constraint firstItem="OX8-P7-RvQ" firstAttribute="leading" secondItem="gFS-b8-phg" secondAttribute="trailing" constant="9" id="KW6-1e-Iuu"/>
+                    <constraint firstItem="Zor-UI-oYc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="Lfi-c3-cyN"/>
                     <constraint firstItem="gFS-b8-phg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="Moc-VK-XP6"/>
-                    <constraint firstItem="PEO-Ed-44b" firstAttribute="leading" secondItem="BLK-TN-erm" secondAttribute="trailing" constant="9" id="TuM-hX-1T8"/>
+                    <constraint firstItem="Zor-UI-oYc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="ci8-mR-aa4"/>
                     <constraint firstItem="OX8-P7-RvQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8.5" id="ckb-xx-cSc"/>
                     <constraint firstItem="PEO-Ed-44b" firstAttribute="top" secondItem="OX8-P7-RvQ" secondAttribute="bottom" constant="4.5" id="kE9-9D-4OB"/>
                     <constraint firstItem="gFS-b8-phg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qF0-cp-wTP"/>
@@ -78,12 +82,13 @@
                 <outlet property="chat" destination="lzb-ft-7XE" id="lU5-6h-1fi"/>
                 <outlet property="chatSuperView" destination="PEO-Ed-44b" id="vWK-Ub-fHw"/>
                 <outlet property="nickname" destination="OX8-P7-RvQ" id="SVT-YS-cWI"/>
-                <outlet property="profileImage" destination="BLK-TN-erm" id="Oh7-Z4-u5V"/>
+                <outlet property="profileImage" destination="Zor-UI-oYc" id="YD0-W6-Gyc"/>
             </connections>
             <point key="canvasLocation" x="215.94202898550725" y="132.25446428571428"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="frame_s01" width="34" height="42"/>
+        <image name="ico_like" width="18" height="18"/>
     </resources>
 </document>

@@ -10,9 +10,13 @@ import UIKit
 
 struct CustomColor {
     
-        static var instance: CustomColor {
+    static var instance: CustomColor {
             return CustomColor()
         }
+    
+    private init() {
+        
+    }
     
     let color17 = UIColor(red: 17/255, green: 17/255, blue: 17/255, alpha: 1)
     let color51 = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)

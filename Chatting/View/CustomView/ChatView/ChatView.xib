@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -28,14 +28,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChatView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-4b-hDx">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="74.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFg-Tb-S4W">
-                            <rect key="frame" x="337" y="18" width="30" height="30"/>
+                            <rect key="frame" x="376" y="18" width="30" height="30"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="btn_broad_cls"/>
                         </button>
@@ -48,10 +48,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="364-DT-nbg">
-                    <rect key="frame" x="0.0" y="74.5" width="375" height="507.5"/>
+                    <rect key="frame" x="0.0" y="118.5" width="414" height="658.5"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rQz-94-nQb">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="507.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="658.5"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,12 +63,12 @@
                     </constraints>
                 </view>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dst-dt-02P">
-                    <rect key="frame" x="108.5" y="528" width="158" height="54"/>
+                    <rect key="frame" x="128" y="723" width="158" height="54"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="bubble_scr_down"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8m3-b3-3Q5">
-                    <rect key="frame" x="0.0" y="597" width="375" height="55"/>
+                    <rect key="frame" x="0.0" y="792" width="414" height="55"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPV-c1-nkt">
                             <rect key="frame" x="15" y="0.0" width="36" height="55"/>
@@ -77,16 +77,16 @@
                             <state key="selected" image="btn_bt_heart_on" backgroundImage="btn_bt_heart_off"/>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9n-CR-2L3">
-                            <rect key="frame" x="59" y="0.0" width="301" height="55"/>
+                            <rect key="frame" x="59" y="0.0" width="340" height="55"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SNr-3T-0Ff">
-                                    <rect key="frame" x="0.0" y="0.0" width="301" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="340" height="55"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Le5-U9-olZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="301" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="340" height="55"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cda-Z4-sGt">
-                                                    <rect key="frame" x="15" y="0.0" width="271" height="55"/>
+                                                    <rect key="frame" x="15" y="0.0" width="310" height="55"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" red="0.7960783839225769" green="0.79607844352722168" blue="0.79607844352722168" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -149,7 +149,7 @@
             <connections>
                 <outletCollection property="gestureRecognizers" destination="NxE-5y-DxR" appends="YES" id="F8J-f4-0oo"/>
             </connections>
-            <point key="canvasLocation" x="221.59999999999999" y="150.67466266866569"/>
+            <point key="canvasLocation" x="220.28985507246378" y="150.66964285714286"/>
         </view>
         <tapGestureRecognizer id="NxE-5y-DxR"/>
     </objects>

@@ -25,9 +25,9 @@ class WebViewController: UIViewController {
     let memInfo = MemberInfo()
     let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
     
-    private lazy var joinView = JoinView(frame: self.view.frame)
-    private lazy var profileView = ProfileView(frame: self.view.frame)
-    private lazy var chatView = ChatView(frame: self.view.frame)
+    private lazy var joinView = JoinView(frame: self.view.bounds)
+    private lazy var profileView = ProfileView(frame: self.view.bounds)
+    private lazy var chatView = ChatView(frame: self.view.bounds)
     
     @IBOutlet weak var wk: WKWebView!
     @IBOutlet weak var chatButton: UIButton!
@@ -129,7 +129,6 @@ class WebViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         
     }
     

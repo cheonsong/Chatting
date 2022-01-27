@@ -10,9 +10,9 @@ import UIKit
 extension ChatView : UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let contentOffsetY = scrollView.contentOffset.y + tableView.frame.height
+        let contentOffsetY = -scrollView.contentOffset.y + tableView.frame.height
         let contentSize = tableView.contentSize.height
-        let paginationY = contentSize * 0.1
+        let paginationY = contentSize * 0.8
         if contentOffsetY < contentSize - paginationY {
             downButton.isHidden = false
         } else {

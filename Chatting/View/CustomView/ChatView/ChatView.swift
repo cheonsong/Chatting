@@ -12,20 +12,20 @@ import RxSwift
 import SocketIO
 import SwiftyJSON
 
-class ChatView: UIView {
+class ChatView: UIView{
     
     // MARK: Property
-    let colorManager = CustomColor()
+    let colorManager = CustomColor.instance
     let placeholder = "대화를 입력하세요"
     var view: UIView?
     private let viewModel = ChatViewModel()
     var list = [ChatModel]() {
         didSet {
             self.tableView.reloadData()
-            self.tableView.scrollToRow(at: IndexPath(row: self.list.count - 1, section: 0), at: .bottom, animated: true)
         }
     }
     var memInfo = MemberInfo()
+    var apiManager = JoinApiManager(service: APIServiceProvider())
     
     let disposeBag = DisposeBag()
     
@@ -43,16 +43,21 @@ class ChatView: UIView {
     // MARK: init & deinit
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initialize()
-        bindViewModel()
-        print("===============ChatView init===============")
+        self.initialize()
+        self.bindViewModel()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        initialize()
-        bindViewModel()
-        print("===============ChatView init===============")
+        
+        self.initialize()
+        self.bindViewModel()
+        
+        
+    }
+    
+    override func draw(_ rect: CGRect) {
+        setTableViewGradient()
     }
     
     // MARK: Function
@@ -72,7 +77,7 @@ class ChatView: UIView {
         setBackground()
         
         setSocketHandler()
-        
+       
     }
     
     private func bindViewModel() {
@@ -102,6 +107,7 @@ class ChatView: UIView {
         output.addChatList
             .subscribe(onNext: {
                 ChatSocketManager.instance.sendChatMessage($0.chat!)
+                
             })
             .disposed(by: disposeBag)
         
@@ -110,7 +116,7 @@ class ChatView: UIView {
         output.scrollDown
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.tableView.scrollToRow(at: IndexPath(row: self.list.count - 1, section: 0), at: .bottom, animated: true)
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             })
             .disposed(by: disposeBag)
         
@@ -127,41 +133,61 @@ class ChatView: UIView {
         // deleteView
         // 채팅방 나가기
         output.deleteView
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.removeFromSuperview()
-                ChatSocketManager.instance.roomOut()
-                self.list.removeAll()
+            .subscribe(onNext: {
+                ChatSocketManager.instance.roomOut { [weak self] ack in
+                    let json = JSON(ack.first!)
+                    if(json["success"].stringValue == "y") {
+                        self?.list.removeAll()
+                        self?.removeFromSuperview()
+                    }
+                }
             })
             .disposed(by: disposeBag)
         
         output.likeAnimation
-            .subscribe(onNext: { [weak self] in
-                //guard let self = self else { return }
+            .subscribe(onNext: {
                 ChatSocketManager.instance.sendLike()
             })
             .disposed(by: disposeBag)
         
     }
     
+    // "message" 핸들로러 온 이벤트 처리
     func setSocketHandler() {
         ChatSocketManager.instance.serviceProvider?.socket?.on("message", callback: { data, ack in
             print(data)
             guard let dataInfo = data.first else { return }
             let json = JSON(dataInfo)
             switch (json["cmd"].stringValue) {
+        
+            // 시스템 메세지
             case "rcvSystemMsg":
                 let chat = ChatModel(chat: json["msg"].stringValue)
                 chat.type = .system
                 self.list.append(chat)
-                
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            
+            // 채팅 메세지
             case "rcvChatMsg":
                 let chat = ChatModel(chat: json["msg"].stringValue)
                 chat.type = .user
                 chat.nickname = json["from"]["chat_name"].stringValue
                 chat.imageLink = json["from"]["mem_photo"].stringValue
+                chat.email = json["from"]["mem_id"].stringValue
                 self.list.append(chat)
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 
+            // 토스트 메세지
+            case "rcvToastMsg":
+                print("토스트 메세지 : " + json["msg"].stringValue)
+            
+            // 알림 메세지
+            case "rcvAlertMsg":
+                print("알림 : " + json["msg"].stringValue)
+                
+            // 좋아요 애니메이션 메세지
+            case "rcvPlayLikeAni":
+                print("좋아요 에니메이션 하세요")
                 
             default:
                 print("default")
@@ -169,6 +195,7 @@ class ChatView: UIView {
         })
     }
     
+    // 배경을 이미지뷰로 교체
     private func setBackground() {
         let image = UIImage(named: "background")
         let imageView = UIImageView()
@@ -177,7 +204,7 @@ class ChatView: UIView {
         insertSubview(imageView, at: 0)
     }
     
-    
+    // 텍스트 뷰 초기화
     private func setTextView() {
         textView.backgroundColor = .white
         textSuperView.layer.cornerRadius = 18

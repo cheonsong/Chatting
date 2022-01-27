@@ -12,7 +12,7 @@ import RxSwift
 class JoinView: UIView {
     // MARK: Property
     var view: UIView?
-    let colorManager = CustomColor()
+    let colorManager = CustomColor.instance
     let placeholder = "소개글을 작성해주세요 "
     let viewModel = JoinViewModel()
     let disposeBag = DisposeBag()

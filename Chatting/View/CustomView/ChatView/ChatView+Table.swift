@@ -15,19 +15,18 @@ extension ChatView {
         self.tableView.register(UINib(nibName: "SystemChatCell", bundle: nil), forCellReuseIdentifier: "SystemChatCell")
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.backgroundColor = UIColor.clear
+        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        updateTableContentInset()
-        
+    }
+    
+    func setTableViewGradient() {
         let gradient = CAGradientLayer()
-        
         gradient.frame = tableView.superview?.bounds ?? CGRect.null
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradient.locations = [0.0, 0.15]
         tableView.superview?.layer.mask = gradient
-        
     }
     
     // 채팅이 아래서부터 올라오도록 업데이트
@@ -58,18 +57,48 @@ extension ChatView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chat = self.list[indexPath.row]
+        let chat = self.list.reversed()[indexPath.row]
         
         switch (chat.type) {
         case .system:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SystemChatCell") as! SystemChatCell
             cell.message.text = chat.chat!
+            cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
             return cell
         case .user:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
+            cell.email = chat.email!
             cell.chat.text = chat.chat!
             cell.nickname.text = chat.nickname!
-            cell.profileImage.image = chat.image
+            cell.profileImage.setImage(chat.image, for: .normal)
+            cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
+            
+            cell.showProfile = {
+                self.apiManager.getMembershipStatus(chat.email!, completion: { data in
+                    let profileView = ProfileView(frame: self.view!.frame)
+                    let userInfo = data["mem_info"]
+                    profileView.nameLabel.text = userInfo["name"].stringValue
+                    profileView.ageLabel.text = userInfo["age"].stringValue
+                    profileView.introduceLabel.text = userInfo["contents"].stringValue
+                    do {
+                        let imageData = try Data(contentsOf: URL(string: userInfo["profile_image"].stringValue)!)
+                        profileView.profileImage.image = UIImage(data: imageData)
+                    } catch {
+                        profileView.profileImage.image = UIImage()
+                    }
+                    if userInfo["gender"].stringValue == "M" {
+                        profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
+                        profileView.sexImage.image = UIImage(named: "ico_sex_m")
+                        profileView.sexAgeView.layer.borderColor = CustomColor.instance.profileManSexAgeBorderColor.cgColor
+                        profileView.ageLabel.textColor = CustomColor.instance.profileSexLabeltextColor
+                    }
+
+                    UIView.transition(with: self.view!, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                      self.view?.addSubview(profileView)
+                    }, completion: nil)
+                })
+            }
+            
             return cell
         default:
             return UITableViewCell()

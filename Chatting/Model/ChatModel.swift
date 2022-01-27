@@ -14,10 +14,15 @@ class ChatModel {
     var nickname: String?
     var imageLink: String? {
         didSet {
-            image = UIImage(data: try! Data(contentsOf: URL(string: imageLink!)!))
+            do {
+            image = UIImage(data: try Data(contentsOf: URL(string: imageLink!)!))
+            } catch {
+                image = UIImage()
+            }
         }
     }
     var image: UIImage?
+    var email: String?
     
     init() {
         self.chat = ""
