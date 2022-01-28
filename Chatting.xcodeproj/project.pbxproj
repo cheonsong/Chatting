@@ -21,12 +21,12 @@
 		E86FB4BD279F78FA0076F549 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4BC279F78FA0076F549 /* SocketService.swift */; };
 		E86FB4C3279F813F0076F549 /* MemberInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4C2279F813F0076F549 /* MemberInfo.swift */; };
 		E86FB4E827A268A80076F549 /* ani_live_like_full.json in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4E727A268A80076F549 /* ani_live_like_full.json */; };
-		E86FB4EE27A268E30076F549 /* an_like_02.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4E927A268E20076F549 /* an_like_02.webp */; };
-		E86FB4EF27A268E30076F549 /* an_like_04.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4EA27A268E20076F549 /* an_like_04.webp */; };
-		E86FB4F027A268E30076F549 /* an_like_05.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4EB27A268E20076F549 /* an_like_05.webp */; };
-		E86FB4F127A268E30076F549 /* an_like_01.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4EC27A268E30076F549 /* an_like_01.webp */; };
-		E86FB4F227A268E30076F549 /* an_like_03.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4ED27A268E30076F549 /* an_like_03.webp */; };
 		E86FB4F427A28CA40076F549 /* ChatSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4F327A28CA40076F549 /* ChatSocketService.swift */; };
+		E86FB4FA27A3BF450076F549 /* an_like_02.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4F527A3BF440076F549 /* an_like_02.webp */; };
+		E86FB4FB27A3BF450076F549 /* an_like_01.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4F627A3BF450076F549 /* an_like_01.webp */; };
+		E86FB4FC27A3BF450076F549 /* an_like_04.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4F727A3BF450076F549 /* an_like_04.webp */; };
+		E86FB4FD27A3BF450076F549 /* an_like_05.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4F827A3BF450076F549 /* an_like_05.webp */; };
+		E86FB4FE27A3BF450076F549 /* an_like_03.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4F927A3BF450076F549 /* an_like_03.webp */; };
 		E88D58912794FC80003A4910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58902794FC80003A4910 /* AppDelegate.swift */; };
 		E88D58932794FC80003A4910 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58922794FC80003A4910 /* SceneDelegate.swift */; };
 		E88D58982794FC80003A4910 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E88D58962794FC80003A4910 /* Main.storyboard */; };
@@ -88,12 +88,12 @@
 		E86FB4BC279F78FA0076F549 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		E86FB4C2279F813F0076F549 /* MemberInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfo.swift; sourceTree = "<group>"; };
 		E86FB4E727A268A80076F549 /* ani_live_like_full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ani_live_like_full.json; sourceTree = "<group>"; };
-		E86FB4E927A268E20076F549 /* an_like_02.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_02.webp; sourceTree = "<group>"; };
-		E86FB4EA27A268E20076F549 /* an_like_04.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_04.webp; sourceTree = "<group>"; };
-		E86FB4EB27A268E20076F549 /* an_like_05.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_05.webp; sourceTree = "<group>"; };
-		E86FB4EC27A268E30076F549 /* an_like_01.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_01.webp; sourceTree = "<group>"; };
-		E86FB4ED27A268E30076F549 /* an_like_03.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_03.webp; sourceTree = "<group>"; };
 		E86FB4F327A28CA40076F549 /* ChatSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSocketService.swift; sourceTree = "<group>"; };
+		E86FB4F527A3BF440076F549 /* an_like_02.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_02.webp; sourceTree = "<group>"; };
+		E86FB4F627A3BF450076F549 /* an_like_01.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_01.webp; sourceTree = "<group>"; };
+		E86FB4F727A3BF450076F549 /* an_like_04.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_04.webp; sourceTree = "<group>"; };
+		E86FB4F827A3BF450076F549 /* an_like_05.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_05.webp; sourceTree = "<group>"; };
+		E86FB4F927A3BF450076F549 /* an_like_03.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_03.webp; sourceTree = "<group>"; };
 		E88D588D2794FC80003A4910 /* Chatting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88D58902794FC80003A4910 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E88D58922794FC80003A4910 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,14 +229,15 @@
 			isa = PBXGroup;
 			children = (
 				E86FB4E727A268A80076F549 /* ani_live_like_full.json */,
-				E86FB4EC27A268E30076F549 /* an_like_01.webp */,
-				E86FB4E927A268E20076F549 /* an_like_02.webp */,
-				E86FB4ED27A268E30076F549 /* an_like_03.webp */,
-				E86FB4EA27A268E20076F549 /* an_like_04.webp */,
-				E86FB4EB27A268E20076F549 /* an_like_05.webp */,
+				E86FB4F627A3BF450076F549 /* an_like_01.webp */,
+				E86FB4F527A3BF440076F549 /* an_like_02.webp */,
+				E86FB4F927A3BF450076F549 /* an_like_03.webp */,
+				E86FB4F727A3BF450076F549 /* an_like_04.webp */,
+				E86FB4F827A3BF450076F549 /* an_like_05.webp */,
 			);
-			path = Lottie;
-			sourceTree = "<group>";
+			name = Lottie;
+			path = Chatting/Resource/Lottie;
+			sourceTree = SOURCE_ROOT;
 		};
 		E88D58842794FC80003A4910 = {
 			isa = PBXGroup;
@@ -505,21 +506,21 @@
 				E86FB4AA279A7A2C0076F549 /* ProfileView.xib in Resources */,
 				E88D589D2794FC81003A4910 /* LaunchScreen.storyboard in Resources */,
 				E88D58D527953065003A4910 /* ChatView.xib in Resources */,
+				E86FB4FB27A3BF450076F549 /* an_like_01.webp in Resources */,
 				E88D58B92794FF56003A4910 /* NotoSansKR-Thin.otf in Resources */,
 				E88D58B72794FF56003A4910 /* NotoSansKR-Light.otf in Resources */,
 				E8CA3C5C2797D83400FE85F8 /* JoinView.xib in Resources */,
-				E86FB4F027A268E30076F549 /* an_like_05.webp in Resources */,
 				E88D58BB2794FF56003A4910 /* NotoSansKR-Medium.otf in Resources */,
 				E88D58BC2794FF56003A4910 /* NotoSansKR-Regular.otf in Resources */,
 				E88D58AB2794FEFB003A4910 /* ChatCell.xib in Resources */,
-				E86FB4F227A268E30076F549 /* an_like_03.webp in Resources */,
+				E86FB4FE27A3BF450076F549 /* an_like_03.webp in Resources */,
 				E88D589A2794FC81003A4910 /* Assets.xcassets in Resources */,
-				E86FB4F127A268E30076F549 /* an_like_01.webp in Resources */,
 				E88D58B82794FF56003A4910 /* NotoSansKR-Bold.otf in Resources */,
-				E86FB4EF27A268E30076F549 /* an_like_04.webp in Resources */,
 				E88D58982794FC80003A4910 /* Main.storyboard in Resources */,
 				E88D58BA2794FF56003A4910 /* NotoSansKR-Black.otf in Resources */,
-				E86FB4EE27A268E30076F549 /* an_like_02.webp in Resources */,
+				E86FB4FA27A3BF450076F549 /* an_like_02.webp in Resources */,
+				E86FB4FD27A3BF450076F549 /* an_like_05.webp in Resources */,
+				E86FB4FC27A3BF450076F549 /* an_like_04.webp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

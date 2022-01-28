@@ -36,7 +36,7 @@ class ChatSocketManager: ChatSocketService {
     
     func roomOut(_ callback: @escaping AckCallback) {
         serviceProvider?.socket?.emitWithAck(event, ["cmd" : "reqRoomOut"])
-            .timingOut(after: 0, callback: callback)
+            .timingOut(after: 1.0, callback: callback)
     }
     
     

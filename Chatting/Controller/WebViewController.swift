@@ -35,14 +35,17 @@ class WebViewController: UIViewController {
     @IBOutlet weak var chatButton: UIButton!
     
     @IBAction func tapChatButton(_ sender: Any) {
-        socketManager.roomEnter(memInfo.email!, memInfo.name!, memInfo.profileImage!) { ack in
-            let json = JSON(ack.first!)
-            if(json["success"].stringValue == "y") {
-                
-                self.view.addSubview(self.chatView)
-            }
-        }
+        socketManager.serviceProvider?.establishConnection()
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+            self.socketManager.roomEnter(self.memInfo.email!, self.memInfo.name!, self.memInfo.profileImage!) { ack in
+                let json = JSON(ack.first!)
+                if(json["success"].stringValue == "y") {
+                    
+                    self.view.addSubview(self.chatView)
+                }
+            }
+        })
     }
     
     override func viewDidLoad() {

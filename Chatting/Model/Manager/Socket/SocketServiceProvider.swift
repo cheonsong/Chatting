@@ -14,11 +14,9 @@ class SocketServiceProvider: SocketService {
     var socket: SocketIOClient?
     
     init() {
-        manager = SocketManager(socketURL: URL(string: "https://devsol6.club5678.com:5555")!)
+        manager = SocketManager(socketURL: URL(string: "https://devsol6.club5678.com:5555")!, config: [.reconnects(false)])
         
         socket = manager?.defaultSocket
-        
-        establishConnection()
     }
     
     func establishConnection() {
