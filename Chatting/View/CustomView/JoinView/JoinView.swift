@@ -12,7 +12,7 @@ import RxSwift
 class JoinView: UIView {
     // MARK: Property
     var view: UIView?
-    let colorManager = CustomColor.instance
+    let colorManager = ColorManager.getInstance()
     let placeholder = "소개글을 작성해주세요 "
     let viewModel = JoinViewModel()
     let disposeBag = DisposeBag()
@@ -127,8 +127,8 @@ class JoinView: UIView {
         output.checkManButton
             .subscribe(onNext: { _ in
                 self.manButton.layer.borderColor = UIColor.blue.cgColor
-                self.manButton.backgroundColor = CustomColor.instance.manButtonColor
-                self.womanButton.layer.borderColor = CustomColor.instance.color223.cgColor
+                self.manButton.backgroundColor = self.colorManager.manButtonColor
+                self.womanButton.layer.borderColor = self.colorManager.color223.cgColor
                 self.womanButton.backgroundColor = UIColor.white
                 self.manButton.isSelected = true
                 self.womanButton.isSelected = false
@@ -138,10 +138,10 @@ class JoinView: UIView {
         
         output.checkWomanButton
             .subscribe(onNext: { _ in
-                self.manButton.layer.borderColor = CustomColor.instance.color223.cgColor
+                self.manButton.layer.borderColor = self.colorManager.color223.cgColor
                 self.manButton.backgroundColor = UIColor.white
-                self.womanButton.layer.borderColor = CustomColor.instance.womanButtonBorder.cgColor
-                self.womanButton.backgroundColor = CustomColor.instance.womanButtonColor
+                self.womanButton.layer.borderColor = self.colorManager.womanButtonBorder.cgColor
+                self.womanButton.backgroundColor = self.colorManager.womanButtonColor
                 self.manButton.isSelected = false
                 self.womanButton.isSelected = true
                 print(self.validation())

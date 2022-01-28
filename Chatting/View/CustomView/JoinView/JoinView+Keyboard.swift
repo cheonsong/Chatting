@@ -30,14 +30,14 @@ extension JoinView {
         if noti.name == UIResponder.keyboardWillShowNotification {
             // 키보드가 올라오면 제약조건을 걸어줘 뷰의 위치를 재조정함
             bottomConstraint.constant = adjustmentHeight
-            introduceTextView.textColor = CustomColor.instance.color51
+            introduceTextView.textColor = colorManager.color51
             introduceTextView.text = ""
             
         }
         else {
             // 키보드가 내려가면 제약조건을 0으로 걸어줌
             bottomConstraint.constant = 0
-            introduceTextView.textColor = CustomColor.instance.color203
+            introduceTextView.textColor = colorManager.color203
             if(introduceTextView.text.isEmpty) {
                 introduceTextView.text = placeholder
             }
@@ -50,7 +50,7 @@ extension JoinView {
                 self.frame.origin.y -= keyboardSize.height
                 if placeholder == introduceTextView.text {
                     introduceTextView.text = ""
-                    introduceTextView.textColor = CustomColor.instance.color17
+                    introduceTextView.textColor = colorManager.color17
                 }
             }
         }
@@ -61,7 +61,7 @@ extension JoinView {
             self.frame.origin.y = 0
             if introduceTextView.text.isEmpty {
                 introduceTextView.text = placeholder
-                introduceTextView.textColor = CustomColor.instance.color191
+                introduceTextView.textColor = colorManager.color191
             }
         }
     }

@@ -24,6 +24,8 @@ class WebViewController: UIViewController {
     var apiManager: JoinApiService?
     let memInfo = MemberInfo()
     let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+    let socketManager = ChatSocketManager.getInstance()
+    let colorManager = ColorManager.getInstance()
     
     private lazy var joinView = JoinView(frame: self.view.bounds)
     private lazy var profileView = ProfileView(frame: self.view.bounds)
@@ -33,9 +35,10 @@ class WebViewController: UIViewController {
     @IBOutlet weak var chatButton: UIButton!
     
     @IBAction func tapChatButton(_ sender: Any) {
-        ChatSocketManager.instance.roomEnter(memInfo.email!, memInfo.name!, memInfo.profileImage!) { ack in
+        socketManager.roomEnter(memInfo.email!, memInfo.name!, memInfo.profileImage!) { ack in
             let json = JSON(ack.first!)
             if(json["success"].stringValue == "y") {
+                
                 self.view.addSubview(self.chatView)
             }
         }
@@ -106,8 +109,8 @@ class WebViewController: UIViewController {
                     if userInfo["gender"].stringValue == "M" {
                         self.profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
                         self.profileView.sexImage.image = UIImage(named: "ico_sex_m")
-                        self.profileView.sexAgeView.layer.borderColor = CustomColor.instance.profileManSexAgeBorderColor.cgColor
-                        self.profileView.ageLabel.textColor = CustomColor.instance.profileSexLabeltextColor
+                        self.profileView.sexAgeView.layer.borderColor = self.colorManager.profileManSexAgeBorderColor.cgColor
+                        self.profileView.ageLabel.textColor = self.colorManager.profileSexLabeltextColor
                     }
                     
                     self.view.addSubview(self.profileView)

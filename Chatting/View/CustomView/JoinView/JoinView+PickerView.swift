@@ -47,13 +47,13 @@ extension JoinView: UIPickerViewDelegate, UIPickerViewDataSource {
         switch (pickerView) {
         case yearPickerView:
             yearLabel.text = year[row] + "년"
-            yearLabel.textColor = CustomColor.instance.color17
+            yearLabel.textColor = colorManager.color17
         case monthPickerView:
             monthLabel.text = month[row] + "월"
-            monthLabel.textColor = CustomColor.instance.color17
+            monthLabel.textColor = colorManager.color17
         case dayPickerView:
             dayLabel.text = day[row] + "일"
-            dayLabel.textColor = CustomColor.instance.color17
+            dayLabel.textColor = colorManager.color17
         default:
             print("Wrong pickerview")
         }

@@ -35,15 +35,14 @@ extension JoinView {
     }
     
     func setBorderColor() {
-        topView.layer.addBorder([.bottom], color: CustomColor.instance.color223, width: 1)
-        pictureView.layer.borderColor = CustomColor.instance.color223.cgColor
-        textField.layer.borderColor = CustomColor.instance.color223.cgColor
-        manButton.layer.borderColor = CustomColor.instance.color223.cgColor
-        womanButton.layer.borderColor = CustomColor.instance.color223.cgColor
-        yearView.layer.borderColor = CustomColor.instance.color223.cgColor
-        monthView.layer.borderColor = CustomColor.instance.color223.cgColor
-        dayView.layer.borderColor = CustomColor.instance.color223.cgColor
-        introduceSuperView.layer.borderColor = CustomColor.instance.color223.cgColor
+        topView.layer.addBorder([.bottom], color: colorManager.color223, width: 1)
+        pictureView.layer.borderColor = colorManager.color223.cgColor
+        manButton.layer.borderColor = colorManager.color223.cgColor
+        womanButton.layer.borderColor = colorManager.color223.cgColor
+        yearView.layer.borderColor = colorManager.color223.cgColor
+        monthView.layer.borderColor = colorManager.color223.cgColor
+        dayView.layer.borderColor = colorManager.color223.cgColor
+        introduceSuperView.layer.borderColor = colorManager.color223.cgColor
     }
     
     func setBorderWidth() {
@@ -58,8 +57,8 @@ extension JoinView {
     }
     
     func setTextColor() {
-        textField.textColor = CustomColor.instance.color99
-        introduceTextView.textColor = CustomColor.instance.color191
+        textField.textColor = colorManager.color99
+        introduceTextView.textColor = colorManager.color191
     }
     
     func setDelegate() {

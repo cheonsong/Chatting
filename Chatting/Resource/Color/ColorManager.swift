@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-struct CustomColor {
+struct ColorManager {
     
-    static var instance: CustomColor {
-            return CustomColor()
-        }
+    private static let instance = ColorManager()
     
-    private init() {
-        
+    static func getInstance() -> ColorManager {
+        return instance
     }
+    
+    private init() {}
     
     let color17 = UIColor(red: 17/255, green: 17/255, blue: 17/255, alpha: 1)
     let color51 = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)

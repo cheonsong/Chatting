@@ -16,10 +16,17 @@
 		E86FB4B2279AA9EA0076F549 /* roundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4B1279AA9EA0076F549 /* roundCorner.swift */; };
 		E86FB4B6279F6B640076F549 /* SystemChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4B4279F6B640076F549 /* SystemChatCell.swift */; };
 		E86FB4B7279F6B640076F549 /* SystemChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4B5279F6B640076F549 /* SystemChatCell.xib */; };
-		E86FB4B9279F77560076F549 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4B8279F77560076F549 /* SocketManager.swift */; };
+		E86FB4B9279F77560076F549 /* ChatSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4B8279F77560076F549 /* ChatSocketManager.swift */; };
 		E86FB4BB279F77910076F549 /* SocketServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4BA279F77910076F549 /* SocketServiceProvider.swift */; };
 		E86FB4BD279F78FA0076F549 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4BC279F78FA0076F549 /* SocketService.swift */; };
 		E86FB4C3279F813F0076F549 /* MemberInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4C2279F813F0076F549 /* MemberInfo.swift */; };
+		E86FB4E827A268A80076F549 /* ani_live_like_full.json in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4E727A268A80076F549 /* ani_live_like_full.json */; };
+		E86FB4EE27A268E30076F549 /* an_like_02.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4E927A268E20076F549 /* an_like_02.webp */; };
+		E86FB4EF27A268E30076F549 /* an_like_04.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4EA27A268E20076F549 /* an_like_04.webp */; };
+		E86FB4F027A268E30076F549 /* an_like_05.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4EB27A268E20076F549 /* an_like_05.webp */; };
+		E86FB4F127A268E30076F549 /* an_like_01.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4EC27A268E30076F549 /* an_like_01.webp */; };
+		E86FB4F227A268E30076F549 /* an_like_03.webp in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4ED27A268E30076F549 /* an_like_03.webp */; };
+		E86FB4F427A28CA40076F549 /* ChatSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4F327A28CA40076F549 /* ChatSocketService.swift */; };
 		E88D58912794FC80003A4910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58902794FC80003A4910 /* AppDelegate.swift */; };
 		E88D58932794FC80003A4910 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D58922794FC80003A4910 /* SceneDelegate.swift */; };
 		E88D58982794FC80003A4910 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E88D58962794FC80003A4910 /* Main.storyboard */; };
@@ -76,10 +83,17 @@
 		E86FB4B1279AA9EA0076F549 /* roundCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundCorner.swift; sourceTree = "<group>"; };
 		E86FB4B4279F6B640076F549 /* SystemChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemChatCell.swift; sourceTree = "<group>"; };
 		E86FB4B5279F6B640076F549 /* SystemChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SystemChatCell.xib; sourceTree = "<group>"; };
-		E86FB4B8279F77560076F549 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		E86FB4B8279F77560076F549 /* ChatSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSocketManager.swift; sourceTree = "<group>"; };
 		E86FB4BA279F77910076F549 /* SocketServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketServiceProvider.swift; sourceTree = "<group>"; };
 		E86FB4BC279F78FA0076F549 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		E86FB4C2279F813F0076F549 /* MemberInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfo.swift; sourceTree = "<group>"; };
+		E86FB4E727A268A80076F549 /* ani_live_like_full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ani_live_like_full.json; sourceTree = "<group>"; };
+		E86FB4E927A268E20076F549 /* an_like_02.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_02.webp; sourceTree = "<group>"; };
+		E86FB4EA27A268E20076F549 /* an_like_04.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_04.webp; sourceTree = "<group>"; };
+		E86FB4EB27A268E20076F549 /* an_like_05.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_05.webp; sourceTree = "<group>"; };
+		E86FB4EC27A268E30076F549 /* an_like_01.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_01.webp; sourceTree = "<group>"; };
+		E86FB4ED27A268E30076F549 /* an_like_03.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = an_like_03.webp; sourceTree = "<group>"; };
+		E86FB4F327A28CA40076F549 /* ChatSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSocketService.swift; sourceTree = "<group>"; };
 		E88D588D2794FC80003A4910 /* Chatting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88D58902794FC80003A4910 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E88D58922794FC80003A4910 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,7 +192,7 @@
 		E86FB4BE279F80E30076F549 /* Socket */ = {
 			isa = PBXGroup;
 			children = (
-				E86FB4B8279F77560076F549 /* SocketManager.swift */,
+				E86FB4B8279F77560076F549 /* ChatSocketManager.swift */,
 				E86FB4BA279F77910076F549 /* SocketServiceProvider.swift */,
 			);
 			path = Socket;
@@ -206,8 +220,22 @@
 			isa = PBXGroup;
 			children = (
 				E86FB4BC279F78FA0076F549 /* SocketService.swift */,
+				E86FB4F327A28CA40076F549 /* ChatSocketService.swift */,
 			);
 			path = Socket;
+			sourceTree = "<group>";
+		};
+		E86FB4E627A268920076F549 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				E86FB4E727A268A80076F549 /* ani_live_like_full.json */,
+				E86FB4EC27A268E30076F549 /* an_like_01.webp */,
+				E86FB4E927A268E20076F549 /* an_like_02.webp */,
+				E86FB4ED27A268E30076F549 /* an_like_03.webp */,
+				E86FB4EA27A268E20076F549 /* an_like_04.webp */,
+				E86FB4EB27A268E20076F549 /* an_like_05.webp */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		E88D58842794FC80003A4910 = {
@@ -283,6 +311,7 @@
 		E88D58AC2794FF31003A4910 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E86FB4E627A268920076F549 /* Lottie */,
 				E88D58992794FC81003A4910 /* Assets.xcassets */,
 				E88D58AD2794FF55003A4910 /* Color */,
 				E88D58AF2794FF56003A4910 /* Font */,
@@ -472,19 +501,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				E86FB4B7279F6B640076F549 /* SystemChatCell.xib in Resources */,
+				E86FB4E827A268A80076F549 /* ani_live_like_full.json in Resources */,
 				E86FB4AA279A7A2C0076F549 /* ProfileView.xib in Resources */,
 				E88D589D2794FC81003A4910 /* LaunchScreen.storyboard in Resources */,
 				E88D58D527953065003A4910 /* ChatView.xib in Resources */,
 				E88D58B92794FF56003A4910 /* NotoSansKR-Thin.otf in Resources */,
 				E88D58B72794FF56003A4910 /* NotoSansKR-Light.otf in Resources */,
 				E8CA3C5C2797D83400FE85F8 /* JoinView.xib in Resources */,
+				E86FB4F027A268E30076F549 /* an_like_05.webp in Resources */,
 				E88D58BB2794FF56003A4910 /* NotoSansKR-Medium.otf in Resources */,
 				E88D58BC2794FF56003A4910 /* NotoSansKR-Regular.otf in Resources */,
 				E88D58AB2794FEFB003A4910 /* ChatCell.xib in Resources */,
+				E86FB4F227A268E30076F549 /* an_like_03.webp in Resources */,
 				E88D589A2794FC81003A4910 /* Assets.xcassets in Resources */,
+				E86FB4F127A268E30076F549 /* an_like_01.webp in Resources */,
 				E88D58B82794FF56003A4910 /* NotoSansKR-Bold.otf in Resources */,
+				E86FB4EF27A268E30076F549 /* an_like_04.webp in Resources */,
 				E88D58982794FC80003A4910 /* Main.storyboard in Resources */,
 				E88D58BA2794FF56003A4910 /* NotoSansKR-Black.otf in Resources */,
+				E86FB4EE27A268E30076F549 /* an_like_02.webp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,7 +580,7 @@
 				E88D58C12794FF89003A4910 /* ApiService.swift in Sources */,
 				E86FB4C3279F813F0076F549 /* MemberInfo.swift in Sources */,
 				E86FB4BB279F77910076F549 /* SocketServiceProvider.swift in Sources */,
-				E86FB4B9279F77560076F549 /* SocketManager.swift in Sources */,
+				E86FB4B9279F77560076F549 /* ChatSocketManager.swift in Sources */,
 				E88D58C5279522C9003A4910 /* ChatModel.swift in Sources */,
 				E88D58D327953059003A4910 /* ChatView.swift in Sources */,
 				E86FB4B0279A9A470076F549 /* ProfileView+Init.swift in Sources */,
@@ -572,6 +607,7 @@
 				E8CA3C762798F42900FE85F8 /* getRootVC.swift in Sources */,
 				E88D58D1279525BE003A4910 /* ViewModelType.swift in Sources */,
 				E88D58932794FC80003A4910 /* SceneDelegate.swift in Sources */,
+				E86FB4F427A28CA40076F549 /* ChatSocketService.swift in Sources */,
 				E86FB4AE279A997B0076F549 /* ProfileViewModel.swift in Sources */,
 				E8CA3C7E2799490A00FE85F8 /* WebViewController.swift in Sources */,
 				E86FB4B2279AA9EA0076F549 /* roundCorner.swift in Sources */,

@@ -15,5 +15,7 @@ target 'Chatting' do
   pod 'KakaoSDK'
   pod 'naveridlogin-sdk-ios'	
   pod 'XHQWebViewJavascriptBridge'
+  pod 'lottie-ios'
+  pod 'SDWebImageWebPCoder'
 
 end

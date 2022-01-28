@@ -70,11 +70,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8m3-b3-3Q5">
                     <rect key="frame" x="0.0" y="792" width="414" height="55"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPV-c1-nkt">
+                        <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPV-c1-nkt">
                             <rect key="frame" x="15" y="0.0" width="36" height="55"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" image="btn_bt_heart_off"/>
-                            <state key="selected" image="btn_bt_heart_on" backgroundImage="btn_bt_heart_off"/>
+                            <state key="normal" image="btn_bt_heart_on"/>
+                            <state key="selected" image="btn_bt_heart_on"/>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9n-CR-2L3">
                             <rect key="frame" x="59" y="0.0" width="340" height="55"/>
@@ -155,7 +156,6 @@
     </objects>
     <resources>
         <image name="btn_broad_cls" width="30" height="30"/>
-        <image name="btn_bt_heart_off" width="36" height="36"/>
         <image name="btn_bt_heart_on" width="36" height="36"/>
         <image name="btn_bt_send" width="64" height="36"/>
         <image name="bubble_scr_down" width="158" height="54"/>
