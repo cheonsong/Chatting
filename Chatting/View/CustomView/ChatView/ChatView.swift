@@ -26,7 +26,7 @@ class ChatView: UIView{
     let colorManager = ColorManager.getInstance()
     // SocketManager
     let socketManager = ChatSocketManager.getInstance()
-    // LikeButton On : Off
+    // LikeButton On, Off
     let likeOn = UIImage(named: "btn_bt_heart_on")
     let likeOff = UIImage(named: "btn_bt_heart_off")
     // ChatView
@@ -43,14 +43,14 @@ class ChatView: UIView{
     var heartList = [UIImageView]()
     // WebP이미지 디코딩을 위한 코더
     let WebPCoder = SDImageWebPCoder.shared
-    // 썸네일 클릭 시 프로필을 보여주기 위해
-    // 유저 정보를 담은 객체
+    // 썸네일 클릭 시 프로필을 보여주기 위해 유저 정보를 담은 객체
     var memInfo = MemberInfo()
     // API Manager
-    var apiManager = JoinApiManager(service: APIServiceProvider())
+    let apiManager = JoinApiManager(service: APIServiceProvider())
     // Lottie Animation View
     var animationView: AnimationView?
-    // Animator for Like Animation
+    // 좋아요 버튼 활성화 타이머
+    var timer: Timer?
     
     
     let disposeBag = DisposeBag()
@@ -81,9 +81,9 @@ class ChatView: UIView{
         self.bindViewModel()
     }
     
-    //    deinit {
-    //        print("ChatView Deinit")
-    //    }
+    deinit {
+        print("ChatView Deinit")
+    }
     
     // 뷰가 로드된 후 블러처리를 해줌
     override func draw(_ rect: CGRect) {
@@ -111,10 +111,6 @@ class ChatView: UIView{
         setSocketHandler()
         
         setLottieAnimation()
-        
-        setAnimationHeart()
-        
-        //setAnimation()
     }
     
     // Model -> ViewModel : Input
@@ -176,15 +172,6 @@ class ChatView: UIView{
                 self.removeFromSuperview()
                 self.socketManager.serviceProvider?.disconnection()
                 
-                //                self.socketManager.roomOut {  ack in
-                //                    print("roomOut")
-                //                    let json = JSON(ack.first!)
-                //                    if(json["success"].stringValue == "y") {
-                //                        self.list.removeAll()
-                //                        self.removeFromSuperview()
-                //                        //self.socketManager.serviceProvider?.disconnection()
-                //                    }
-                //                }
             })
             .disposed(by: disposeBag)
         
@@ -192,50 +179,11 @@ class ChatView: UIView{
             .subscribe(onNext: { //[weak self] in
                 self.socketManager.sendLike()
                 
-                UIView.animateKeyframes(withDuration: 6, delay: 0, options: .calculationModePaced, animations: {
-                    
-                    self.layoutIfNeeded()
-                    
-                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.15, animations: {
-                        self.heartList.forEach({
-                            $0.alpha = 1
-                            $0.frame = CGRect(x: $0.frame.origin.x - CGFloat(arc4random() % 75), y: $0.frame.origin.y - CGFloat((arc4random() % 50) + 100), width: 50, height: 50)
-                        })
-                    })
-                    
-                    
-                    
-                    UIView.addKeyframe(withRelativeStartTime: 0.15, relativeDuration: 0.55, animations: {
-                        self.heartList.forEach({
-                            
-                            let option:CGFloat = arc4random()%2 == 0 ? -1 : 1
-                            
-                            $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 75)),
-                                              y: $0.frame.origin.y - CGFloat((arc4random() % 50) + 200),
-                                              width: $0.frame.width + CGFloat((arc4random() % 10)) + 20,
-                                              height: $0.frame.height + CGFloat((arc4random() % 10)) + 20)
-                        })
-                    })
-                    
-                    UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.15, animations: {
-                        self.heartList.forEach({
-                            
-                            let option:CGFloat = arc4random()%2 == 0 ? -1 : 1
-                            
-                            $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 75)),
-                                              y: $0.frame.origin.y - CGFloat(arc4random() % 80),
-                                              width: $0.frame.width + 20,
-                                              height: $0.frame.height + 20)
-                            
-                            $0.alpha = 0
-                        })
-                    })
-                })
-                
                 self.likeButton.setImage(self.likeOff, for: .normal)
                 self.likeButton.isEnabled = false
                 self.likeButton.alpha = 0.5
                 self.animationView?.stop()
+                self.startTimer()
             })
             .disposed(by: disposeBag)
         
@@ -278,6 +226,9 @@ class ChatView: UIView{
                 // 좋아요 애니메이션 메세지
             case "rcvPlayLikeAni":
                 print("좋아요 에니메이션 하세요")
+                self.setAnimationHeart()
+                self.startLikeAnimation()
+                self.heartList.removeAll()
                 
             default:
                 print("default")
@@ -331,9 +282,8 @@ class ChatView: UIView{
             // heart image 추가
             let filename = "an_like_0\(i+1)"
             let fileType = "webp"
-            let path = Bundle.main.path(forResource: filename, ofType: fileType)
-            print(path)
-            $0.sd_setImage(with: URL(string: path!)!)
+            let url = Bundle.main.url(forResource: filename, withExtension: fileType)
+            $0.sd_setImage(with: url)
             i =  (i + 1) % 5
             
             // heart image 투명도 0
@@ -344,7 +294,56 @@ class ChatView: UIView{
         }
     }
     
-    private func setAnimation() {
+    private func startLikeAnimation() {
+        UIView.animateKeyframes(withDuration: 6, delay: 0, options: .calculationModePaced, animations: {
+            
+            self.layoutIfNeeded()
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.15, animations: {
+                self.heartList.forEach({
+                    $0.alpha = 1
+                    $0.frame = CGRect(x: $0.frame.origin.x - CGFloat(arc4random() % 75), y: $0.frame.origin.y - CGFloat((arc4random() % 50) + 100), width: 50, height: 50)
+                })
+            })
+            
+            
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.15, relativeDuration: 0.55, animations: {
+                self.heartList.forEach({
+                    
+                    let option:CGFloat = arc4random()%2 == 0 ? -1 : 1
+                    
+                    $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 75)),
+                                      y: $0.frame.origin.y - CGFloat((arc4random() % 50) + 200),
+                                      width: $0.frame.width + CGFloat((arc4random() % 10)) + 20,
+                                      height: $0.frame.height + CGFloat((arc4random() % 10)) + 20)
+                })
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.15, animations: {
+                self.heartList.forEach({
+                    
+                    let option:CGFloat = arc4random()%2 == 0 ? -1 : 1
+                    
+                    $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 75)),
+                                      y: $0.frame.origin.y - CGFloat(arc4random() % 80),
+                                      width: $0.frame.width + 20,
+                                      height: $0.frame.height + 20)
+                    
+                    $0.alpha = 0
+                })
+            })
+        })
+    }
+    
+    // 좋아요 버튼 활성화 타이머
+    private func startTimer() {
         
+        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false, block: { (Timer) in
+            self.likeButton.isEnabled = true
+            self.likeButton.setImage(self.likeOn, for: .normal)
+            self.likeButton.alpha = 1
+            self.animationView?.play()
+        })
     }
 }

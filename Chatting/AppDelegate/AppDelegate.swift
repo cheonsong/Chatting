@@ -8,16 +8,18 @@
 import UIKit
 import KakaoSDKCommon
 import NaverThirdPartyLogin
+import KakaoSDKAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    let NativeAppKey = "24563db391ea005bdf6c5b2b269c4478"
+    let NativeAppKey = "d0f1d1a5e6f51b689a902c3d53036644"
     var window: UIWindow?
-
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print("----------------------kakaoSDK.initSDK()----------------------")
         KakaoSDK.initSDK(appKey: NativeAppKey)
         
         let instance = NaverThirdPartyLoginConnection.getSharedInstance()
@@ -33,14 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+            return AuthController.handleOpenUrl(url: url)
+        }
+        
         NaverThirdPartyLoginConnection.getSharedInstance()?.application(app, open: url, options: options)
         
         return true
     }
     // MARK: UISceneSession Lifecycle
-
+    
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.

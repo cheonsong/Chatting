@@ -37,7 +37,7 @@ class WebViewController: UIViewController {
     @IBAction func tapChatButton(_ sender: Any) {
         socketManager.serviceProvider?.establishConnection()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             self.socketManager.roomEnter(self.memInfo.email!, self.memInfo.name!, self.memInfo.profileImage!) { ack in
                 let json = JSON(ack.first!)
                 if(json["success"].stringValue == "y") {
@@ -61,12 +61,31 @@ class WebViewController: UIViewController {
             guard let cmd = data["cmd"] else { return }
             switch (cmd) {
             case "loginKakao":
-                UserApi.shared.loginWithKakaoAccount(scopes: ["account_email"], completion: { (token, err) in
+                //                UserApi.shared.loginWithKakaoAccount(scopes: ["account_email"], completion: { (token, err) in
+                //                    UserApi.shared.me(completion: { (user, err) in
+                //                        print("******************************카카오 이메일**************************************")
+                //                        self.kakaoEmail = (user?.kakaoAccount?.email) ?? ""
+                //                        print(self.kakaoEmail)
+                //                        self.apiManager?.getMembershipStatus(self.kakaoEmail, completion: { result in
+                //                            print(result)
+                //                            self.memInfo.age = result["mem_info"]["age"].stringValue
+                //                            self.memInfo.email = result["mem_info"]["email"].stringValue
+                //                            self.memInfo.contents = result["mem_info"]["contents"].stringValue
+                //                            self.memInfo.name = result["mem_info"]["name"].stringValue
+                //                            self.memInfo.gender = result["mem_info"]["gender"].stringValue
+                //                            self.memInfo.profileImage = result["mem_info"]["profile_image"].stringValue
+                //
+                //                            result["is_member"].rawValue as! Bool ? self.goToProfileList() : self.goToJoinView()
+                //                        })
+                //                    })
+                //                })
+                
+                UserApi.shared.loginWithKakaoAccount(prompts: [.Login], completion:  {(token, err) in
                     UserApi.shared.me(completion: { (user, err) in
                         print("******************************카카오 이메일**************************************")
                         self.kakaoEmail = (user?.kakaoAccount?.email) ?? ""
                         print(self.kakaoEmail)
-                        self.apiManager?.getMembershipStatus("tjsrla77@naver.com", completion: { result in
+                        self.apiManager?.getMembershipStatus(self.kakaoEmail, completion: { result in
                             print(result)
                             self.memInfo.age = result["mem_info"]["age"].stringValue
                             self.memInfo.email = result["mem_info"]["email"].stringValue
@@ -208,7 +227,7 @@ extension WebViewController: NaverThirdPartyLoginConnectionDelegate {
             
             self.naverEmail = email
             
-
+            
         }
     }
 }

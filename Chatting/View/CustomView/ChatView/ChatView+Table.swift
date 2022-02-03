@@ -65,6 +65,7 @@ extension ChatView: UITableViewDataSource {
             cell.message.text = chat.chat!
             cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
             return cell
+            
         case .user:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
             cell.email = chat.email!
@@ -98,8 +99,8 @@ extension ChatView: UITableViewDataSource {
                     }, completion: nil)
                 })
             }
-            
             return cell
+            
         default:
             return UITableViewCell()
         }
