@@ -44,12 +44,22 @@
                                     <action selector="tapChatButton:" destination="fCz-dv-XOH" eventType="touchUpInside" id="IEb-8Z-KEM"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klK-co-dZw">
+                                <rect key="frame" x="359" y="44" width="45" height="31"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="tapBackButton:" destination="fCz-dv-XOH" eventType="touchUpInside" id="gHe-bb-nwN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6kc-7G-Tu0"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6kc-7G-Tu0" firstAttribute="trailing" secondItem="XiO-9T-7iU" secondAttribute="trailing" id="BoV-8l-ncx"/>
+                            <constraint firstItem="klK-co-dZw" firstAttribute="trailing" secondItem="6kc-7G-Tu0" secondAttribute="trailing" constant="-10" id="EK2-jQ-jpj"/>
                             <constraint firstItem="x8k-sl-ZIi" firstAttribute="leading" secondItem="6kc-7G-Tu0" secondAttribute="leading" id="F0k-i8-PEi"/>
+                            <constraint firstItem="klK-co-dZw" firstAttribute="top" secondItem="6kc-7G-Tu0" secondAttribute="top" id="PNi-sL-RNb"/>
                             <constraint firstItem="XiO-9T-7iU" firstAttribute="top" secondItem="6kc-7G-Tu0" secondAttribute="top" id="Q2u-MS-TgZ"/>
                             <constraint firstItem="XiO-9T-7iU" firstAttribute="leading" secondItem="6kc-7G-Tu0" secondAttribute="leading" id="QWm-oJ-aSo"/>
                             <constraint firstItem="x8k-sl-ZIi" firstAttribute="top" secondItem="XiO-9T-7iU" secondAttribute="bottom" id="ZGh-cH-U1v"/>
@@ -58,6 +68,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="klK-co-dZw" id="fo0-eU-Tm3"/>
                         <outlet property="chatButton" destination="x8k-sl-ZIi" id="IOE-yp-HL4"/>
                         <outlet property="wk" destination="XiO-9T-7iU" id="1Ny-EE-rgp"/>
                     </connections>
@@ -67,4 +78,7 @@
             <point key="canvasLocation" x="-711.20000000000005" y="136.28185907046478"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

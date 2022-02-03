@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A7C1F758EA1BDA64713ECC7 /* Pods_Chatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D9256B1437004C70E02304 /* Pods_Chatting.framework */; };
+		E81AC33227AB5F4A002511B8 /* WebViewVC+Naver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC33127AB5F4A002511B8 /* WebViewVC+Naver.swift */; };
 		E86FB4A8279A7A220076F549 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4A7279A7A220076F549 /* ProfileView.swift */; };
 		E86FB4AA279A7A2C0076F549 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4A9279A7A2C0076F549 /* ProfileView.xib */; };
 		E86FB4AC279A81FF0076F549 /* ProfileView+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */; };
@@ -75,6 +76,7 @@
 		213B4E9FBF39D670DA3FC778 /* Pods-Chatting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatting.debug.xcconfig"; path = "Target Support Files/Pods-Chatting/Pods-Chatting.debug.xcconfig"; sourceTree = "<group>"; };
 		24E52B00F0A1EFEBA9136B74 /* Pods-Chatting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatting.release.xcconfig"; path = "Target Support Files/Pods-Chatting/Pods-Chatting.release.xcconfig"; sourceTree = "<group>"; };
 		97D9256B1437004C70E02304 /* Pods_Chatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E81AC33127AB5F4A002511B8 /* WebViewVC+Naver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebViewVC+Naver.swift"; sourceTree = "<group>"; };
 		E86FB4A7279A7A220076F549 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E86FB4A9279A7A2C0076F549 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+Gesture.swift"; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				E8CA3C7D2799490A00FE85F8 /* WebViewController.swift */,
+				E81AC33127AB5F4A002511B8 /* WebViewVC+Naver.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				E88D58912794FC80003A4910 /* AppDelegate.swift in Sources */,
 				E8CA3C5A2797D7E600FE85F8 /* JoinView.swift in Sources */,
 				E8CA3C542797D7BA00FE85F8 /* JoinViewModel.swift in Sources */,
+				E81AC33227AB5F4A002511B8 /* WebViewVC+Naver.swift in Sources */,
 				E8CA3C562797D7C500FE85F8 /* JoinModel.swift in Sources */,
 				E88D58DB2796975F003A4910 /* ChatView+Keyboard.swift in Sources */,
 				E8CA3C702798D92000FE85F8 /* JoinApiManager.swift in Sources */,

@@ -27,12 +27,14 @@ class WebViewController: UIViewController {
     let socketManager = ChatSocketManager.getInstance()
     let colorManager = ColorManager.getInstance()
     
+    
     private lazy var joinView = JoinView(frame: self.view.bounds)
     private lazy var profileView = ProfileView(frame: self.view.bounds)
     private lazy var chatView = ChatView(frame: self.view.bounds)
     
     @IBOutlet weak var wk: WKWebView!
     @IBOutlet weak var chatButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     @IBAction func tapChatButton(_ sender: Any) {
         socketManager.serviceProvider?.establishConnection()
@@ -46,6 +48,25 @@ class WebViewController: UIViewController {
                 }
             }
         })
+    }
+    @IBAction func tapBackButton(_ sender: Any) {
+        load()
+        
+        if kakaoEmail != "" {
+            UserApi.shared.logout {(error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("logout() success.")
+                }
+            }
+        } else {
+            loginInstance?.requestDeleteToken()
+        }
+        
+        backButton.isHidden = true
+        chatButton.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -61,25 +82,6 @@ class WebViewController: UIViewController {
             guard let cmd = data["cmd"] else { return }
             switch (cmd) {
             case "loginKakao":
-                //                UserApi.shared.loginWithKakaoAccount(scopes: ["account_email"], completion: { (token, err) in
-                //                    UserApi.shared.me(completion: { (user, err) in
-                //                        print("******************************카카오 이메일**************************************")
-                //                        self.kakaoEmail = (user?.kakaoAccount?.email) ?? ""
-                //                        print(self.kakaoEmail)
-                //                        self.apiManager?.getMembershipStatus(self.kakaoEmail, completion: { result in
-                //                            print(result)
-                //                            self.memInfo.age = result["mem_info"]["age"].stringValue
-                //                            self.memInfo.email = result["mem_info"]["email"].stringValue
-                //                            self.memInfo.contents = result["mem_info"]["contents"].stringValue
-                //                            self.memInfo.name = result["mem_info"]["name"].stringValue
-                //                            self.memInfo.gender = result["mem_info"]["gender"].stringValue
-                //                            self.memInfo.profileImage = result["mem_info"]["profile_image"].stringValue
-                //
-                //                            result["is_member"].rawValue as! Bool ? self.goToProfileList() : self.goToJoinView()
-                //                        })
-                //                    })
-                //                })
-                
                 UserApi.shared.loginWithKakaoAccount(prompts: [.Login], completion:  {(token, err) in
                     UserApi.shared.me(completion: { (user, err) in
                         print("******************************카카오 이메일**************************************")
@@ -102,16 +104,7 @@ class WebViewController: UIViewController {
             case "loginNaver":
                 print("naver")
                 self.loginInstance?.requestThirdPartyLogin()
-                self.apiManager?.getMembershipStatus("tjsrla88@naver.com", completion: { result in
-                    self.memInfo.age = result["mem_info"]["age"].stringValue
-                    self.memInfo.email = result["mem_info"]["email"].stringValue
-                    self.memInfo.contents = result["mem_info"]["contents"].stringValue
-                    self.memInfo.name = result["mem_info"]["name"].stringValue
-                    self.memInfo.gender = result["mem_info"]["gender"].stringValue
-                    self.memInfo.profileImage = result["mem_info"]["profile_image"].stringValue
-                    
-                    result["is_member"].rawValue as! Bool ? self.goToProfileList() : self.goToJoinView()
-                })
+                
                 
                 
             case "open_profile":
@@ -171,64 +164,14 @@ class WebViewController: UIViewController {
     func goToProfileList() {
         print("gotochat")
         if kakaoEmail != "" {
-            wk.load(URLRequest(url: URL(string: "http://babyhoney.kr/member/list/tjsrla77@naver.com")!))
+            wk.load(URLRequest(url: URL(string: "http://babyhoney.kr/member/list/\(kakaoEmail)")!))
         } else {
-            wk.load(URLRequest(url: URL(string: "http://babyhoney.kr/member/list/tjsrla88@naver.com")!))
+            wk.load(URLRequest(url: URL(string: "http://babyhoney.kr/member/list/\(naverEmail)")!))
         }
         chatView.memInfo = self.memInfo
         chatButton.isHidden = false
+        backButton.isHidden = false
     }
 }
 
-extension WebViewController: NaverThirdPartyLoginConnectionDelegate {
-    // 로그인에 성공한 경우 호출
-    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
-        print("Success login")
-        getInfo()
-        
-    }
-    
-    // referesh token
-    func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
-        loginInstance?.accessToken
-    }
-    
-    // 로그아웃
-    func oauth20ConnectionDidFinishDeleteToken() {
-        print("log out")
-    }
-    
-    // 모든 error
-    func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
-        print("error = \(error.localizedDescription)")
-    }
-    
-    func getInfo() {
-        guard let isValidAccessToken = loginInstance?.isValidAccessTokenExpireTimeNow() else { return }
-        
-        if !isValidAccessToken {
-            return
-        }
-        
-        guard let tokenType = loginInstance?.tokenType else { return }
-        guard let accessToken = loginInstance?.accessToken else { return }
-        
-        let urlStr = "https://openapi.naver.com/v1/nid/me"
-        let url = URL(string: urlStr)!
-        
-        let authorization = "\(tokenType) \(accessToken)"
-        
-        let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
-        
-        req.responseJSON { response in
-            guard let result = response.value as? [String: Any] else { return }
-            guard let object = result["response"] as? [String: Any] else { return }
-            guard let email = object["email"] as? String else { return }
-            
-            self.naverEmail = email
-            
-            
-        }
-    }
-}
 

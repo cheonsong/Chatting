@@ -55,7 +55,8 @@ class ChatViewModel: ViewModelType{
         // tapSendButton -> ChatModel( chatText )
         input.tapSendButton
             .withLatestFrom(input.chatText)
-            .filter({!$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty})
+            .map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
+            .filter({!$0.isEmpty})
             .map( {ChatModel(chat: $0)} )
             .bind(to: addChatList)
             .disposed(by: disposeBag)
