@@ -11,7 +11,7 @@ class ProfileView: UIView {
     
     // MARK: Property
     var view: UIView?
-    let colorManager = ColorManager.getInstance()
+    let colorManager = ColorManager.instance
     
     // MARK: IBOutlet
     // 바뀌지 않는 뷰

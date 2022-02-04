@@ -24,8 +24,8 @@ class WebViewController: UIViewController {
     var apiManager: JoinApiService?
     let memInfo = MemberInfo()
     let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
-    let socketManager = ChatSocketManager.getInstance()
-    let colorManager = ColorManager.getInstance()
+    let socketManager = ChatSocketManager.instance
+    let colorManager = ColorManager.instance
     
     
     private lazy var joinView = JoinView(frame: self.view.bounds)
@@ -61,8 +61,6 @@ class WebViewController: UIViewController {
                     print("logout() success.")
                 }
             }
-        } else {
-            loginInstance?.requestDeleteToken()
         }
         
         backButton.isHidden = true
@@ -77,10 +75,12 @@ class WebViewController: UIViewController {
         
         loginInstance?.delegate = self
         
+        // 브릿지 통신
         bridge?.registerHandler(handlerName: "$.callFromWeb", handler: { (data, responseCallback) in
             guard let data = data as? Dictionary<String, String> else { return }
             guard let cmd = data["cmd"] else { return }
             switch (cmd) {
+            // 카카오 로그인 버튼 클릭시
             case "loginKakao":
                 UserApi.shared.loginWithKakaoAccount(prompts: [.Login], completion:  {(token, err) in
                     UserApi.shared.me(completion: { (user, err) in
@@ -101,12 +101,12 @@ class WebViewController: UIViewController {
                     })
                 })
                 
+            // 네이버 로그인 버튼 클릭시
             case "loginNaver":
                 print("naver")
                 self.loginInstance?.requestThirdPartyLogin()
                 
-                
-                
+            // 프로필 열람 버튼 클릭시
             case "open_profile":
                 guard let userInfo = data["userInfo"] else { return }
                 print("******************************프로필 열람**************************************")

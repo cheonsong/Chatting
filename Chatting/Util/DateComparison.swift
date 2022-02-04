@@ -12,7 +12,7 @@ import Foundation
 func compareDate(prevTime time: String) -> Int {
     
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    formatter.dateFormat = "yyyy"
     
     let currentDate = Date()
     let prevDate = formatter.date(from: time)

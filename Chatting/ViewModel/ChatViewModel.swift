@@ -39,7 +39,7 @@ class ChatViewModel: ViewModelType{
     
     
     /// Input 값을 입력 받아 처리 후 Output값을 출력
-    /// - Parameter input: Input
+    /// - Parameter : Input
     /// - Returns: Output
     func transform(input: Input) -> Output {
         // 데이터 처리 로직 구현하기
@@ -79,6 +79,8 @@ class ChatViewModel: ViewModelType{
             .bind(to: deleteView)
             .disposed(by: disposeBag)
         
+        // 좋아요 버튼
+        // taplikeButton -> likeAnimatioin
         input.taplikeButton
             .bind(to: likeAnimation)
             .disposed(by: disposeBag)

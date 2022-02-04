@@ -12,17 +12,19 @@ import RxSwift
 class JoinView: UIView {
     // MARK: Property
     var view: UIView?
-    let colorManager = ColorManager.getInstance()
+    let colorManager = ColorManager.instance
     let placeholder = "소개글을 작성해주세요 "
     let viewModel = JoinViewModel()
     let disposeBag = DisposeBag()
     let imagePicker = UIImagePickerController()
+    
     var userInfo: JoinModel?
     var imageName: String?
     let apiManager = JoinApiManager(service: APIServiceProvider())
     var kakaoEmail: String?
     var naverEmail: String?
     
+    // 생년월일 데이트피커
     let yearPickerView = UIPickerView()
     let monthPickerView = UIPickerView()
     let dayPickerView = UIPickerView()
@@ -118,12 +120,15 @@ class JoinView: UIView {
         
         let output = viewModel.transform(input: input)
         
+        // Input: backButtonClicked
+        // 회원가입창에서 뒤로가기
         output.deleteView
             .subscribe(onNext: {
                 self.removeFromSuperview()
             })
             .disposed(by: disposeBag)
         
+        // Input: manButtonClicked
         output.checkManButton
             .subscribe(onNext: { _ in
                 self.manButton.layer.borderColor = UIColor.blue.cgColor
@@ -136,6 +141,7 @@ class JoinView: UIView {
             })
             .disposed(by: disposeBag)
         
+        // Input: womanButtonClicked
         output.checkWomanButton
             .subscribe(onNext: { _ in
                 self.manButton.layer.borderColor = self.colorManager.color223.cgColor
@@ -148,6 +154,8 @@ class JoinView: UIView {
             })
             .disposed(by: disposeBag)
         
+        // Input: imagePickButtonClicked
+        // 라이브러리에서 이미지 선택하기
         output.imagePick
             .subscribe(onNext: { _ in
                 self.openLibrary()
@@ -155,6 +163,7 @@ class JoinView: UIView {
             })
             .disposed(by: disposeBag)
         
+        // Input: yearButtonClicked
         output.yearPick
             .subscribe(onNext: { _ in
                 self.view?.addSubview(self.yearPickerView)
@@ -163,6 +172,7 @@ class JoinView: UIView {
             })
             .disposed(by: disposeBag)
         
+        // Input: monthButtonClicked
         output.monthPick
             .subscribe(onNext: { _ in
                 self.view?.addSubview(self.monthPickerView)
@@ -171,6 +181,7 @@ class JoinView: UIView {
             })
             .disposed(by: disposeBag)
         
+        // Input: dayButtonClicked
         output.dayPick
             .subscribe(onNext: { _ in
                 self.view?.addSubview(self.dayPickerView)
@@ -179,26 +190,32 @@ class JoinView: UIView {
             })
             .disposed(by: disposeBag)
         
+        // Input: introduceText
+        // (0/200) 텍스트 변경
         output.textCount
             .bind(to: remainTextLabel.rx.text)
             .disposed(by: disposeBag)
         
+        // Input: introduceText
         output.textCount
             .subscribe(onNext: { _ in
                 print(self.validation())
             })
             .disposed(by: disposeBag)
         
+        // Input: joinButtonClicked
+        // 작성된 회원정보를 서버로 보냄
         output.userInfo
             .subscribe(onNext: { _ in
                 self.userInfo = self.setUserInfo()
-                self.apiManager.postUserInfo(self.userInfo!, completion: nil)
+                //self.apiManager.postUserInfo(self.userInfo!, completion: nil)
                 self.removeFromSuperview()
             })
             .disposed(by: disposeBag)
         
     }
     
+    // 모든 정보가 작성됐을 경우에만 가입버튼 활성화
     func validation() -> Bool{
         
         if !textField.text!.isEmpty && (manButton.isSelected || womanButton.isSelected) && yearLabel.text!.count > 1 && monthLabel.text!.count > 1 && dayLabel.text!.count > 1 && !introduceTextView.text!.isEmpty {
@@ -211,16 +228,24 @@ class JoinView: UIView {
         return false
     }
     
+    // 회원정보 모델
     func setUserInfo() -> JoinModel {
         let userInfo = JoinModel()
         
         userInfo.email = kakaoEmail == "" ? naverEmail! : kakaoEmail!
         userInfo.name = textField.text
         userInfo.profileImg = imageView.image
-        userInfo.age = "26"
+        userInfo.age = currentAge()
         userInfo.costs = introduceTextView.text
-        userInfo.gender = manButton.isSelected ? "M" : "F"
+        userInfo.gender = manButton.isSelected ? "m" : "f"
         
         return userInfo
+    }
+    
+    func currentAge() -> String {
+        let year = yearLabel.text?.trimmingCharacters(in: .letters)
+        
+        return String(compareDate(prevTime: year!) / (60*60*24*365) + 1)
+        
     }
 }

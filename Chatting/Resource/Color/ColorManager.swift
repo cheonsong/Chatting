@@ -10,11 +10,7 @@ import UIKit
 
 struct ColorManager {
     
-    private static let instance = ColorManager()
-    
-    static func getInstance() -> ColorManager {
-        return instance
-    }
+    static let instance = ColorManager()
     
     private init() {}
     

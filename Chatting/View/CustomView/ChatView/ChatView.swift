@@ -23,9 +23,9 @@ class ChatView: UIView{
     // Animation Total Time
     let animationTotalTime = 6.0
     // CustomColor Manager
-    let colorManager = ColorManager.getInstance()
+    let colorManager = ColorManager.instance
     // SocketManager
-    let socketManager = ChatSocketManager.getInstance()
+    let socketManager = ChatSocketManager.instance
     // LikeButton On, Off
     let likeOn = UIImage(named: "btn_bt_heart_on")
     let likeOff = UIImage(named: "btn_bt_heart_off")
@@ -56,14 +56,20 @@ class ChatView: UIView{
     let disposeBag = DisposeBag()
     
     // MARK: IBOutlet
+    // 채팅 입력창
     @IBOutlet weak var chatSuperView: UIView!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textSuperView: UIView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet weak var textSuperView: UIView!
+
+    // 채팅 리스트
     @IBOutlet weak var tableView: UITableView!
+    // 아래로 이동 버튼
     @IBOutlet weak var downButton: UIButton!
+    // 채팅 입력창 하단 Constraint
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    // 채팅방 나가기 버튼 (우측 상단)
     @IBOutlet weak var cancelButton: UIButton!
     
     // MARK: init & deinit
@@ -141,7 +147,8 @@ class ChatView: UIView{
         // addChatList
         // ChatModel을 ChatList에 추가
         output.addChatList
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.socketManager.sendChatMessage($0.chat!)
             })
             .disposed(by: disposeBag)
@@ -149,7 +156,8 @@ class ChatView: UIView{
         // scrollDown
         // 아래로버튼 클릭 시 가장 최근에 대화로 이동
         output.scrollDown
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             })
             .disposed(by: disposeBag)
@@ -158,7 +166,8 @@ class ChatView: UIView{
         // 사연을 보내면 입력창의 텍스트 초기화
         // 가장 최신 대화로 이동
         output.removeTextInTextView
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.textView.text = ""
             })
             .disposed(by: disposeBag)
@@ -166,7 +175,8 @@ class ChatView: UIView{
         // deleteView
         // 채팅방 나가기
         output.deleteView
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 
                 self.list.removeAll()
                 self.removeFromSuperview()
@@ -176,7 +186,9 @@ class ChatView: UIView{
             .disposed(by: disposeBag)
         
         output.likeAnimation
-            .subscribe(onNext: { //[weak self] in
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
                 self.socketManager.sendLike()
                 
                 self.likeButton.setImage(self.likeOff, for: .normal)
@@ -218,10 +230,18 @@ class ChatView: UIView{
                 // 토스트 메세지
             case "rcvToastMsg":
                 print("토스트 메세지 : " + json["msg"].stringValue)
+                let alert = UIAlertController(title: "알림", message: json["msg"].stringValue, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인" , style: .default, handler: nil))
+                
+                getRootViewController()?.present(alert, animated: false, completion: nil)
                 
                 // 알림 메세지
             case "rcvAlertMsg":
                 print("알림 : " + json["msg"].stringValue)
+                let alert = UIAlertController(title: "알림", message: json["msg"].stringValue, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인" , style: .default, handler: nil))
+                
+                getRootViewController()?.present(alert, animated: false, completion: nil)
                 
                 // 좋아요 애니메이션 메세지
             case "rcvPlayLikeAni":
@@ -292,8 +312,10 @@ class ChatView: UIView{
             // heartview 올리기
             self.view?.addSubview($0)
         }
+        
     }
     
+    // 좋아요 애니메이션 시작
     private func startLikeAnimation() {
         UIView.animateKeyframes(withDuration: 6, delay: 0, options: .calculationModePaced, animations: {
             

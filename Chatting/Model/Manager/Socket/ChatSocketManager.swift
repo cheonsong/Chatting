@@ -11,7 +11,7 @@ import RxCocoa
 
 class ChatSocketManager: ChatSocketService {
     
-    private static var instance: ChatSocketManager = ChatSocketManager(service: SocketServiceProvider())
+    static var instance: ChatSocketManager = ChatSocketManager(service: SocketServiceProvider())
     
     var serviceProvider: SocketService?
     
@@ -19,10 +19,6 @@ class ChatSocketManager: ChatSocketService {
     
     private init(service: SocketService) {
         serviceProvider = service
-    }
-    
-    static func getInstance() -> ChatSocketManager {
-        return instance
     }
     
     func roomEnter(_ memId: String, _ chatName: String, _ memPhoto: String, _ callback: @escaping AckCallback) {

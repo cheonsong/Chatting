@@ -67,6 +67,7 @@ extension WebViewController: NaverThirdPartyLoginConnectionDelegate {
                 result["is_member"].rawValue as! Bool ? self.goToProfileList() : self.goToJoinView()
             })
             
+            self.loginInstance?.requestDeleteToken()
         }
     }
 }

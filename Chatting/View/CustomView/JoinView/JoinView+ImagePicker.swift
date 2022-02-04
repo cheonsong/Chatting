@@ -14,6 +14,7 @@ extension JoinView: UIImagePickerControllerDelegate, UINavigationControllerDeleg
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+        // 선택된 이미지 가져오기
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = image
             addImageLabel.isHidden = true
@@ -26,12 +27,13 @@ extension JoinView: UIImagePickerControllerDelegate, UINavigationControllerDeleg
             }
         }
         
+        // 이미지 피커 띄우기
         let vc = getRootViewController()
         vc?.presentingViewController?.dismiss(animated: false, completion: nil)
 
     }
     
-    
+    // 라이브러리에서 이미지 선택하기
     func openLibrary(){
         imagePicker.sourceType = .photoLibrary
         

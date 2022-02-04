@@ -15,6 +15,7 @@ extension ChatView {
         self.tableView.register(UINib(nibName: "SystemChatCell", bundle: nil), forCellReuseIdentifier: "SystemChatCell")
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.backgroundColor = UIColor.clear
+        // 테이블뷰 뒤집기 -> 채팅이 아래에서 위로 올라오도록 하기 위해
         tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
         
         self.tableView.delegate = self
@@ -22,28 +23,13 @@ extension ChatView {
     }
     
     func setTableViewGradient() {
+        // 테이블뷰 상단 블러처리
         let gradient = CAGradientLayer()
         gradient.frame = tableView.superview?.bounds ?? CGRect.null
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradient.locations = [0.0, 0.15]
         tableView.superview?.layer.mask = gradient
     }
-    
-    // 채팅이 아래서부터 올라오도록 업데이트
-    func updateTableContentInset() {
-        let numRows = self.tableView.numberOfRows(inSection: 0)
-        var contentInsetTop = self.tableView.bounds.size.height
-        for i in 0..<numRows {
-            let rowRect = self.tableView.rectForRow(at: IndexPath(item: i, section: 0))
-            contentInsetTop -= rowRect.size.height
-            if contentInsetTop <= 0 {
-                contentInsetTop = 0
-                break
-            }
-        }
-        self.tableView.contentInset = UIEdgeInsets(top: contentInsetTop,left: 0,bottom: 0,right: 0)
-    }
-    
     
 }
 
@@ -57,15 +43,19 @@ extension ChatView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 테이블뷰를 뒤집었기 때문에 list도 뒤집어 줘야함
         let chat = self.list.reversed()[indexPath.row]
         
         switch (chat.type) {
+            
+        // 시스템 채팅
         case .system:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SystemChatCell") as! SystemChatCell
             cell.message.text = chat.chat!
             cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
             return cell
             
+        // 일반 채팅
         case .user:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
             cell.email = chat.email!
@@ -74,6 +64,7 @@ extension ChatView: UITableViewDataSource {
             cell.profileImage.setImage(chat.image, for: .normal)
             cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
             
+            // cell의 프로필 이미지가 클릭됐을 시 실행될 함수
             cell.showProfile = {
                 self.apiManager.getMembershipStatus(chat.email!, completion: { data in
                     let profileView = ProfileView(frame: self.view!.frame)
