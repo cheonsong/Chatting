@@ -67,7 +67,7 @@ extension ChatView: UITableViewDataSource {
             // cell의 프로필 이미지가 클릭됐을 시 실행될 함수
             cell.showProfile = {
                 self.apiManager.getMembershipStatus(chat.email!, completion: { data in
-                    let profileView = ProfileView(frame: self.view!.frame)
+                    let profileView = ProfileView(frame: self.chatView!.frame)
                     let userInfo = data["mem_info"]
                     profileView.nameLabel.text = userInfo["name"].stringValue
                     profileView.ageLabel.text = userInfo["age"].stringValue
@@ -85,8 +85,8 @@ extension ChatView: UITableViewDataSource {
                         profileView.ageLabel.textColor = self.colorManager.profileSexLabeltextColor
                     }
 
-                    UIView.transition(with: self.view!, duration: 0.25, options: [.transitionCrossDissolve], animations: {
-                      self.view?.addSubview(profileView)
+                    UIView.transition(with: self.chatView!, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                      self.chatView?.addSubview(profileView)
                     }, completion: nil)
                 })
             }

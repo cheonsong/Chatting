@@ -242,6 +242,7 @@ class JoinView: UIView {
         return userInfo
     }
     
+    // 현재 나이 계산 함수
     func currentAge() -> String {
         let year = yearLabel.text?.trimmingCharacters(in: .letters)
         

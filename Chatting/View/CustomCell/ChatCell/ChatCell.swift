@@ -10,18 +10,23 @@ import RxSwift
 
 class ChatCell: UITableViewCell {
     
+    // MARK: Variables
+    // 프로필 썸네일 클릭 시 실행되는 함수 ==> ChatView+Table -> DataSource 에서 구현
     var showProfile: (()->Void)? = nil
-
-    var apiManager: JoinApiService?
     var email: String?
     private lazy var profileView = ProfileView(frame: CGRect(x: 0, y: 0, width: superview!.frame.width, height: superview!.frame.height))
     
+    // MARK: Constant
+    let apiManager = JoinApiManager(service: APIServiceProvider())
+    
+    // MARK: IBOutlet
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var chat: UILabel!
     @IBOutlet weak var chatSuperView: UIView!
     @IBOutlet weak var profileImage: UIButton!
-    var disposeBag: DisposeBag = DisposeBag()
     
+    // MARK: IBAction
+    // 프로필 썸네일 클릭 시 실행되는 함수
     @IBAction func showMiniProfile(_ sender: UIButton) {
         
         if let showMiniProfile = self.showProfile {
@@ -29,8 +34,6 @@ class ChatCell: UITableViewCell {
         }
         
     }
-    
-  
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,19 +43,12 @@ class ChatCell: UITableViewCell {
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         profileImage.clipsToBounds = true
         
-        apiManager = JoinApiManager(service: APIServiceProvider())
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        disposeBag = DisposeBag()
     }
     
 }

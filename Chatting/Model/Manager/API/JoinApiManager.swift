@@ -16,7 +16,8 @@ class JoinApiManager: JoinApiService {
     init(service: ApiService) {
         self.apiServiceProvider = service
     }
-
+    
+    // 회원정보 얻어오기
     func getMembershipStatus(_ email: String, completion: ((JSON) -> Void)?) {
         self.apiServiceProvider?.requestApi(url: "http://babyhoney.kr/api/member/\(email)", method: .get, parameters: nil,
                                             completion: { data in
@@ -37,6 +38,7 @@ class JoinApiManager: JoinApiService {
         })
     }
     
+    // 회원가입정보 보내기
     func postUserInfo(_ userInfo: JoinModel, completion: (()-> Void)?) {
         
         let imageData = userInfo.profileImg?.jpegData(compressionQuality: 1)!
@@ -65,7 +67,8 @@ class JoinApiManager: JoinApiService {
         
     }
     
-    func getChattingList(_ email: String, completion: (() -> Void)?) {
+    // 프로필 리스트 불러오기
+    func getProfileList(_ email: String, completion: (() -> Void)?) {
         self.apiServiceProvider?.requestApi(url: "http://babyhoney.kr/api/member/list/\(email)", method: .get, parameters: nil, completion: {
             data in
                 let response = data as? DataResponse<Any, AFError>

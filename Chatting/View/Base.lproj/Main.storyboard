@@ -49,7 +49,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system"/>
                                 <connections>
-                                    <action selector="tapBackButton:" destination="fCz-dv-XOH" eventType="touchUpInside" id="gHe-bb-nwN"/>
+                                    <action selector="tapBackButton:" destination="fCz-dv-XOH" eventType="touchUpInside" id="7wx-3R-rv6"/>
                                 </connections>
                             </button>
                         </subviews>

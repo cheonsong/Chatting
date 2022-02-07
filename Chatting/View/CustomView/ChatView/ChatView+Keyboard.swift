@@ -36,7 +36,7 @@ extension ChatView {
     @objc func adjustInputView(noti: Notification) {
         guard let userInfo = noti.userInfo else { return }
         guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        let adjustmentHeight = keyboardFrame.height - (view?.safeAreaInsets.bottom)!
+        let adjustmentHeight = keyboardFrame.height - (chatView?.safeAreaInsets.bottom)!
         if noti.name == UIResponder.keyboardWillShowNotification {
             // 키보드가 올라오면 제약조건을 걸어줘 뷰의 위치를 재조정함
             bottomConstraint.constant = adjustmentHeight + 11

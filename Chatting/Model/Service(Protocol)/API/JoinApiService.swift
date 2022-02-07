@@ -23,6 +23,6 @@ protocol JoinApiService {
     // 회원가입 POST
     func postUserInfo(_ userInfo: JoinModel, completion: (()-> Void)?)
     
-    // 채팅방리스트 요청 GET
-    func getChattingList(_ email: String, completion: (()->Void)?)
+    // 프로필리스트 요청 GET
+    func getProfileList(_ email: String, completion: (()->Void)?)
 }

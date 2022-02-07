@@ -10,7 +10,7 @@ import UIKit
 class ProfileView: UIView {
     
     // MARK: Property
-    var view: UIView?
+    var profileView: UIView?
     let colorManager = ColorManager.instance
     
     // MARK: IBOutlet
@@ -31,18 +31,18 @@ class ProfileView: UIView {
     @IBOutlet weak var sexAgeView: UIView!
     @IBOutlet weak var ageLabel: UILabel!
     
-    // 좋아요
-
-    @IBAction func tapLikeButton(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-    }
-    
     // 프로필
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileBorderImage: UIImageView!
     
     // 소개글
     @IBOutlet weak var introduceLabel: UILabel!
+    
+    // MARK: IBAction
+    // 좋아요
+    @IBAction func tapLikeButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
     
     // MARK: Init
     override init(frame: CGRect) {
@@ -56,9 +56,9 @@ class ProfileView: UIView {
     }
     
     private func initialize() {
-        self.view = Bundle.main.loadNibNamed("ProfileView", owner: self, options: nil)?.first as? UIView
-        view?.frame = self.bounds
-        self.addSubview(view!)
+        self.profileView = Bundle.main.loadNibNamed("ProfileView", owner: self, options: nil)?.first as? UIView
+        profileView?.frame = self.bounds
+        self.addSubview(profileView!)
         
         setCornerRadius()
         setGestureRecognizer()

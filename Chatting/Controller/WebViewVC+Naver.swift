@@ -56,7 +56,7 @@ extension WebViewController: NaverThirdPartyLoginConnectionDelegate {
             
             self.naverEmail = email
             
-            self.apiManager?.getMembershipStatus(self.naverEmail, completion: { result in
+            self.apiManager.getMembershipStatus(self.naverEmail, completion: { result in
                 self.memInfo.age = result["mem_info"]["age"].stringValue
                 self.memInfo.email = result["mem_info"]["email"].stringValue
                 self.memInfo.contents = result["mem_info"]["contents"].stringValue
