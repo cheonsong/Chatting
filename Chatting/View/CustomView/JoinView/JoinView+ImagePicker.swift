@@ -36,15 +36,14 @@ extension JoinView: UIImagePickerControllerDelegate, UINavigationControllerDeleg
     // 라이브러리에서 이미지 선택하기
     func openLibrary(){
         imagePicker.sourceType = .photoLibrary
-        
-        let viewController = getRootViewController()
         imagePicker.modalPresentationStyle = .fullScreen
-        viewController?.present(imagePicker, animated: false)
+        getRootViewController()?.present(imagePicker, animated: false)
         
     }
     
-//    func openCamera(){
-//        picker.sourceType = .camera
-//        self.present(picker, animated: false, completion: nil)
-//    }
+    func openCamera(){
+        imagePicker.sourceType = .camera
+        imagePicker.modalPresentationStyle = .fullScreen
+        getRootViewController()?.present(imagePicker, animated: false, completion: nil)
+    }
 }

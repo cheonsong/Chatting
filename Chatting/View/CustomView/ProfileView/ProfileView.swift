@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
 class ProfileView: UIView {
     
@@ -21,6 +23,7 @@ class ProfileView: UIView {
     @IBOutlet weak var likeLabel: UIView!
     @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var introduceView: UIView!
+    var safeAreaView: UIView!
 
     
     // 사람에 따라 바뀌어야할 뷰
@@ -66,10 +69,18 @@ class ProfileView: UIView {
         
         print("ProfileView init")
         
+        safeAreaView = UIView().then {
+            $0.backgroundColor = .white
+        }
+        self.addSubview(safeAreaView)
+        safeAreaView.snp.makeConstraints {
+            $0.left.right.bottom.equalToSuperview()
+            $0.top.equalTo(bottomView.snp.bottom)
+        }
+        
         setCornerRadius()
         setGestureRecognizer()
         setBorder()
         setBackgroundColor()
     }
-    
 }

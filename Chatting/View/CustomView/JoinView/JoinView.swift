@@ -25,8 +25,6 @@ class JoinView: UIView {
     let disposeBag = DisposeBag()
     // 프로필 사진 이미지 피커
     let imagePicker = UIImagePickerController()
-    // JoinApiManager
-    let apiManager = JoinApiManager.instance
 
     
     // 생년월일 데이트피커
@@ -142,7 +140,8 @@ class JoinView: UIView {
         // Input: backButtonClicked
         // 회원가입창에서 뒤로가기
         backButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.removeFromSuperview()
             })
             .disposed(by: disposeBag)
@@ -180,7 +179,15 @@ class JoinView: UIView {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 
-                self.openLibrary()
+                let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "앨범에서 선택하기", style: .default, handler: { _ in
+                    self.openLibrary()
+                }))
+                
+                alert.addAction(UIAlertAction(title: "카메라로 촬영하기", style: .default, handler: { _ in
+                    self.openCamera()
+                }))
+                getRootViewController()?.present(alert, animated: false, completion: nil)
             })
             .disposed(by: disposeBag)
         
@@ -223,7 +230,7 @@ class JoinView: UIView {
                 guard let self = self else { return }
                 
                 if self.validation() {
-                    self.apiManager.postUserInfo(self.getUserInfo(), completion: nil)
+                    JoinApiManager.instance.postUserInfo(self.getUserInfo(), completion: nil)
                     self.removeFromSuperview()
                 } else {
                     let alert = UIAlertController(title: "입력되지 않은 정보가 있습니다.", message: nil, preferredStyle: .alert)

@@ -17,7 +17,7 @@ import NaverThirdPartyLogin
 import Alamofire
 
 class WebViewController: UIViewController {
-
+    
     // MARK: Variables
     var bridge: WKWebViewJavascriptBridge?
     var kakaoEmail: String = ""
@@ -32,37 +32,12 @@ class WebViewController: UIViewController {
     let socketManager = ChatSocketManager.instance
     let colorManager = ColorManager.instance
     
-    
-    private lazy var joinView: JoinView? = JoinView(frame: self.view.bounds)
-    private lazy var profileView: ProfileView? = ProfileView(frame: self.view.bounds)
-    //private lazy var chatView: ChatView?
-    
-    @IBOutlet weak var goToRoot: UIButton!
     @IBOutlet weak var wk: WKWebView!
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
-
-    @IBAction func backToRoot(_ sender: Any) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
     
     @IBAction func tapChatButton(_ sender: Any) {
         socketManager.serviceProvider?.establishConnection()
-        
-        let chatView = ChatView(frame: self.view.bounds)
-        
-        chatView.memInfo = self.memInfo
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
-            guard let self = self else { return }
-            self.socketManager.roomEnter(self.memInfo.email!, self.memInfo.name!, self.memInfo.profileImage!) { ack in
-                let json = JSON(ack.first!)
-                if(json["success"].stringValue == "y") {
-                    
-                    self.view.addSubview(chatView)
-                }
-            }
-        })
     }
     
     @IBAction func tapBackButton(_ sender: Any) {
@@ -78,8 +53,6 @@ class WebViewController: UIViewController {
                 }
             }
         }
-        
-        goToRoot.isHidden = false
         backButton.isHidden = true
         chatButton.isHidden = true
     }
@@ -95,6 +68,28 @@ class WebViewController: UIViewController {
         setBridgeHandler()
         
         load()
+        
+        ChatSocketManager.instance.serviceProvider?.socket?.on(clientEvent: .disconnect, callback: { _, _ in
+            print("disconnet")
+        })
+        
+        ChatSocketManager.instance.serviceProvider?.socket?.on(clientEvent: .connect, callback: { [weak self] _, _ in
+            guard let self = self else { return }
+            print("connect")
+            
+            let chatView = ChatView(frame: self.view.bounds)
+            
+            chatView.memInfo = self.memInfo
+            
+            self.socketManager.roomEnter(self.memInfo.email!, self.memInfo.name!, self.memInfo.profileImage!) { ack in
+                let json = JSON(ack.first!)
+                if(json["success"].stringValue == "y") {
+                    self.view.addSubview(chatView)
+                }
+            }
+            
+        })
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,9 +114,10 @@ class WebViewController: UIViewController {
     // 회원가입창으로 이동
     func goToJoinView() {
         print("Go To JoinView")
-        joinView?.kakaoEmail = kakaoEmail
-        joinView?.naverEmail = naverEmail
-        self.view.addSubview(joinView!)
+        let joinView = JoinView(frame: self.view.bounds)
+        joinView.kakaoEmail = kakaoEmail
+        joinView.naverEmail = naverEmail
+        self.view.addSubview(joinView)
         
     }
     
@@ -133,8 +129,7 @@ class WebViewController: UIViewController {
         } else {
             wk.load(URLRequest(url: URL(string: "http://babyhoney.kr/member/list/\(naverEmail)")!))
         }
-        
-        goToRoot.isHidden = true
+
         chatButton.isHidden = false
         backButton.isHidden = false
     }
@@ -143,10 +138,11 @@ class WebViewController: UIViewController {
         // 브릿지 통신
         bridge?.registerHandler(handlerName: "$.callFromWeb", handler: { [weak self] (data, responseCallback) in
             guard let self = self else { return }
+            
             guard let data = data as? Dictionary<String, String> else { return }
             guard let cmd = data["cmd"] else { return }
             switch (cmd) {
-            // 카카오 로그인 버튼 클릭시
+                // 카카오 로그인 버튼 클릭시
             case "loginKakao":
                 UserApi.shared.loginWithKakaoAccount(prompts: [.Login], completion:  { (token, err) in
                     
@@ -168,34 +164,35 @@ class WebViewController: UIViewController {
                     })
                 })
                 
-            // 네이버 로그인 버튼 클릭시
+                // 네이버 로그인 버튼 클릭시
             case "loginNaver":
                 print("naver")
                 self.loginInstance?.requestThirdPartyLogin()
                 
-            // 프로필 열람 버튼 클릭시
+                // 프로필 열람 버튼 클릭시
             case "open_profile":
                 guard let userInfo = data["userInfo"] else { return }
                 print("******************************프로필 열람**************************************")
+                let profileView = ProfileView(frame: self.view.bounds)
                 self.apiManager.getMembershipStatus(userInfo, completion: { data in
                     let userInfo = data["mem_info"]
-                    self.profileView?.nameLabel.text = userInfo["name"].stringValue
-                    self.profileView?.ageLabel.text = userInfo["age"].stringValue
-                    self.profileView?.introduceLabel.text = userInfo["contents"].stringValue
+                    profileView.nameLabel.text = userInfo["name"].stringValue
+                    profileView.ageLabel.text = userInfo["age"].stringValue
+                    profileView.introduceLabel.text = userInfo["contents"].stringValue
                     do {
                         let imageData = try Data(contentsOf: URL(string: userInfo["profile_image"].stringValue)!)
-                        self.profileView?.profileImage.image = UIImage(data: imageData)
+                        profileView.profileImage.image = UIImage(data: imageData)
                     } catch {
-                        self.profileView?.profileImage.image = UIImage()
+                        profileView.profileImage.image = UIImage()
                     }
                     if userInfo["gender"].stringValue == "M" {
-                        self.profileView?.profileBorderImage.image = UIImage(named: "img_profile_line_m")
-                        self.profileView?.sexImage.image = UIImage(named: "ico_sex_m")
-                        self.profileView?.sexAgeView.layer.borderColor = self.colorManager.profileManSexAgeBorderColor.cgColor
-                        self.profileView?.ageLabel.textColor = self.colorManager.profileSexLabeltextColor
+                        profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
+                        profileView.sexImage.image = UIImage(named: "ico_sex_m")
+                        profileView.sexAgeView.layer.borderColor = self.colorManager.profileManSexAgeBorderColor.cgColor
+                        profileView.ageLabel.textColor = self.colorManager.profileSexLabeltextColor
                     }
                     
-                    self.view.addSubview(self.profileView!)
+                    self.view.addSubview(profileView)
                 })
                 
                 

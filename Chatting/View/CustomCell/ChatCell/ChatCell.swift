@@ -12,7 +12,7 @@ class ChatCell: UITableViewCell {
     
     // MARK: Variables
     // 프로필 썸네일 클릭 시 실행되는 함수 ==> ChatView+Table -> DataSource 에서 구현
-    var showProfile: (()->Void)? = nil
+    lazy var showProfile: (()->Void)? = nil
     var email: String?
     
     // MARK: Constant
@@ -26,11 +26,7 @@ class ChatCell: UITableViewCell {
     // MARK: IBAction
     // 프로필 썸네일 클릭 시 실행되는 함수
     @IBAction func showMiniProfile(_ sender: UIButton) {
-        
-        if let showMiniProfile = self.showProfile {
-            showMiniProfile()
-        }
-        
+        self.showProfile?()
     }
     
     deinit {

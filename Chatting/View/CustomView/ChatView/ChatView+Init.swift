@@ -68,14 +68,6 @@ extension ChatView {
                 print("default")
             }
         })
-        
-        ChatSocketManager.instance.serviceProvider?.socket?.on(clientEvent: .disconnect, callback: { _, _ in
-            print("disconnet")
-        })
-        
-        ChatSocketManager.instance.serviceProvider?.socket?.on(clientEvent: .connect, callback: { _, _ in
-            print("connect")
-        })
     }
     
     // 배경을 이미지뷰로 교체
