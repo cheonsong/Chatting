@@ -11,6 +11,7 @@
 		E81AC33227AB5F4A002511B8 /* WebViewVC+Naver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC33127AB5F4A002511B8 /* WebViewVC+Naver.swift */; };
 		E81AC38A27B0D0D0002511B8 /* ChatView+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC38927B0D0D0002511B8 /* ChatView+Init.swift */; };
 		E81AC38C27B0D658002511B8 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC38B27B0D658002511B8 /* FontManager.swift */; };
+		E81AC38F27B1F741002511B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC38E27B1F741002511B8 /* ViewController.swift */; };
 		E86FB4A8279A7A220076F549 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4A7279A7A220076F549 /* ProfileView.swift */; };
 		E86FB4AA279A7A2C0076F549 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4A9279A7A2C0076F549 /* ProfileView.xib */; };
 		E86FB4AC279A81FF0076F549 /* ProfileView+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */; };
@@ -81,6 +82,7 @@
 		E81AC33127AB5F4A002511B8 /* WebViewVC+Naver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebViewVC+Naver.swift"; sourceTree = "<group>"; };
 		E81AC38927B0D0D0002511B8 /* ChatView+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+Init.swift"; sourceTree = "<group>"; };
 		E81AC38B27B0D658002511B8 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		E81AC38E27B1F741002511B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E86FB4A7279A7A220076F549 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E86FB4A9279A7A2C0076F549 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+Gesture.swift"; sourceTree = "<group>"; };
@@ -173,6 +175,16 @@
 				97D9256B1437004C70E02304 /* Pods_Chatting.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E81AC38D27B1E2C4002511B8 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				E88D58C4279522C9003A4910 /* ChatModel.swift */,
+				E8CA3C552797D7C500FE85F8 /* JoinModel.swift */,
+				E86FB4C2279F813F0076F549 /* MemberInfo.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		E86FB4A4279A7A040076F549 /* ProfileView */ = {
@@ -303,6 +315,7 @@
 			children = (
 				E8CA3C7D2799490A00FE85F8 /* WebViewController.swift */,
 				E81AC33127AB5F4A002511B8 /* WebViewVC+Naver.swift */,
+				E81AC38E27B1F741002511B8 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -338,13 +351,13 @@
 		E88D58AF2794FF56003A4910 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				E81AC38B27B0D658002511B8 /* FontManager.swift */,
 				E88D58B02794FF56003A4910 /* NotoSansKR-Light.otf */,
 				E88D58B12794FF56003A4910 /* NotoSansKR-Bold.otf */,
 				E88D58B22794FF56003A4910 /* NotoSansKR-Thin.otf */,
 				E88D58B32794FF56003A4910 /* NotoSansKR-Black.otf */,
 				E88D58B42794FF56003A4910 /* NotoSansKR-Medium.otf */,
 				E88D58B52794FF56003A4910 /* NotoSansKR-Regular.otf */,
-				E81AC38B27B0D658002511B8 /* FontManager.swift */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -354,8 +367,8 @@
 			children = (
 				E88D58CE2795259B003A4910 /* ChatViewModel.swift */,
 				E8CA3C532797D7BA00FE85F8 /* JoinViewModel.swift */,
-				E88D58D0279525BE003A4910 /* ViewModelType.swift */,
 				E86FB4AD279A997B0076F549 /* ProfileViewModel.swift */,
+				E88D58D0279525BE003A4910 /* ViewModelType.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -363,11 +376,9 @@
 		E88D58BE2794FF7D003A4910 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E81AC38D27B1E2C4002511B8 /* DataModel */,
 				E8CA3C6C2798D92000FE85F8 /* Manager */,
 				E88D58BF2794FF81003A4910 /* Service(Protocol) */,
-				E88D58C4279522C9003A4910 /* ChatModel.swift */,
-				E8CA3C552797D7C500FE85F8 /* JoinModel.swift */,
-				E86FB4C2279F813F0076F549 /* MemberInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -587,6 +598,7 @@
 				E8CA3C7A2799151600FE85F8 /* JoinView+PickerView.swift in Sources */,
 				E8CA3C782798FA8400FE85F8 /* JoinView+Gesture.swift in Sources */,
 				E88D58B62794FF56003A4910 /* ColorManager.swift in Sources */,
+				E81AC38F27B1F741002511B8 /* ViewController.swift in Sources */,
 				E88D58C12794FF89003A4910 /* ApiService.swift in Sources */,
 				E81AC38C27B0D658002511B8 /* FontManager.swift in Sources */,
 				E86FB4C3279F813F0076F549 /* MemberInfo.swift in Sources */,

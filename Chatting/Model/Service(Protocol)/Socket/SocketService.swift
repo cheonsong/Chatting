@@ -8,7 +8,7 @@
 import Foundation
 import SocketIO
 
-protocol SocketService {
+protocol SocketService: AnyObject {
     
     var manager: SocketManager? { get }
     var socket: SocketIOClient? { get }

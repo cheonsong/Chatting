@@ -14,7 +14,10 @@ extension ChatView {
     
     // "message" 핸들로러 온 이벤트 처리
     func setSocketHandler() {
-        self.socketManager.serviceProvider?.socket?.on("message", callback: { data, ack in
+        ChatSocketManager.instance.serviceProvider?.socket?.on("message", callback: { [weak self] data, ack in
+            
+            guard let self = self else { return }
+            
             print(data)
             guard let dataInfo = data.first else { return }
             let json = JSON(dataInfo)
@@ -66,8 +69,12 @@ extension ChatView {
             }
         })
         
-        self.socketManager.serviceProvider?.socket?.on(clientEvent: .disconnect, callback: { _, _ in
+        ChatSocketManager.instance.serviceProvider?.socket?.on(clientEvent: .disconnect, callback: { _, _ in
             print("disconnet")
+        })
+        
+        ChatSocketManager.instance.serviceProvider?.socket?.on(clientEvent: .connect, callback: { _, _ in
+            print("connect")
         })
     }
     
@@ -128,7 +135,8 @@ extension ChatView {
     
     // 좋아요 애니메이션 시작
     func startLikeAnimation() {
-        UIView.animateKeyframes(withDuration: 6, delay: 0, options: .calculationModePaced, animations: {
+        UIView.animateKeyframes(withDuration: 6, delay: 0, options: .calculationModePaced, animations: { [weak self] in
+            guard let self = self else { return }
             
             self.layoutIfNeeded()
             
@@ -141,7 +149,8 @@ extension ChatView {
             
             
             
-            UIView.addKeyframe(withRelativeStartTime: 0.15, relativeDuration: 0.55, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.15, relativeDuration: 0.55, animations: { [weak self] in
+                guard let self = self else { return }
                 self.heartList.forEach({
                     
                     let option:CGFloat = arc4random()%2 == 0 ? -1 : 1
@@ -153,7 +162,8 @@ extension ChatView {
                 })
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.15, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.15, animations: { [weak self] in
+                guard let self = self else { return }
                 self.heartList.forEach({
                     
                     let option:CGFloat = arc4random()%2 == 0 ? -1 : 1
@@ -171,7 +181,8 @@ extension ChatView {
     
     // 좋아요 버튼 활성화 타이머
     func startLikeButtonTimer() {
-        likeTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false, block: { (Timer) in
+        likeTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false, block: { [weak self] (Timer) in
+            guard let self = self else { return }
             self.likeButton.isEnabled = true
             self.likeButton.setImage(self.likeOn, for: .normal)
             self.likeButton.alpha = 1

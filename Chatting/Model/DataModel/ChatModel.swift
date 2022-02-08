@@ -27,6 +27,7 @@ class ChatModel {
     init() {
         self.chat = ""
         self.nickname = "System"
+        self.type = .system
     }
     
     init(chat: String) {

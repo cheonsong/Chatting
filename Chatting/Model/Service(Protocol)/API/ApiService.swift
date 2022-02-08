@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-protocol ApiService {
+protocol ApiService: AnyObject {
     func requestApi(
         url: String,
         method : HTTPMethod,

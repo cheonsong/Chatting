@@ -8,7 +8,7 @@
 import Foundation
 import SocketIO
 
-protocol ChatSocketService {
+protocol ChatSocketService: AnyObject {
     
     // 방 들어가기
     func roomEnter(_ memId: String, _ chatName: String, _ memPhoto: String, _ callback: @escaping AckCallback)

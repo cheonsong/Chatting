@@ -49,7 +49,8 @@ extension WebViewController: NaverThirdPartyLoginConnectionDelegate {
         
         let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
         
-        req.responseJSON { response in
+        req.responseJSON { [weak self] response in
+            guard let self = self else { return }
             guard let result = response.value as? [String: Any] else { return }
             guard let object = result["response"] as? [String: Any] else { return }
             guard let email = object["email"] as? String else { return }

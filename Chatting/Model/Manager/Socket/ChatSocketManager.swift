@@ -11,14 +11,21 @@ import RxCocoa
 
 class ChatSocketManager: ChatSocketService {
     
-    static var instance: ChatSocketManager = ChatSocketManager(service: SocketServiceProvider())
+    // 입장 가능한 채팅방이 하나이므로 싱글톤 사용
+    static let instance: ChatSocketManager = ChatSocketManager(service: SocketServiceProvider())
     
     var serviceProvider: SocketService?
     
+    // 서버로부터 받는 이벤트 메세지
     var event: String = "message"
     
     private init(service: SocketService) {
         serviceProvider = service
+        print("ChatSocketManager init")
+    }
+    
+    deinit {
+        print("ChatSocketManager deinit")
     }
     
     func roomEnter(_ memId: String, _ chatName: String, _ memPhoto: String, _ callback: @escaping AckCallback) {

@@ -14,10 +14,8 @@ class ChatCell: UITableViewCell {
     // 프로필 썸네일 클릭 시 실행되는 함수 ==> ChatView+Table -> DataSource 에서 구현
     var showProfile: (()->Void)? = nil
     var email: String?
-    private lazy var profileView = ProfileView(frame: CGRect(x: 0, y: 0, width: superview!.frame.width, height: superview!.frame.height))
     
     // MARK: Constant
-    let apiManager = JoinApiManager(service: APIServiceProvider())
     
     // MARK: IBOutlet
     @IBOutlet weak var nickname: UILabel!
@@ -33,6 +31,10 @@ class ChatCell: UITableViewCell {
             showMiniProfile()
         }
         
+    }
+    
+    deinit {
+        print("ChatCell deinit")
     }
     
     override func awakeFromNib() {

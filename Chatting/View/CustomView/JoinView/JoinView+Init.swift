@@ -37,6 +37,7 @@ extension JoinView {
     func setBorderColor() {
         topView.layer.addBorder([.bottom], color: colorManager.color223, width: 1)
         pictureView.layer.borderColor = colorManager.color223.cgColor
+        textField.layer.borderColor = colorManager.color223.cgColor
         manButton.layer.borderColor = colorManager.color223.cgColor
         womanButton.layer.borderColor = colorManager.color223.cgColor
         yearView.layer.borderColor = colorManager.color223.cgColor

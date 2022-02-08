@@ -66,29 +66,32 @@ extension ChatView: UITableViewDataSource {
             
             // cell의 프로필 이미지가 클릭됐을 시 실행될 함수
             cell.showProfile = {
-                self.apiManager.getMembershipStatus(chat.email!, completion: { data in
-                    let profileView = ProfileView(frame: self.chatView!.frame)
-                    let userInfo = data["mem_info"]
-                    profileView.nameLabel.text = userInfo["name"].stringValue
-                    profileView.ageLabel.text = userInfo["age"].stringValue
-                    profileView.introduceLabel.text = userInfo["contents"].stringValue
-                    do {
-                        let imageData = try Data(contentsOf: URL(string: userInfo["profile_image"].stringValue)!)
-                        profileView.profileImage.image = UIImage(data: imageData)
-                    } catch {
-                        profileView.profileImage.image = UIImage()
-                    }
-                    if userInfo["gender"].stringValue == "M" {
-                        profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
-                        profileView.sexImage.image = UIImage(named: "ico_sex_m")
-                        profileView.sexAgeView.layer.borderColor = self.colorManager.profileManSexAgeBorderColor.cgColor
-                        profileView.ageLabel.textColor = self.colorManager.profileSexLabeltextColor
-                    }
-
-                    UIView.transition(with: self.chatView!, duration: 0.25, options: [.transitionCrossDissolve], animations: {
-                      self.chatView?.addSubview(profileView)
-                    }, completion: nil)
-                })
+//                JoinApiManager.instance.getMembershipStatus(chat.email!, completion: { [weak self] data in
+//                    
+//                    guard let self = self else { return }
+//                    
+//                    let profileView = ProfileView(frame: self.chatView!.frame)
+//                    let userInfo = data["mem_info"]
+//                    profileView.nameLabel.text = userInfo["name"].stringValue
+//                    profileView.ageLabel.text = userInfo["age"].stringValue
+//                    profileView.introduceLabel.text = userInfo["contents"].stringValue
+//                    do {
+//                        let imageData = try Data(contentsOf: URL(string: userInfo["profile_image"].stringValue)!)
+//                        profileView.profileImage.image = UIImage(data: imageData)
+//                    } catch {
+//                        profileView.profileImage.image = UIImage()
+//                    }
+//                    if userInfo["gender"].stringValue == "M" {
+//                        profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
+//                        profileView.sexImage.image = UIImage(named: "ico_sex_m")
+//                        profileView.sexAgeView.layer.borderColor = self.colorManager.profileManSexAgeBorderColor.cgColor
+//                        profileView.ageLabel.textColor = self.colorManager.profileSexLabeltextColor
+//                    }
+//
+//                    UIView.transition(with: self.chatView!, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+//                      self.chatView?.addSubview(profileView)
+//                    }, completion: nil)
+//                })
             }
             return cell
             

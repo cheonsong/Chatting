@@ -23,7 +23,7 @@ class ChatView: UIView{
     // 썸네일 클릭 시 프로필을 보여주기 위해 유저 정보를 담은 객체
     var memInfo = MemberInfo()
     // Lottie Animation View
-    var animationView: AnimationView?
+    weak var animationView: AnimationView?
     // 좋아요 버튼 활성화 타이머
     weak var likeTimer: Timer?
     // 채팅메세지, 시스템메세지를 담은 리스트
@@ -41,7 +41,7 @@ class ChatView: UIView{
     // CustomColor Manager
     let colorManager = ColorManager.instance
     // SocketManager
-    let socketManager = ChatSocketManager.instance
+    //let socketManager = ChatSocketManager.instance
     // LikeButton On, Off
     let likeOn = UIImage(named: "btn_bt_heart_on")
     let likeOff = UIImage(named: "btn_bt_heart_off")
@@ -50,8 +50,8 @@ class ChatView: UIView{
     // WebP이미지 디코딩을 위한 코더
     let WebPCoder = SDImageWebPCoder.shared
     // API Manager
-    let apiManager = JoinApiManager(service: APIServiceProvider())
-    let disposeBag = DisposeBag()
+    let apiManager = JoinApiManager.instance
+    var disposeBag = DisposeBag()
     
     // MARK: IBOutlet
     // 채팅 입력창
@@ -89,6 +89,7 @@ class ChatView: UIView{
     
     deinit {
         print("ChatView Deinit")
+        disposeBag = DisposeBag()
     }
     
     // 뷰가 로드된 후 블러처리를 해줌
@@ -101,6 +102,8 @@ class ChatView: UIView{
         self.chatView = Bundle.main.loadNibNamed("ChatView", owner: self, options: nil)?.first as? UIView
         chatView?.frame = self.bounds
         self.addSubview(chatView!)
+        
+        print("ChatView init")
         
         setTextView()
         
@@ -127,7 +130,7 @@ class ChatView: UIView{
             tapSendButton: sendButton.rx.tap.asObservable(),
             taplikeButton: likeButton.rx.tap.asObservable(),
             tapDownButton: downButton.rx.tap.asObservable(),
-            tapCancelButton: cancelButton.rx.tap.asObservable()
+            tapCancelButton: cancelButton.rx.tap.asObservable().share()
         )
         
         let output = viewModel.transform(input: input)
@@ -142,18 +145,9 @@ class ChatView: UIView{
             .bind(to: likeButton.rx.isSelected)
             .disposed(by: disposeBag)
         
-        // addChatList
-        // ChatModel을 ChatList에 추가
-        output.addChatList
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.socketManager.sendChatMessage($0.chat!)
-            })
-            .disposed(by: disposeBag)
-        
         // scrollDown
         // 아래로버튼 클릭 시 가장 최근에 대화로 이동
-        output.scrollDown
+        downButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
@@ -161,9 +155,9 @@ class ChatView: UIView{
             .disposed(by: disposeBag)
         
         // removeTextInTextView
-        // 사연을 보내면 입력창의 텍스트 초기화
+        // 채팅을 보내면 입력창의 텍스트 초기화
         // 가장 최신 대화로 이동
-        output.removeTextInTextView
+        sendButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.textView.text = ""
@@ -172,22 +166,20 @@ class ChatView: UIView{
         
         // deleteView
         // 채팅방 나가기
-        output.deleteView
+        cancelButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 
+                self.likeTimer?.invalidate()
+                self.likeTimer = nil
                 self.list.removeAll()
                 self.removeFromSuperview()
-                self.socketManager.serviceProvider?.disconnection()
-                
             })
             .disposed(by: disposeBag)
         
-        output.likeAnimation
+        likeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                
-                self.socketManager.sendLike()
                 
                 self.likeButton.setImage(self.likeOff, for: .normal)
                 self.likeButton.isEnabled = false

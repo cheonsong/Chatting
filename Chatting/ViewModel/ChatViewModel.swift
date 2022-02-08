@@ -9,7 +9,9 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class ChatViewModel: ViewModelType{
+class ChatViewModel: ViewModelType {
+    
+    let socketManager = ChatSocketManager.instance
     
     struct Input {
         var chatText: Observable<String>
@@ -20,23 +22,21 @@ class ChatViewModel: ViewModelType{
     }
     
     struct Output {
-        var addChatList: PublishRelay<ChatModel>
         var likeFlag: BehaviorRelay<Bool>
-        var scrollDown: PublishRelay<Void>
-        var removeTextInTextView: PublishRelay<Void>
-        var deleteView: PublishRelay<Void>
-        var likeAnimation: PublishRelay<Void>
     }
     
     var disposeBag = DisposeBag()
     
-    private let addChatList = PublishRelay<ChatModel>()
     private let likeFlag = BehaviorRelay(value: false)
-    private let scrollDown = PublishRelay<Void>()
-    private let removeTextInTextView = PublishRelay<Void>()
-    private let deleteView = PublishRelay<Void>()
-    private let likeAnimation = PublishRelay<Void>()
     
+    init() {
+        print("ChatViewModel init")
+    }
+    
+    deinit {
+        print("ChatViewModel deinit")
+        disposeBag = DisposeBag()
+    }
     
     /// Input 값을 입력 받아 처리 후 Output값을 출력
     /// - Parameter : Input
@@ -57,35 +57,28 @@ class ChatViewModel: ViewModelType{
             .withLatestFrom(input.chatText)
             .map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
             .filter({!$0.isEmpty})
-            .map( {ChatModel(chat: $0)} )
-            .bind(to: addChatList)
-            .disposed(by: disposeBag)
-        
-        // 채팅 보내기 버튼
-        // tapSendButton -> RemoveTextInTextView(Void)
-        input.tapSendButton
-            .bind(to: removeTextInTextView)
-            .disposed(by: disposeBag)
-        
-        // 아래로 이동 버튼
-        // tapDownButton -> scrollDown(Void)
-        input.tapDownButton
-            .bind(to: scrollDown)
+            .subscribe(onNext:{ [weak self] chat in
+                self?.socketManager.sendChatMessage(chat)
+            })
             .disposed(by: disposeBag)
         
         // 채팅방 나가기 버튼
         // tapCancelButton -> deleteView(Void)
+        
         input.tapCancelButton
-            .bind(to: deleteView)
+            .subscribe(onNext: { [weak self] in
+                self?.socketManager.serviceProvider?.disconnection()
+            })
             .disposed(by: disposeBag)
         
         // 좋아요 버튼
         // taplikeButton -> likeAnimatioin
         input.taplikeButton
-            .bind(to: likeAnimation)
+            .subscribe(onNext: { [weak self] in
+                self?.socketManager.sendLike()
+            })
             .disposed(by: disposeBag)
         
-        return Output(addChatList: addChatList, likeFlag: likeFlag, scrollDown: scrollDown, removeTextInTextView: removeTextInTextView, deleteView: deleteView, likeAnimation: likeAnimation
-        )
+        return Output(likeFlag: likeFlag)
     }
 }

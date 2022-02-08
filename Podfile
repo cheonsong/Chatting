@@ -17,5 +17,7 @@ target 'Chatting' do
   pod 'XHQWebViewJavascriptBridge'
   pod 'lottie-ios'
   pod 'SDWebImageWebPCoder'
+  pod 'SnapKit'
+  pod 'Then'
 
 end

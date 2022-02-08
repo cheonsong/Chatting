@@ -21,7 +21,7 @@ extension UIButton {
         gradient.frame = bounds
         gradient.cornerRadius = self.frame.height / 2
         
-        layer.addSublayer(gradient)
+        layer.insertSublayer(gradient, at: 0)
         
     }
     

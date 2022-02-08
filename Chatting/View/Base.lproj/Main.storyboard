@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fCz-dv-XOH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Jf-xt-AkF">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -16,7 +16,7 @@
         <!--Web View Controller-->
         <scene sceneID="A6G-iI-oTc">
             <objects>
-                <viewController id="fCz-dv-XOH" customClass="WebViewController" customModule="Chatting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" id="fCz-dv-XOH" customClass="WebViewController" customModule="Chatting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="svr-ul-rjL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,6 +52,14 @@
                                     <action selector="tapBackButton:" destination="fCz-dv-XOH" eventType="touchUpInside" id="7wx-3R-rv6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvQ-vZ-eEP">
+                                <rect key="frame" x="10" y="54" width="73" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="뒤로가기"/>
+                                <connections>
+                                    <action selector="backToRoot:" destination="fCz-dv-XOH" eventType="touchUpInside" id="f1Q-yX-XPs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6kc-7G-Tu0"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,20 +70,39 @@
                             <constraint firstItem="klK-co-dZw" firstAttribute="top" secondItem="6kc-7G-Tu0" secondAttribute="top" id="PNi-sL-RNb"/>
                             <constraint firstItem="XiO-9T-7iU" firstAttribute="top" secondItem="6kc-7G-Tu0" secondAttribute="top" id="Q2u-MS-TgZ"/>
                             <constraint firstItem="XiO-9T-7iU" firstAttribute="leading" secondItem="6kc-7G-Tu0" secondAttribute="leading" id="QWm-oJ-aSo"/>
+                            <constraint firstItem="pvQ-vZ-eEP" firstAttribute="top" secondItem="6kc-7G-Tu0" secondAttribute="top" constant="10" id="Tce-cJ-pgt"/>
                             <constraint firstItem="x8k-sl-ZIi" firstAttribute="top" secondItem="XiO-9T-7iU" secondAttribute="bottom" id="ZGh-cH-U1v"/>
                             <constraint firstItem="x8k-sl-ZIi" firstAttribute="bottom" secondItem="6kc-7G-Tu0" secondAttribute="bottom" id="rld-5G-Eej"/>
                             <constraint firstItem="6kc-7G-Tu0" firstAttribute="trailing" secondItem="x8k-sl-ZIi" secondAttribute="trailing" id="rop-tS-wZ0"/>
+                            <constraint firstItem="pvQ-vZ-eEP" firstAttribute="leading" secondItem="6kc-7G-Tu0" secondAttribute="leading" constant="10" id="tLT-vz-4Tc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="38C-Tx-a7P"/>
                     <connections>
                         <outlet property="backButton" destination="klK-co-dZw" id="fo0-eU-Tm3"/>
                         <outlet property="chatButton" destination="x8k-sl-ZIi" id="IOE-yp-HL4"/>
+                        <outlet property="goToRoot" destination="pvQ-vZ-eEP" id="Qfg-NU-y5Y"/>
                         <outlet property="wk" destination="XiO-9T-7iU" id="1Ny-EE-rgp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrs-re-Nlc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-711.20000000000005" y="136.28185907046478"/>
+            <point key="canvasLocation" x="-711.59420289855075" y="135.9375"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5Oe-Kz-fwG">
+            <objects>
+                <viewController id="6Jf-xt-AkF" customClass="ViewController" customModule="Chatting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6uP-Ub-Pd5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6L5-Bd-Jft"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8P-v9-zEx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1523" y="136"/>
         </scene>
     </scenes>
     <resources>

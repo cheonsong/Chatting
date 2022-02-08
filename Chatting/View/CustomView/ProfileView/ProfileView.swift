@@ -10,7 +10,7 @@ import UIKit
 class ProfileView: UIView {
     
     // MARK: Property
-    var profileView: UIView?
+    weak var profileView: UIView?
     let colorManager = ColorManager.instance
     
     // MARK: IBOutlet
@@ -44,7 +44,7 @@ class ProfileView: UIView {
         sender.isSelected = !sender.isSelected
     }
     
-    // MARK: Init
+    // MARK: Init & Deinit
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -55,10 +55,16 @@ class ProfileView: UIView {
         initialize()
     }
     
+    deinit {
+        print("ProfileView Deinit")
+    }
+    
     private func initialize() {
         self.profileView = Bundle.main.loadNibNamed("ProfileView", owner: self, options: nil)?.first as? UIView
         profileView?.frame = self.bounds
         self.addSubview(profileView!)
+        
+        print("ProfileView init")
         
         setCornerRadius()
         setGestureRecognizer()

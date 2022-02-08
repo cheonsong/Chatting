@@ -19,6 +19,10 @@ class SystemChatCell: UITableViewCell {
         chatSuperView.layer.cornerRadius = 4
     }
 
+    deinit {
+        print("sysChatCell deinit")
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

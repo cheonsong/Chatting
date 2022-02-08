@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-protocol ViewModelType {
+protocol ViewModelType: AnyObject {
     associatedtype Input
     associatedtype Output
     

@@ -9,13 +9,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-protocol JoinApiService {
-
-//    // 사연 리스트 GET
-//    func getStoryList(_ page: Int, completion: ((Int, Int, [Story]) ->Void)?)
-//
-//    // 사연 보내기 POST
-//    func postStoryToBJ(_ story: String, completion: (() -> Void)?)
+protocol JoinApiService: AnyObject {
     
     // 회원가입 여부 확인 GET
     func getMembershipStatus(_ email: String, completion: ((JSON)-> Void)?)
@@ -25,4 +19,5 @@ protocol JoinApiService {
     
     // 프로필리스트 요청 GET
     func getProfileList(_ email: String, completion: (()->Void)?)
+    
 }

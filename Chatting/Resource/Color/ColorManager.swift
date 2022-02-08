@@ -14,6 +14,18 @@ struct ColorManager {
     
     private init() {}
     
+    func makeColor(rgb: CGFloat)-> UIColor {
+        let RGB = rgb / 255
+        return UIColor(red: RGB, green: RGB, blue: rgb, alpha: 1)
+    }
+    
+    func makeColor(r: CGFloat, g: CGFloat, b: CGFloat)-> UIColor {
+        let red = r / 255
+        let green = g / 255
+        let blue = b / 255
+        return UIColor(red: red, green: green, blue: blue, alpha: 1)
+    }
+    
     let color17 = UIColor(red: 17/255, green: 17/255, blue: 17/255, alpha: 1)
     let color51 = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
     let color99 = UIColor(red: 99/255, green: 99/255, blue: 99/255, alpha: 1)

@@ -11,18 +11,23 @@ import RxSwift
 
 class JoinView: UIView {
     // MARK: Property
-    var view: UIView?
-    let colorManager = ColorManager.instance
-    let placeholder = "소개글을 작성해주세요 "
-    let viewModel = JoinViewModel()
-    let disposeBag = DisposeBag()
-    let imagePicker = UIImagePickerController()
-    
-    var userInfo: JoinModel?
-    var imageName: String?
-    let apiManager = JoinApiManager(service: APIServiceProvider())
+    weak var view: UIView?
     var kakaoEmail: String?
     var naverEmail: String?
+    var imageName: String?
+    
+    // CustomColor Manager
+    let colorManager = ColorManager.instance
+    // 소개 입력창 placeholder
+    let placeholder = "소개글을 작성해주세요 "
+    // Join ViewModel
+    let viewModel = JoinViewModel()
+    let disposeBag = DisposeBag()
+    // 프로필 사진 이미지 피커
+    let imagePicker = UIImagePickerController()
+    // JoinApiManager
+    let apiManager = JoinApiManager.instance
+
     
     // 생년월일 데이트피커
     let yearPickerView = UIPickerView()
@@ -75,7 +80,7 @@ class JoinView: UIView {
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
-    // MARK: Init
+    // MARK: Init & Deinit
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -93,102 +98,40 @@ class JoinView: UIView {
         view?.frame = self.bounds
         self.addSubview(view!)
         
+        print("JoinView init")
+        
         setDelegate()
+        
         setCornerRadius()
+        
         setBorderColor()
+        
         setBorderWidth()
+        
         setTextColor()
+        
         setKeyboardNoti()
+        
         setGestureRecognizer()
+        
         setPickerView()
+    }
+    
+    deinit {
+        print("JoinView Deinit")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        joinButton.setGradient(color1: colorManager.makeColor(r: 133, g: 129, b: 255), color2: colorManager.makeColor(r: 152, g: 107, b: 255))
     }
     
     // MARK: Function
     func bindToViewModel() {
         let input = JoinViewModel.Input(
-                                        imagePickButtonClicked: imagePickButton.rx.tap.asObservable(),
-                                        backButtonClicked: backButton.rx.tap.asObservable(),
-                                        manButtonClicked: manButton.rx.tap.asObservable(),
-                                        womanButtonClicked: womanButton.rx.tap.asObservable(),
-                                        yearButtonClicked: yearButton.rx.tap.asObservable(),
-                                        monthButtonClicked: monthButton.rx.tap.asObservable(),
-                                        dayButtonClicked: dayButton.rx.tap.asObservable(),
-                                        introduceText: introduceTextView.rx.text.orEmpty.asObservable(),
-                                        joinButtonClicked: joinButton.rx.tap.asObservable()
-                                        
+                                        introduceText: introduceTextView.rx.text.orEmpty.asObservable()
         )
         
         let output = viewModel.transform(input: input)
-        
-        // Input: backButtonClicked
-        // 회원가입창에서 뒤로가기
-        output.deleteView
-            .subscribe(onNext: {
-                self.removeFromSuperview()
-            })
-            .disposed(by: disposeBag)
-        
-        // Input: manButtonClicked
-        output.checkManButton
-            .subscribe(onNext: { _ in
-                self.manButton.layer.borderColor = UIColor.blue.cgColor
-                self.manButton.backgroundColor = self.colorManager.manButtonColor
-                self.womanButton.layer.borderColor = self.colorManager.color223.cgColor
-                self.womanButton.backgroundColor = UIColor.white
-                self.manButton.isSelected = true
-                self.womanButton.isSelected = false
-                print(self.validation())
-            })
-            .disposed(by: disposeBag)
-        
-        // Input: womanButtonClicked
-        output.checkWomanButton
-            .subscribe(onNext: { _ in
-                self.manButton.layer.borderColor = self.colorManager.color223.cgColor
-                self.manButton.backgroundColor = UIColor.white
-                self.womanButton.layer.borderColor = self.colorManager.womanButtonBorder.cgColor
-                self.womanButton.backgroundColor = self.colorManager.womanButtonColor
-                self.manButton.isSelected = false
-                self.womanButton.isSelected = true
-                print(self.validation())
-            })
-            .disposed(by: disposeBag)
-        
-        // Input: imagePickButtonClicked
-        // 라이브러리에서 이미지 선택하기
-        output.imagePick
-            .subscribe(onNext: { _ in
-                self.openLibrary()
-                print(self.validation())
-            })
-            .disposed(by: disposeBag)
-        
-        // Input: yearButtonClicked
-        output.yearPick
-            .subscribe(onNext: { _ in
-                self.view?.addSubview(self.yearPickerView)
-                self.view?.addSubview(self.pickerToolbar)
-                print(self.validation())
-            })
-            .disposed(by: disposeBag)
-        
-        // Input: monthButtonClicked
-        output.monthPick
-            .subscribe(onNext: { _ in
-                self.view?.addSubview(self.monthPickerView)
-                self.view?.addSubview(self.pickerToolbar)
-                print(self.validation())
-            })
-            .disposed(by: disposeBag)
-        
-        // Input: dayButtonClicked
-        output.dayPick
-            .subscribe(onNext: { _ in
-                self.view?.addSubview(self.dayPickerView)
-                self.view?.addSubview(self.pickerToolbar)
-                print(self.validation())
-            })
-            .disposed(by: disposeBag)
         
         // Input: introduceText
         // (0/200) 텍스트 변경
@@ -196,20 +139,98 @@ class JoinView: UIView {
             .bind(to: remainTextLabel.rx.text)
             .disposed(by: disposeBag)
         
-        // Input: introduceText
-        output.textCount
-            .subscribe(onNext: { _ in
-                print(self.validation())
+        // Input: backButtonClicked
+        // 회원가입창에서 뒤로가기
+        backButton.rx.tap
+            .subscribe(onNext: {
+                self.removeFromSuperview()
             })
             .disposed(by: disposeBag)
         
+        // Input: manButtonClicked
+        manButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.manButton.layer.borderColor = UIColor.blue.cgColor
+                self.manButton.backgroundColor = self.colorManager.manButtonColor
+                self.womanButton.layer.borderColor = self.colorManager.color223.cgColor
+                self.womanButton.backgroundColor = UIColor.white
+                self.manButton.isSelected = true
+                self.womanButton.isSelected = false
+            })
+            .disposed(by: disposeBag)
+        
+        // Input: womanButtonClicked
+        womanButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
+                self.manButton.layer.borderColor = self.colorManager.color223.cgColor
+                self.manButton.backgroundColor = UIColor.white
+                self.womanButton.layer.borderColor = self.colorManager.womanButtonBorder.cgColor
+                self.womanButton.backgroundColor = self.colorManager.womanButtonColor
+                self.manButton.isSelected = false
+                self.womanButton.isSelected = true
+            })
+            .disposed(by: disposeBag)
+        
+        // Input: imagePickButtonClicked
+        // 라이브러리에서 이미지 선택하기
+        imagePickButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
+                self.openLibrary()
+            })
+            .disposed(by: disposeBag)
+        
+        // Input: yearButtonClicked
+        yearButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
+                self.view?.addSubview(self.yearPickerView)
+                self.view?.addSubview(self.pickerToolbar)
+            })
+            .disposed(by: disposeBag)
+        
+        // Input: monthButtonClicked
+        monthButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
+                self.view?.addSubview(self.monthPickerView)
+                self.view?.addSubview(self.pickerToolbar)
+            })
+            .disposed(by: disposeBag)
+        
+        // Input: dayButtonClicked
+        dayButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
+                self.view?.addSubview(self.dayPickerView)
+                self.view?.addSubview(self.pickerToolbar)
+            })
+            .disposed(by: disposeBag)
+
+        
         // Input: joinButtonClicked
         // 작성된 회원정보를 서버로 보냄
-        output.userInfo
-            .subscribe(onNext: { _ in
-                self.userInfo = self.setUserInfo()
-                //self.apiManager.postUserInfo(self.userInfo!, completion: nil)
-                self.removeFromSuperview()
+        
+        joinButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
+                if self.validation() {
+                    self.apiManager.postUserInfo(self.getUserInfo(), completion: nil)
+                    self.removeFromSuperview()
+                } else {
+                    let alert = UIAlertController(title: "입력되지 않은 정보가 있습니다.", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default))
+                    getRootViewController()?.present(alert, animated: false, completion: nil)
+                }
+                
             })
             .disposed(by: disposeBag)
         
@@ -219,22 +240,18 @@ class JoinView: UIView {
     func validation() -> Bool{
         
         if !textField.text!.isEmpty && (manButton.isSelected || womanButton.isSelected) && yearLabel.text!.count > 1 && monthLabel.text!.count > 1 && dayLabel.text!.count > 1 && !introduceTextView.text!.isEmpty {
-            joinButton.isEnabled = true
-            joinButton.backgroundColor = .purple
             return true
         }
-        joinButton.isEnabled = false
-        joinButton.backgroundColor = .gray
         return false
     }
     
-    // 회원정보 모델
-    func setUserInfo() -> JoinModel {
+    // 회원정보 모델 얻어오기
+    func getUserInfo() -> JoinModel {
         let userInfo = JoinModel()
         
         userInfo.email = kakaoEmail == "" ? naverEmail! : kakaoEmail!
         userInfo.name = textField.text
-        userInfo.profileImg = imageView.image
+        userInfo.profileImg = imageView.image ?? UIImage()
         userInfo.age = currentAge()
         userInfo.costs = introduceTextView.text
         userInfo.gender = manButton.isSelected ? "m" : "f"

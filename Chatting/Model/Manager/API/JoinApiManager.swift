@@ -11,10 +11,17 @@ import SwiftyJSON
 // TODO: - APIManager
 class JoinApiManager: JoinApiService {
     
+    static let instance = JoinApiManager(service: APIServiceProvider())
+    
     var apiServiceProvider: ApiService?
     
-    init(service: ApiService) {
+    private init(service: ApiService) {
         self.apiServiceProvider = service
+        print("JoinApiManager init")
+    }
+    
+    deinit {
+        print("JoinApiManager deinit")
     }
     
     // 회원정보 얻어오기
