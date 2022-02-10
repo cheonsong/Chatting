@@ -47,14 +47,14 @@ class ChatView: UIView{
     let likeOff = UIImage(named: "btn_bt_heart_off")
     // ChatViewModel
     let viewModel = ChatViewModel()
-    // WebP이미지 디코딩을 위한 코더
-    let WebPCoder = SDImageWebPCoder.shared
     // API Manager
-    let apiManager = JoinApiManager.instance
+    let apiManager = JoinApiManager(service: APIServiceProvider())
     var disposeBag = DisposeBag()
     
     // MARK: IBOutlet
+    @IBOutlet weak var stackView: UIStackView!
     // 채팅 입력창
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var chatSuperView: UIView!
     // 채팅 입력 텍스트뷰
     @IBOutlet weak var textSuperView: UIView!
@@ -89,7 +89,7 @@ class ChatView: UIView{
     
     deinit {
         print("ChatView Deinit")
-        disposeBag = DisposeBag()
+        //disposeBag = DisposeBag()
     }
     
     // 뷰가 로드된 후 블러처리를 해줌
@@ -104,6 +104,13 @@ class ChatView: UIView{
         self.addSubview(chatView!)
         
         print("ChatView init")
+        
+        likeButton.setImage(likeOn, for: .normal)
+        
+        textView.delegate = self
+        textView.isScrollEnabled = false
+        textView.textContainerInset = UIEdgeInsets(top: 7.5, left: 15, bottom: 0, right: 15)
+        textView.tintColor = .lightGray
         
         setTextView()
         
@@ -129,7 +136,6 @@ class ChatView: UIView{
             chatText: textView.rx.text.orEmpty.asObservable(),
             tapSendButton: sendButton.rx.tap.asObservable(),
             taplikeButton: likeButton.rx.tap.asObservable(),
-            tapDownButton: downButton.rx.tap.asObservable(),
             tapCancelButton: cancelButton.rx.tap.asObservable().share()
         )
         
@@ -174,6 +180,7 @@ class ChatView: UIView{
                 self.likeTimer = nil
                 self.list.removeAll()
                 self.removeFromSuperview()
+                
             })
             .disposed(by: disposeBag)
         
@@ -181,11 +188,15 @@ class ChatView: UIView{
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 
-                self.likeButton.setImage(self.likeOff, for: .normal)
-                self.likeButton.isEnabled = false
-                self.likeButton.alpha = 0.5
-                self.animationView?.stop()
-                self.startLikeButtonTimer()
+                if self.likeButton.image(for: .normal)!.isEqual(self.likeOn) {
+                    ChatSocketManager.instance.sendLike()
+                    self.likeButton.setImage(self.likeOff, for: .normal)
+                    self.animationView?.stop()
+                    self.animationView?.isHidden = true
+                    self.startLikeButtonTimer()
+                } else {
+                    print("nonoononononoononon")
+                }
             })
             .disposed(by: disposeBag)
         

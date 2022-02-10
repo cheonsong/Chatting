@@ -24,7 +24,7 @@ class WebViewController: UIViewController {
     var naverEmail: String = ""
     
     // MARK: Constants
-    let apiManager = JoinApiManager.instance
+    let apiManager = JoinApiManager(service: APIServiceProvider())
     // 회원정보를 담은 객체
     let memInfo = MemberInfo()
     // 네이버 로그인 인스턴스
@@ -199,12 +199,12 @@ class WebViewController: UIViewController {
             default:
                 print("default")
             }
-            responseCallback(data)
+            //responseCallback(data)
         })
         
-        bridge?.callHandler(handlerName: "$.callFromWeb", data: nil, responseCallback: { (data) in
-            print("Swift received response\(String(describing: data))")
-        })
+//        bridge?.callHandler(handlerName: "$.callFromWeb", data: nil, responseCallback: { (data) in
+//            print("Swift received response\(String(describing: data))")
+//        })
     }
 }
 

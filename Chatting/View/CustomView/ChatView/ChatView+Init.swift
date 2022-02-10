@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import SwiftyJSON
 import Lottie
+import SnapKit
+import Then
 
 extension ChatView {
     
@@ -26,19 +28,18 @@ extension ChatView {
                 // 시스템 메세지
             case "rcvSystemMsg":
                 print(json["msg"].stringValue)
-                let chat = ChatModel(chat: json["msg"].stringValue)
-                chat.type = .system
-                self.list.append(chat)
+                let chat = ChatModel(chat: json["msg"].stringValue, type: .system)
+                self.list.insert(chat, at: 0)
+
                 self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 
                 // 채팅 메세지
             case "rcvChatMsg":
-                let chat = ChatModel(chat: json["msg"].stringValue)
-                chat.type = .user
+                let chat = ChatModel(chat: json["msg"].stringValue, type: .user)
                 chat.nickname = json["from"]["chat_name"].stringValue
                 chat.imageLink = json["from"]["mem_photo"].stringValue
                 chat.email = json["from"]["mem_id"].stringValue
-                self.list.append(chat)
+                self.list.insert(chat, at: 0)
                 self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 
                 // 토스트 메세지
@@ -82,17 +83,24 @@ extension ChatView {
     // 텍스트 뷰 초기화
     func setTextView() {
         textView.backgroundColor = .white
-        textSuperView.layer.cornerRadius = 18
+        textView.layer.cornerRadius = 18
         textView.text = placeholder
     }
     
     // Lottie Animation
     func setLottieAnimation() {
-        animationView = AnimationView(name: "ani_live_like_full")
-        animationView?.frame = CGRect(x: 0, y: likeButton.frame.origin.y, width: 36, height: 36)
-        animationView?.contentMode = .scaleAspectFit
-        animationView?.loopMode = .loop
+        animationView = AnimationView(name: "ani_live_like_full").then {
+            $0.contentMode = .scaleAspectFit
+            $0.loopMode = .loop
+            $0.frame = CGRect(x: 0, y: likeButton.frame.origin.y, width: 36, height: 36)
+        }
+        
         self.likeButton.addSubview(animationView!)
+    
+//        animationView?.snp.makeConstraints {
+//            $0.edges.equalTo(likeButton)
+//        }
+        
         animationView?.isUserInteractionEnabled = false
         animationView?.play()
         
@@ -161,7 +169,7 @@ extension ChatView {
                     let option:CGFloat = arc4random()%2 == 0 ? -1 : 1
                     
                     $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 75)),
-                                      y: $0.frame.origin.y - CGFloat(arc4random() % 80),
+                                      y: CGFloat(arc4random() % 80),
                                       width: $0.frame.width + 20,
                                       height: $0.frame.height + 20)
                     
@@ -173,11 +181,12 @@ extension ChatView {
     
     // 좋아요 버튼 활성화 타이머
     func startLikeButtonTimer() {
+        print("Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동")
         likeTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false, block: { [weak self] (Timer) in
             guard let self = self else { return }
-            self.likeButton.isEnabled = true
+            
             self.likeButton.setImage(self.likeOn, for: .normal)
-            self.likeButton.alpha = 1
+            self.animationView?.isHidden = false
             self.animationView?.play()
         })
     }

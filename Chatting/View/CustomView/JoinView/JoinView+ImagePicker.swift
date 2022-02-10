@@ -18,7 +18,6 @@ extension JoinView: UIImagePickerControllerDelegate, UINavigationControllerDeleg
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = image
             addImageLabel.isHidden = true
-            pictureView.layer.borderColor = UIColor.clear.cgColor
         }
         
         if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {

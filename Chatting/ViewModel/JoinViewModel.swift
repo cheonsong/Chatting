@@ -26,6 +26,7 @@ class JoinViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         
         input.introduceText
+            .filter({ $0 != "소개글을 작성해주세요 " })
             .map({"(\($0.count)/200)"})
             .bind(to: textCount)
             .disposed(by: disposeBag)

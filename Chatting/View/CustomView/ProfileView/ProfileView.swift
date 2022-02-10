@@ -40,6 +40,7 @@ class ProfileView: UIView {
     
     // 소개글
     @IBOutlet weak var introduceLabel: UILabel!
+    @IBOutlet weak var cv: UICollectionView!
     
     // MARK: IBAction
     // 좋아요

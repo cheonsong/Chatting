@@ -12,16 +12,7 @@ class ChatModel {
     var type: ChatType?
     var chat: String?
     var nickname: String?
-    var imageLink: String? {
-        didSet {
-            do {
-            image = UIImage(data: try Data(contentsOf: URL(string: imageLink!)!))
-            } catch {
-                image = UIImage()
-            }
-        }
-    }
-    var image: UIImage?
+    var imageLink: String?
     var email: String?
     
     init() {
@@ -30,10 +21,10 @@ class ChatModel {
         self.type = .system
     }
     
-    init(chat: String) {
+    init(chat: String, type: ChatType) {
         self.chat = chat
         self.nickname = "User"
-        self.type = .user
+        self.type = type
     }
     
     enum ChatType {

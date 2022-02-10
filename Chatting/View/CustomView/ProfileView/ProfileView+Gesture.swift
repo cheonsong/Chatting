@@ -10,6 +10,7 @@ import UIKit
 
 extension ProfileView: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let name = gestureRecognizer.name
         self.removeFromSuperview()
         return true
     }

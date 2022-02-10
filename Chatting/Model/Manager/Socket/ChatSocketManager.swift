@@ -47,7 +47,7 @@ class ChatSocketManager: ChatSocketService {
         serviceProvider?.socket?.emit(event, ["cmd" : "sendChatMsg",
                                               "msg" :  msg
                                              ]) {
-            print("Emit2 : " + msg + " 전송")
+            print("Emit : " + msg + " 전송")
         }
     }
     

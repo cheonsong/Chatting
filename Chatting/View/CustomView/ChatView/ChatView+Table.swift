@@ -44,7 +44,7 @@ extension ChatView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 테이블뷰를 뒤집었기 때문에 list도 뒤집어 줘야함
-        let chat = self.list.reversed()[indexPath.row]
+        let chat = self.list[indexPath.row]
         
         switch (chat.type) {
             
@@ -61,18 +61,18 @@ extension ChatView: UITableViewDataSource {
             cell.email = chat.email!
             cell.chat.text = chat.chat!
             cell.nickname.text = chat.nickname!
-            cell.profileImage.setImage(chat.image, for: .normal)
+            cell.profileImage.setImage(UIImage(data: try! Data(contentsOf: URL(string: chat.imageLink!)!)), for: .normal)
             cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
             
             // cell의 프로필 이미지가 클릭됐을 시 실행될 함수
             cell.showProfile = { [weak self] in
                 guard let self = self else { return }
-                
-                JoinApiManager.instance.getMembershipStatus(chat.email!, completion: {  data in
-                    
+
+                self.apiManager.getMembershipStatus(chat.email!, completion: {  data in
+
                     let userInfo = data["mem_info"]
                     let profileView = ProfileView(frame: self.chatView!.frame)
-                    
+
                     profileView.nameLabel.text = userInfo["name"].stringValue
                     profileView.ageLabel.text = userInfo["age"].stringValue
                     profileView.introduceLabel.text = userInfo["contents"].stringValue

@@ -11,11 +11,9 @@ import SwiftyJSON
 // TODO: - APIManager
 class JoinApiManager: JoinApiService {
     
-    static let instance = JoinApiManager(service: APIServiceProvider())
-    
     var apiServiceProvider: ApiService?
     
-    private init(service: ApiService) {
+    init(service: ApiService) {
         self.apiServiceProvider = service
         print("JoinApiManager init")
     }

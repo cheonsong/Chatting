@@ -46,6 +46,7 @@ extension JoinView {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            keyboardHeight = keyboardSize.height
             if self.frame.origin.y == 0{
                 self.frame.origin.y -= keyboardSize.height
                 if placeholder == introduceTextView.text {
@@ -65,5 +66,4 @@ extension JoinView {
             }
         }
     }
-    
 }

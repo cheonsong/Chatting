@@ -11,6 +11,8 @@
 		E81AC33227AB5F4A002511B8 /* WebViewVC+Naver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC33127AB5F4A002511B8 /* WebViewVC+Naver.swift */; };
 		E81AC38A27B0D0D0002511B8 /* ChatView+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC38927B0D0D0002511B8 /* ChatView+Init.swift */; };
 		E81AC38C27B0D658002511B8 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC38B27B0D658002511B8 /* FontManager.swift */; };
+		E81AC39127B49B9A002511B8 /* ChatView+TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC39027B49B9A002511B8 /* ChatView+TextView.swift */; };
+		E81AC39327B4DC6B002511B8 /* JoinView+TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC39227B4DC6B002511B8 /* JoinView+TextView.swift */; };
 		E86FB4A8279A7A220076F549 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4A7279A7A220076F549 /* ProfileView.swift */; };
 		E86FB4AA279A7A2C0076F549 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4A9279A7A2C0076F549 /* ProfileView.xib */; };
 		E86FB4AC279A81FF0076F549 /* ProfileView+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */; };
@@ -81,6 +83,8 @@
 		E81AC33127AB5F4A002511B8 /* WebViewVC+Naver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebViewVC+Naver.swift"; sourceTree = "<group>"; };
 		E81AC38927B0D0D0002511B8 /* ChatView+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+Init.swift"; sourceTree = "<group>"; };
 		E81AC38B27B0D658002511B8 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		E81AC39027B49B9A002511B8 /* ChatView+TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+TextView.swift"; sourceTree = "<group>"; };
+		E81AC39227B4DC6B002511B8 /* JoinView+TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JoinView+TextView.swift"; sourceTree = "<group>"; };
 		E86FB4A7279A7A220076F549 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E86FB4A9279A7A2C0076F549 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+Gesture.swift"; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 				E88D58DA2796975F003A4910 /* ChatView+Keyboard.swift */,
 				E88D58DF2796AE79003A4910 /* ChatView+Gesture.swift */,
 				E81AC38927B0D0D0002511B8 /* ChatView+Init.swift */,
+				E81AC39027B49B9A002511B8 /* ChatView+TextView.swift */,
 			);
 			path = ChatView;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 				E8CA3C732798F1CA00FE85F8 /* JoinView+ImagePicker.swift */,
 				E8CA3C772798FA8400FE85F8 /* JoinView+Gesture.swift */,
 				E8CA3C792799151600FE85F8 /* JoinView+PickerView.swift */,
+				E81AC39227B4DC6B002511B8 /* JoinView+TextView.swift */,
 				E8CA3C7B279915EA00FE85F8 /* JoinView+Init.swift */,
 			);
 			path = JoinView;
@@ -593,6 +599,7 @@
 				E86FB4BD279F78FA0076F549 /* SocketService.swift in Sources */,
 				E8CA3C662797E7BC00FE85F8 /* AddBorder.swift in Sources */,
 				E8CA3C7A2799151600FE85F8 /* JoinView+PickerView.swift in Sources */,
+				E81AC39127B49B9A002511B8 /* ChatView+TextView.swift in Sources */,
 				E8CA3C782798FA8400FE85F8 /* JoinView+Gesture.swift in Sources */,
 				E88D58B62794FF56003A4910 /* ColorManager.swift in Sources */,
 				E88D58C12794FF89003A4910 /* ApiService.swift in Sources */,
@@ -613,6 +620,7 @@
 				E88D58D727964917003A4910 /* ChatView+Table.swift in Sources */,
 				E88D58AA2794FEFB003A4910 /* ChatCell.swift in Sources */,
 				E88D58912794FC80003A4910 /* AppDelegate.swift in Sources */,
+				E81AC39327B4DC6B002511B8 /* JoinView+TextView.swift in Sources */,
 				E8CA3C5A2797D7E600FE85F8 /* JoinView.swift in Sources */,
 				E8CA3C542797D7BA00FE85F8 /* JoinViewModel.swift in Sources */,
 				E81AC33227AB5F4A002511B8 /* WebViewVC+Naver.swift in Sources */,

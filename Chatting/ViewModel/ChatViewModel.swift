@@ -11,13 +11,10 @@ import RxSwift
 
 class ChatViewModel: ViewModelType {
     
-    let socketManager = ChatSocketManager.instance
-    
     struct Input {
         var chatText: Observable<String>
         var tapSendButton: Observable<Void>
         var taplikeButton: Observable<Void>
-        var tapDownButton: Observable<Void>
         var tapCancelButton: Observable<Void>
     }
     
@@ -57,8 +54,8 @@ class ChatViewModel: ViewModelType {
             .withLatestFrom(input.chatText)
             .map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
             .filter({!$0.isEmpty})
-            .subscribe(onNext:{ [weak self] chat in
-                self?.socketManager.sendChatMessage(chat)
+            .subscribe(onNext:{ chat in
+                ChatSocketManager.instance.sendChatMessage(chat)
             })
             .disposed(by: disposeBag)
         
@@ -66,16 +63,8 @@ class ChatViewModel: ViewModelType {
         // tapCancelButton -> deleteView(Void)
         
         input.tapCancelButton
-            .subscribe(onNext: { [weak self] in
-                self?.socketManager.serviceProvider?.disconnection()
-            })
-            .disposed(by: disposeBag)
-        
-        // 좋아요 버튼
-        // taplikeButton -> likeAnimatioin
-        input.taplikeButton
-            .subscribe(onNext: { [weak self] in
-                self?.socketManager.sendLike()
+            .subscribe(onNext: { _ in
+                ChatSocketManager.instance.serviceProvider?.disconnection()
             })
             .disposed(by: disposeBag)
         

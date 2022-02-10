@@ -14,6 +14,7 @@ extension ProfileView {
         sexAgeView.backgroundColor = .white
         locationView.backgroundColor = .white
         sexAgeSuperView.backgroundColor = .white
+        cv.backgroundColor = .white
     }
     
     func setCornerRadius() {
