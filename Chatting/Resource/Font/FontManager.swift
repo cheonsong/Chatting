@@ -10,10 +10,6 @@ import UIKit
 
 struct FontManager {
     
-    static let instance = FontManager()
-    
-    private init() {}
-    
     enum NotoSansKR {
         case light
         case bold
@@ -39,4 +35,5 @@ struct FontManager {
             return UIFont(name: "NotoSansKR-Regular", size: size)!
         }
     }
+    
 }

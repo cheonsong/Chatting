@@ -85,8 +85,8 @@ extension ChatView: UITableViewDataSource {
                     if userInfo["gender"].stringValue == "M" {
                         profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
                         profileView.sexImage.image = UIImage(named: "ico_sex_m")
-                        profileView.sexAgeView.layer.borderColor = self.colorManager.profileManSexAgeBorderColor.cgColor
-                        profileView.ageLabel.textColor = self.colorManager.profileSexLabeltextColor
+                        profileView.sexAgeView.layer.borderColor = ColorManager.profileManSexAgeBorderColor.cgColor
+                        profileView.ageLabel.textColor = ColorManager.profileSexLabeltextColor
                     }
 
                     getRootViewController()?.view.addSubview(profileView)

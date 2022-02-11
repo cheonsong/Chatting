@@ -27,21 +27,9 @@ class ChatView: UIView{
     // 좋아요 버튼 활성화 타이머
     weak var likeTimer: Timer?
     // 채팅메세지, 시스템메세지를 담은 리스트
-    var list = [ChatModel]() {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+    var list = [ChatModel]()
     
     // MARK: Constants
-    // 채팅 입력창 placeholder
-    let placeholder = "대화를 입력하세요"
-    // Animation Total Time
-    let animationTotalTime = 6.0
-    // CustomColor Manager
-    let colorManager = ColorManager.instance
-    // SocketManager
-    //let socketManager = ChatSocketManager.instance
     // LikeButton On, Off
     let likeOn = UIImage(named: "btn_bt_heart_on")
     let likeOff = UIImage(named: "btn_bt_heart_off")
@@ -55,9 +43,6 @@ class ChatView: UIView{
     @IBOutlet weak var stackView: UIStackView!
     // 채팅 입력창
     @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var chatSuperView: UIView!
-    // 채팅 입력 텍스트뷰
-    @IBOutlet weak var textSuperView: UIView!
     @IBOutlet weak var textView: UITextView!
     // 보내기 버튼
     @IBOutlet weak var sendButton: UIButton!
@@ -78,6 +63,7 @@ class ChatView: UIView{
         
         self.initialize()
         self.bindViewModel()
+        self.bindUI()
     }
     
     required init?(coder: NSCoder) {
@@ -85,6 +71,7 @@ class ChatView: UIView{
         
         self.initialize()
         self.bindViewModel()
+        self.bindUI()
     }
     
     deinit {
@@ -107,11 +94,6 @@ class ChatView: UIView{
         
         likeButton.setImage(likeOn, for: .normal)
         
-        textView.delegate = self
-        textView.isScrollEnabled = false
-        textView.textContainerInset = UIEdgeInsets(top: 7.5, left: 15, bottom: 0, right: 15)
-        textView.tintColor = .lightGray
-        
         setTextView()
         
         setGestureRecognizer()
@@ -127,6 +109,8 @@ class ChatView: UIView{
         setLottieAnimation()
     }
     
+    // MARK: BindViewModel (event 발생 시 데이터를 변환하거나 UI와 관련없는 작업이 필요할 시)
+    
     // Model -> ViewModel : Input
     // ViewModel transform 데이터 처리
     // ViewModel -> Model : Output
@@ -141,7 +125,6 @@ class ChatView: UIView{
         
         let output = viewModel.transform(input: input)
         
-        // TODO: output
         // 뷰에 바인딩 시켜주기
         
         // likeFlag
@@ -151,6 +134,10 @@ class ChatView: UIView{
             .bind(to: likeButton.rx.isSelected)
             .disposed(by: disposeBag)
         
+    }
+    
+    // MARK: BindUI (event 발생 시 단순히 UI만 바뀌는 경우)
+    private func bindUI() {
         // scrollDown
         // 아래로버튼 클릭 시 가장 최근에 대화로 이동
         downButton.rx.tap

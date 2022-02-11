@@ -41,8 +41,8 @@ extension ChatView {
             // 키보드가 올라오면 제약조건을 걸어줘 뷰의 위치를 재조정함
             bottomConstraint.constant = adjustmentHeight + 11
             sendButton.isHidden = false
-            if placeholder == textView.text {
-                textView.textColor = colorManager.color51
+            if Constant.chatPlaceholder == textView.text {
+                textView.textColor = ColorManager.color51
                 textView.text = ""
             }
             
@@ -52,8 +52,8 @@ extension ChatView {
             bottomConstraint.constant = 15
             sendButton.isHidden = true
             if(textView.text.isEmpty) {
-                textView.text = placeholder
-                textView.textColor = colorManager.color203
+                textView.text = Constant.chatPlaceholder
+                textView.textColor = ColorManager.color203
             }
         }
     }

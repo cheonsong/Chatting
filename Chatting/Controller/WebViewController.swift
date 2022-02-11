@@ -30,7 +30,6 @@ class WebViewController: UIViewController {
     // 네이버 로그인 인스턴스
     let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
     let socketManager = ChatSocketManager.instance
-    let colorManager = ColorManager.instance
     
     @IBOutlet weak var wk: WKWebView!
     @IBOutlet weak var chatButton: UIButton!
@@ -188,8 +187,8 @@ class WebViewController: UIViewController {
                     if userInfo["gender"].stringValue == "M" {
                         profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
                         profileView.sexImage.image = UIImage(named: "ico_sex_m")
-                        profileView.sexAgeView.layer.borderColor = self.colorManager.profileManSexAgeBorderColor.cgColor
-                        profileView.ageLabel.textColor = self.colorManager.profileSexLabeltextColor
+                        profileView.sexAgeView.layer.borderColor = ColorManager.profileManSexAgeBorderColor.cgColor
+                        profileView.ageLabel.textColor = ColorManager.profileSexLabeltextColor
                     }
                     
                     self.view.addSubview(profileView)

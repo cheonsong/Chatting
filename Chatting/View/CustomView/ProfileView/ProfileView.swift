@@ -13,7 +13,6 @@ class ProfileView: UIView {
     
     // MARK: Property
     weak var profileView: UIView?
-    let colorManager = ColorManager.instance
     
     // MARK: IBOutlet
     // 바뀌지 않는 뷰

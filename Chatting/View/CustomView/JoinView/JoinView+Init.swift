@@ -10,18 +10,6 @@ import UIKit
 
 extension JoinView {
     
-    func setKeyboardNoti() {
-        //키보드 알림 등록
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-    }
-    
     func setCornerRadius() {
         pictureView.layer.cornerRadius = 10
         textField.layer.cornerRadius = 5
@@ -36,15 +24,15 @@ extension JoinView {
     }
     
     func setBorderColor() {
-        topView.layer.addBorder([.bottom], color: colorManager.color223, width: 1)
-        pictureView.layer.borderColor = colorManager.color223.cgColor
-        textField.layer.borderColor = colorManager.color223.cgColor
-        manButton.layer.borderColor = colorManager.color223.cgColor
-        womanButton.layer.borderColor = colorManager.color223.cgColor
-        yearView.layer.borderColor = colorManager.color223.cgColor
-        monthView.layer.borderColor = colorManager.color223.cgColor
-        dayView.layer.borderColor = colorManager.color223.cgColor
-        introduceSuperView.layer.borderColor = colorManager.color223.cgColor
+        topView.layer.addBorder([.bottom], color: ColorManager.color223, width: 1)
+        pictureView.layer.borderColor = ColorManager.color223.cgColor
+        textField.layer.borderColor = ColorManager.color223.cgColor
+        manButton.layer.borderColor = ColorManager.color223.cgColor
+        womanButton.layer.borderColor = ColorManager.color223.cgColor
+        yearView.layer.borderColor = ColorManager.color223.cgColor
+        monthView.layer.borderColor = ColorManager.color223.cgColor
+        dayView.layer.borderColor = ColorManager.color223.cgColor
+        introduceSuperView.layer.borderColor = ColorManager.color223.cgColor
     }
     
     func setBorderWidth() {
@@ -59,8 +47,8 @@ extension JoinView {
     }
     
     func setTextColor() {
-        textField.textColor = colorManager.color99
-        introduceTextView.textColor = colorManager.color191
+        textField.textColor = ColorManager.color99
+        introduceTextView.textColor = ColorManager.color191
     }
     
     func setDelegate() {

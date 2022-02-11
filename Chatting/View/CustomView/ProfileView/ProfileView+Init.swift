@@ -29,16 +29,16 @@ extension ProfileView {
     }
     
     func setBorder() {
-        sexAgeView.layer.borderColor = colorManager.profileWomanSexAgeBorderColor.cgColor
+        sexAgeView.layer.borderColor = ColorManager.profileWomanSexAgeBorderColor.cgColor
         sexAgeView.layer.borderWidth = 1
         
-        likeLabel.layer.borderColor = colorManager.profileLikeBorderColor.cgColor
+        likeLabel.layer.borderColor = ColorManager.profileLikeBorderColor.cgColor
         likeLabel.layer.borderWidth = 1
         
-        locationView.layer.borderColor = colorManager.locationViewBorderColor.cgColor
+        locationView.layer.borderColor = ColorManager.locationViewBorderColor.cgColor
         locationView.layer.borderWidth = 1
         
-        introduceView.layer.borderColor = colorManager.color238.cgColor
+        introduceView.layer.borderColor = ColorManager.color238.cgColor
         introduceView.layer.borderWidth = 1
     }
     

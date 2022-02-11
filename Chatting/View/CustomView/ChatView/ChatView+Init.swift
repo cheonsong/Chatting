@@ -39,7 +39,9 @@ extension ChatView {
                 chat.nickname = json["from"]["chat_name"].stringValue
                 chat.imageLink = json["from"]["mem_photo"].stringValue
                 chat.email = json["from"]["mem_id"].stringValue
+                print("=====================rcvChatMsg=====================")
                 self.list.insert(chat, at: 0)
+                self.tableView.reloadData()
                 self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 
                 // 토스트 메세지
@@ -84,7 +86,11 @@ extension ChatView {
     func setTextView() {
         textView.backgroundColor = .white
         textView.layer.cornerRadius = 18
-        textView.text = placeholder
+        textView.text = Constant.chatPlaceholder
+        textView.delegate = self
+//        textView.isScrollEnabled = false
+        textView.textContainerInset = UIEdgeInsets(top: 7.5, left: 15, bottom: 0, right: 15)
+        textView.tintColor = .lightGray
     }
     
     // Lottie Animation
@@ -135,10 +141,8 @@ extension ChatView {
     
     // 좋아요 애니메이션 시작
     func startLikeAnimation() {
-        UIView.animateKeyframes(withDuration: 6, delay: 0, options: .calculationModePaced, animations: { [weak self] in
+        UIView.animateKeyframes(withDuration: Constant.animationTotalTime, delay: 0, options: .calculationModePaced, animations: { [weak self] in
             guard let self = self else { return }
-            
-            self.layoutIfNeeded()
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.15, animations: {
                 self.heartList.forEach({
@@ -149,11 +153,10 @@ extension ChatView {
             
             
             
-            UIView.addKeyframe(withRelativeStartTime: 0.15, relativeDuration: 0.55, animations: { [weak self] in
-                guard let self = self else { return }
+            UIView.addKeyframe(withRelativeStartTime: 0.15, relativeDuration: 0.55, animations: {
                 self.heartList.forEach({
                     
-                    let option:CGFloat = arc4random()%2 == 0 ? -1 : 1
+                    let option:CGFloat = arc4random() % 2 == 0 ? -1 : 1
                     
                     $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 75)),
                                       y: $0.frame.origin.y - CGFloat((arc4random() % 50) + 200),
@@ -162,11 +165,10 @@ extension ChatView {
                 })
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.15, animations: { [weak self] in
-                guard let self = self else { return }
+            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.3, animations: {
                 self.heartList.forEach({
                     
-                    let option:CGFloat = arc4random()%2 == 0 ? -1 : 1
+                    let option:CGFloat = arc4random() % 2 == 0 ? -1 : 1
                     
                     $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 75)),
                                       y: CGFloat(arc4random() % 80),

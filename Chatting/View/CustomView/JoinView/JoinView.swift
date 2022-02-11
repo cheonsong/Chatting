@@ -15,12 +15,8 @@ class JoinView: UIView {
     var kakaoEmail: String?
     var naverEmail: String?
     var imageName: String?
-    var keyboardHeight: CGFloat?
-    
-    // CustomColor Manager
-    let colorManager = ColorManager.instance
-    // 소개 입력창 placeholder
-    let placeholder = "소개글을 작성해주세요 "
+    var keyboardHeight: CGFloat = 0
+
     // Join ViewModel
     let viewModel = JoinViewModel()
     let disposeBag = DisposeBag()
@@ -112,11 +108,11 @@ class JoinView: UIView {
         
         setTextColor()
         
-        setKeyboardNoti()
-        
         setGestureRecognizer()
         
         setPickerView()
+        
+        setKeyboardNoti()
     }
     
     deinit {
@@ -124,7 +120,7 @@ class JoinView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        joinButton.setGradient(color1: colorManager.makeColor(r: 133, g: 129, b: 255), color2: colorManager.makeColor(r: 152, g: 107, b: 255))
+        joinButton.setGradient(color1: ColorManager.joinButtonGradientStart, color2: ColorManager.joinButtonGradientFinish)
     }
     
     // MARK: Function
@@ -141,6 +137,22 @@ class JoinView: UIView {
             .bind(to: remainTextLabel.rx.text)
             .disposed(by: disposeBag)
         
+//        introduceTextView.rx.didBeginEditing
+//            .subscribe(onNext: {  [weak self] in
+//                guard let self = self else { return }
+//
+//                self.setKeyboardNoti()
+//            })
+//            .disposed(by: disposeBag)
+//
+//        introduceTextView.rx.didEndEditing
+//            .subscribe(onNext: { [weak self] in
+//                guard let self = self else { return }
+//
+//                self.removeKeyboardNoti()
+//            })
+//            .disposed(by: disposeBag)
+        
         // Input: backButtonClicked
         // 회원가입창에서 뒤로가기
         backButton.rx.tap
@@ -155,8 +167,8 @@ class JoinView: UIView {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.manButton.layer.borderColor = UIColor.blue.cgColor
-                self.manButton.backgroundColor = self.colorManager.manButtonColor
-                self.womanButton.layer.borderColor = self.colorManager.color223.cgColor
+                self.manButton.backgroundColor = ColorManager.manButtonColor
+                self.womanButton.layer.borderColor = ColorManager.color223.cgColor
                 self.womanButton.backgroundColor = UIColor.white
                 self.manButton.isSelected = true
                 self.womanButton.isSelected = false
@@ -168,10 +180,10 @@ class JoinView: UIView {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 
-                self.manButton.layer.borderColor = self.colorManager.color223.cgColor
+                self.manButton.layer.borderColor = ColorManager.color223.cgColor
                 self.manButton.backgroundColor = UIColor.white
-                self.womanButton.layer.borderColor = self.colorManager.womanButtonBorder.cgColor
-                self.womanButton.backgroundColor = self.colorManager.womanButtonColor
+                self.womanButton.layer.borderColor = ColorManager.womanButtonBorder.cgColor
+                self.womanButton.backgroundColor = ColorManager.womanButtonColor
                 self.manButton.isSelected = false
                 self.womanButton.isSelected = true
             })
@@ -200,12 +212,12 @@ class JoinView: UIView {
         
     }
     
-    // 모든 정보가 작성됐을 경우에만 가입버튼 활성화
+    // 모든 정보가 작성됐을 경우에만 가입가능
     func validation() -> (Bool,String) {
         
         var what: String = ""
         
-        if !textField.text!.isEmpty && (manButton.isSelected || womanButton.isSelected) && yearLabel.text!.count > 1 && monthLabel.text!.count > 1 && dayLabel.text!.count > 1 && introduceTextView.text != placeholder {
+        if !textField.text!.isEmpty && (manButton.isSelected || womanButton.isSelected) && yearLabel.text!.count > 1 && monthLabel.text!.count > 1 && dayLabel.text!.count > 1 && introduceTextView.text != Constant.introducePlaceholder {
             return (true, what)
         }
         
@@ -221,7 +233,7 @@ class JoinView: UIView {
             what = what + "생년월일, "
         }
         
-        if introduceTextView.text == placeholder {
+        if introduceTextView.text == Constant.introducePlaceholder {
             what = what + "소개 "
         }
         

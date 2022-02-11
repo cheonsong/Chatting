@@ -13,6 +13,7 @@
 		E81AC38C27B0D658002511B8 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC38B27B0D658002511B8 /* FontManager.swift */; };
 		E81AC39127B49B9A002511B8 /* ChatView+TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC39027B49B9A002511B8 /* ChatView+TextView.swift */; };
 		E81AC39327B4DC6B002511B8 /* JoinView+TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC39227B4DC6B002511B8 /* JoinView+TextView.swift */; };
+		E81AC39527B5DE21002511B8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81AC39427B5DE21002511B8 /* Constant.swift */; };
 		E86FB4A8279A7A220076F549 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4A7279A7A220076F549 /* ProfileView.swift */; };
 		E86FB4AA279A7A2C0076F549 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FB4A9279A7A2C0076F549 /* ProfileView.xib */; };
 		E86FB4AC279A81FF0076F549 /* ProfileView+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */; };
@@ -85,6 +86,7 @@
 		E81AC38B27B0D658002511B8 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		E81AC39027B49B9A002511B8 /* ChatView+TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatView+TextView.swift"; sourceTree = "<group>"; };
 		E81AC39227B4DC6B002511B8 /* JoinView+TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JoinView+TextView.swift"; sourceTree = "<group>"; };
+		E81AC39427B5DE21002511B8 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E86FB4A7279A7A220076F549 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E86FB4A9279A7A2C0076F549 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		E86FB4AB279A81FF0076F549 /* ProfileView+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+Gesture.swift"; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				E81AC38D27B1E2C4002511B8 /* DataModel */,
 				E8CA3C6C2798D92000FE85F8 /* Manager */,
 				E88D58BF2794FF81003A4910 /* Service(Protocol) */,
+				E81AC39427B5DE21002511B8 /* Constant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -421,8 +424,8 @@
 				E88D58D627964917003A4910 /* ChatView+Table.swift */,
 				E88D58DA2796975F003A4910 /* ChatView+Keyboard.swift */,
 				E88D58DF2796AE79003A4910 /* ChatView+Gesture.swift */,
-				E81AC38927B0D0D0002511B8 /* ChatView+Init.swift */,
 				E81AC39027B49B9A002511B8 /* ChatView+TextView.swift */,
+				E81AC38927B0D0D0002511B8 /* ChatView+Init.swift */,
 			);
 			path = ChatView;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 			files = (
 				E86FB4BD279F78FA0076F549 /* SocketService.swift in Sources */,
 				E8CA3C662797E7BC00FE85F8 /* AddBorder.swift in Sources */,
+				E81AC39527B5DE21002511B8 /* Constant.swift in Sources */,
 				E8CA3C7A2799151600FE85F8 /* JoinView+PickerView.swift in Sources */,
 				E81AC39127B49B9A002511B8 /* ChatView+TextView.swift in Sources */,
 				E8CA3C782798FA8400FE85F8 /* JoinView+Gesture.swift in Sources */,
@@ -804,7 +808,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yeoboya.Chatting;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeoboya.chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -833,7 +837,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yeoboya.Chatting;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeoboya.chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
