@@ -12,7 +12,7 @@ class ChatModel {
     var type: ChatType?
     var chat: String?
     var nickname: String?
-    var imageLink: String?
+    var imageLink: URL?
     var email: String?
     
     init() {

@@ -252,13 +252,13 @@
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="소개글을 작성해주세요 " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="N5O-7E-NSr">
                                             <rect key="frame" x="13" y="9" width="333" height="232"/>
-                                            <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="N5O-7E-NSr" firstAttribute="top" secondItem="mSe-7X-Rhv" secondAttribute="top" constant="9" id="FuI-Ed-G4E"/>
                                         <constraint firstAttribute="bottom" secondItem="N5O-7E-NSr" secondAttribute="bottom" constant="9" id="H6n-QW-r5S"/>

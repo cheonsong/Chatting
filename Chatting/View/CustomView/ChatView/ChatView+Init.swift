@@ -37,7 +37,7 @@ extension ChatView {
             case "rcvChatMsg":
                 let chat = ChatModel(chat: json["msg"].stringValue, type: .user)
                 chat.nickname = json["from"]["chat_name"].stringValue
-                chat.imageLink = json["from"]["mem_photo"].stringValue
+                chat.imageLink = json["from"]["mem_photo"].url
                 chat.email = json["from"]["mem_id"].stringValue
                 print("=====================rcvChatMsg=====================")
                 self.list.insert(chat, at: 0)
