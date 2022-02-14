@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 extension ChatView {
     
@@ -61,42 +62,31 @@ extension ChatView: UITableViewDataSource {
             cell.email = chat.email!
             cell.chat.text = chat.chat!
             cell.nickname.text = chat.nickname!
-            do {
-                let imageData = try Data(contentsOf: chat.imageLink!)
-                cell.profileImage.setImage(UIImage(data: imageData), for: .normal)
-            } catch {
-                cell.profileImage.setImage(UIImage(), for: .normal)
-            }
+            cell.profileImage.kf.setImage(with: chat.imageLink, for: .normal)
             cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
             
-            // cell의 프로필 이미지가 클릭됐을 시 실행될 함수
-//            cell.showProfile = { [weak self] in
-//                guard let self = self else { return }
-//
-//                self.apiManager.getMembershipStatus(chat.email!, completion: {  data in
-//
-//                    let userInfo = data["mem_info"]
-//                    let profileView = ProfileView(frame: self.chatView!.frame)
-//
-//                    profileView.nameLabel.text = userInfo["name"].stringValue
-//                    profileView.ageLabel.text = userInfo["age"].stringValue
-//                    profileView.introduceLabel.text = userInfo["contents"].stringValue
-//                    do {
-//                        let imageData = try Data(contentsOf: URL(string: userInfo["profile_image"].stringValue)!)
-//                        profileView.profileImage.image = UIImage(data: imageData)
-//                    } catch {
-//                        profileView.profileImage.image = UIImage()
-//                    }
-//                    if userInfo["gender"].stringValue == "M" {
-//                        profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
-//                        profileView.sexImage.image = UIImage(named: "ico_sex_m")
-//                        profileView.sexAgeView.layer.borderColor = ColorManager.profileManSexAgeBorderColor.cgColor
-//                        profileView.ageLabel.textColor = ColorManager.profileSexLabeltextColor
-//                    }
-//
-//                    getRootViewController()?.view.addSubview(profileView)
-//                })
-//            }
+            cell.showProfile = { [weak self] in
+                guard let self = self else { return }
+
+                self.apiManager.getMembershipStatus(chat.email!, completion: {  data in
+
+                    let userInfo = data["mem_info"]
+                    let profileView = ProfileView(frame: self.chatView!.frame)
+
+                    profileView.nameLabel.text = userInfo["name"].stringValue
+                    profileView.ageLabel.text = userInfo["age"].stringValue
+                    profileView.introduceLabel.text = userInfo["contents"].stringValue
+                    profileView.profileImage.kf.setImage(with: userInfo["profile_image"].url)
+                    if userInfo["gender"].stringValue == "M" {
+                        profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
+                        profileView.sexImage.image = UIImage(named: "ico_sex_m")
+                        profileView.sexAgeView.layer.borderColor = ColorManager.profileManSexAgeBorderColor.cgColor
+                        profileView.ageLabel.textColor = ColorManager.profileSexLabeltextColor
+                    }
+
+                    getRootViewController()?.view.addSubview(profileView)
+                })
+            }
             return cell
             
         default:

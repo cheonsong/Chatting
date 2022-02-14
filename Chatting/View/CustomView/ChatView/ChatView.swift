@@ -28,6 +28,8 @@ class ChatView: UIView{
     weak var likeTimer: Timer?
     // 채팅메세지, 시스템메세지를 담은 리스트
     var list = [ChatModel]()
+    var animator: UIViewPropertyAnimator?
+    var likeFlag: Bool = true
     
     // MARK: Constants
     // LikeButton On, Off
@@ -107,6 +109,8 @@ class ChatView: UIView{
         setSocketHandler()
         
         setLottieAnimation()
+        
+        setLikeAnimation()
     }
     
     // MARK: BindViewModel (event 발생 시 데이터를 변환하거나 UI와 관련없는 작업이 필요할 시)

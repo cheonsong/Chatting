@@ -22,12 +22,8 @@ class ChatCell: UITableViewCell {
     @IBOutlet weak var chat: UILabel!
     @IBOutlet weak var chatSuperView: UIView!
     @IBOutlet weak var profileImage: UIButton!
+
     
-    // MARK: IBAction
-    // 프로필 썸네일 클릭 시 실행되는 함수
-    @IBAction func showMiniProfile(_ sender: UIButton) {
-        self.showProfile?()
-    }
     
     deinit {
         print("ChatCell deinit")
@@ -41,12 +37,12 @@ class ChatCell: UITableViewCell {
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         profileImage.clipsToBounds = true
         
+        profileImage.addTarget(self, action: #selector(tapProfile), for: .touchUpInside)
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @objc func tapProfile() {
+        showProfile?()
     }
     
 }

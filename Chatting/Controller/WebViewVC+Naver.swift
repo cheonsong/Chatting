@@ -64,7 +64,7 @@ extension WebViewController: NaverThirdPartyLoginConnectionDelegate {
                 self.memInfo.name = result["mem_info"]["name"].stringValue
                 self.memInfo.gender = result["mem_info"]["gender"].stringValue
                 self.memInfo.profileImage = result["mem_info"]["profile_image"].stringValue
-                
+
                 result["is_member"].rawValue as! Bool ? self.goToProfileList() : self.goToJoinView()
             })
             

@@ -15,6 +15,7 @@ import RxSwift
 import RxCocoa
 import NaverThirdPartyLogin
 import Alamofire
+import Kingfisher
 
 class WebViewController: UIViewController {
     
@@ -147,7 +148,7 @@ class WebViewController: UIViewController {
                     
                     UserApi.shared.me(completion: { (user, err) in
                         print("******************************카카오 이메일**************************************")
-                        self.kakaoEmail = (user?.kakaoAccount?.email) ?? ""
+                        self.kakaoEmail = (user?.kakaoAccount?.email) ?? "tjsrla77@naver.com"
                         print(self.kakaoEmail)
                         self.apiManager.getMembershipStatus(self.kakaoEmail, completion: { result in
                             print(result)
@@ -178,12 +179,7 @@ class WebViewController: UIViewController {
                     profileView.nameLabel.text = userInfo["name"].stringValue
                     profileView.ageLabel.text = userInfo["age"].stringValue
                     profileView.introduceLabel.text = userInfo["contents"].stringValue
-                    do {
-                        let imageData = try Data(contentsOf: URL(string: userInfo["profile_image"].stringValue)!)
-                        profileView.profileImage.image = UIImage(data: imageData)
-                    } catch {
-                        profileView.profileImage.image = UIImage()
-                    }
+                    profileView.profileImage.kf.setImage(with: userInfo["profile_image"].url)
                     if userInfo["gender"].stringValue == "M" {
                         profileView.profileBorderImage.image = UIImage(named: "img_profile_line_m")
                         profileView.sexImage.image = UIImage(named: "ico_sex_m")
