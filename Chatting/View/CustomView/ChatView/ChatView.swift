@@ -27,7 +27,11 @@ class ChatView: UIView{
     // 좋아요 버튼 활성화 타이머
     weak var likeTimer: Timer?
     // 채팅메세지, 시스템메세지를 담은 리스트
-    var list = [ChatModel]()
+    var list = [ChatModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     var animator: UIViewPropertyAnimator?
     var likeFlag: Bool = true
     
@@ -170,6 +174,7 @@ class ChatView: UIView{
                 self.likeTimer?.invalidate()
                 self.likeTimer = nil
                 self.list.removeAll()
+                self.animator?.stopAnimation(true)
                 self.removeFromSuperview()
                 
             })

@@ -30,7 +30,7 @@ extension ChatView {
                 print(json["msg"].stringValue)
                 let chat = ChatModel(chat: json["msg"].stringValue, type: .system)
                 self.list.insert(chat, at: 0)
-
+                
                 self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 
                 // 채팅 메세지
@@ -41,7 +41,6 @@ extension ChatView {
                 chat.email = json["from"]["mem_id"].stringValue
                 print("=====================rcvChatMsg=====================")
                 self.list.insert(chat, at: 0)
-                self.tableView.reloadData()
                 self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 
                 // 토스트 메세지
@@ -63,10 +62,14 @@ extension ChatView {
                 // 좋아요 애니메이션 메세지
             case "rcvPlayLikeAni":
                 print("좋아요 에니메이션 하세요")
-                self.setAnimationHeart()
-                self.setLikeAnimation()
-                self.animator?.startAnimation()
-                self.heartList.removeAll()
+                
+                if self.animator?.state.rawValue == 0 {
+                    self.heartList.removeAll()
+                    self.setAnimationHeart()
+                    self.setHeartTapGesture()
+                    self.setLikeAnimation()
+                    self.animator?.startAnimation()
+                }
                 
             default:
                 print("default")
@@ -89,7 +92,6 @@ extension ChatView {
         textView.layer.cornerRadius = 18
         textView.text = Constant.chatPlaceholder
         textView.delegate = self
-//        textView.isScrollEnabled = false
         textView.textContainerInset = UIEdgeInsets(top: 7.5, left: 15, bottom: 0, right: 15)
         textView.tintColor = .lightGray
     }
@@ -103,10 +105,10 @@ extension ChatView {
         }
         
         self.likeButton.addSubview(animationView!)
-    
-//        animationView?.snp.makeConstraints {
-//            $0.edges.equalTo(likeButton)
-//        }
+        
+        //        animationView?.snp.makeConstraints {
+        //            $0.edges.equalTo(likeButton)
+        //        }
         
         animationView?.isUserInteractionEnabled = false
         animationView?.play()
@@ -133,28 +135,27 @@ extension ChatView {
             
             // heart image 투명도 0
             $0.alpha = 0
-            
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapHeart))
-            $0.addGestureRecognizer(tapGesture)
+            $0.isUserInteractionEnabled = true
             // heartview 올리기
-            getRootViewController()?.view.addSubview($0)
+            self.chatView?.addSubview($0)
         }
         
     }
     
-    @objc func tapHeart() {
-        likeFlag ? animator?.pauseAnimation() : animator?.startAnimation()
-        likeFlag = !likeFlag
-
+    func setHeartTapGesture() {
+        heartList.forEach {
+            let tapGesture = UITapGestureRecognizer()
+            tapGesture.name = "like"
+            tapGesture.delegate = self
+            $0.addGestureRecognizer(tapGesture)
+        }
     }
     
     func setLikeAnimation() {
         animator = UIViewPropertyAnimator(duration: Constant.animationTotalTime, curve: .easeInOut)
         animator?.addAnimations { [weak self] in
             guard let self = self else { return }
-            UIView.animateKeyframes(withDuration: Constant.animationTotalTime, delay: 0, options: .calculationModePaced, animations: {
-                
-                self.chatView!.layoutIfNeeded()
+            UIView.animateKeyframes(withDuration: Constant.animationTotalTime, delay: 0, options: [.calculationModePaced, .allowUserInteraction], animations: {
                 
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.15, animations: {
                     self.heartList.forEach({
@@ -187,17 +188,33 @@ extension ChatView {
                                           width: $0.frame.width + 20,
                                           height: $0.frame.height + 20)
                         
-                        $0.alpha = 0
+                        $0.alpha = 0.05
                     })
                 })
             })
+        }
+        
+        animator?.addCompletion { [weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .current:
+                print("current")
+            case .end:
+                self.heartList.forEach {
+                    $0.removeFromSuperview()
+                }
+            case .start:
+                print("start")
+            @unknown default:
+                fatalError()
+            }
         }
     }
     
     // 좋아요 버튼 활성화 타이머
     func startLikeButtonTimer() {
         print("Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동")
-        likeTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { [weak self] (Timer) in
+        likeTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false, block: { [weak self] (Timer) in
             guard let self = self else { return }
             
             self.likeButton.setImage(self.likeOn, for: .normal)

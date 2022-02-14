@@ -14,7 +14,7 @@ extension ChatView : UIScrollViewDelegate {
         
         let contentOffsetY = -scrollView.contentOffset.y + tableView.frame.height
 
-        if contentOffsetY < tableView.frame.height * 0.2 {
+        if contentOffsetY < tableView.frame.height * 0.5 {
             downButton.isHidden = false
         } else {
             downButton.isHidden = true

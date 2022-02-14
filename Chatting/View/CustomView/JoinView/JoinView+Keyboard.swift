@@ -53,6 +53,8 @@ extension JoinView {
         print("keyboardWillChangeFrame")
         if let keyboardSize = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.frame.origin.y != 0 {
+                print(frame.origin.y)
+                print(keyboardSize.height)
                 self.frame.origin.y = -keyboardSize.height
             }
         }

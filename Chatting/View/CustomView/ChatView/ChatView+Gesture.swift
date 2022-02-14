@@ -13,17 +13,16 @@ extension ChatView: UIGestureRecognizerDelegate {
     // 채팅 입력중에 바깥화면을 터치하면 편집이 종료됨
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
 
-        print(gestureRecognizer.name)
+        print(gestureRecognizer.name ?? "")
         
         switch (gestureRecognizer.name) {
-        case "tableViewTouch":
-            self.chatView?.endEditing(true)
-        
         case "like":
-            print("like")
             likeFlag ? animator?.pauseAnimation() : animator?.startAnimation()
             likeFlag = !likeFlag
             
+        case "tableViewTouch":
+            self.chatView?.endEditing(true)
+        
         default:
             print("default")
         }

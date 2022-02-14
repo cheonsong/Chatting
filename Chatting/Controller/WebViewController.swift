@@ -148,7 +148,7 @@ class WebViewController: UIViewController {
                     
                     UserApi.shared.me(completion: { (user, err) in
                         print("******************************카카오 이메일**************************************")
-                        self.kakaoEmail = (user?.kakaoAccount?.email) ?? "tjsrla77@naver.com"
+                        self.kakaoEmail = (user?.kakaoAccount?.email) ?? ""
                         print(self.kakaoEmail)
                         self.apiManager.getMembershipStatus(self.kakaoEmail, completion: { result in
                             print(result)
