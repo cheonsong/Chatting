@@ -32,6 +32,7 @@ PODS:
     - KakaoSDKCommon/Common (= 2.8.4)
   - KakaoSDKUser (2.8.4):
     - KakaoSDKAuth (= 2.8.4)
+  - Kingfisher (7.1.2)
   - libwebp (1.2.1):
     - libwebp/demux (= 1.2.1)
     - libwebp/mux (= 1.2.1)
@@ -64,6 +65,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.5)
   - KakaoSDK
+  - Kingfisher (~> 7.0)
   - lottie-ios
   - naveridlogin-sdk-ios
   - RxCocoa (= 6.5.0)
@@ -87,6 +89,7 @@ SPEC REPOS:
     - KakaoSDKTalk
     - KakaoSDKTemplate
     - KakaoSDKUser
+    - Kingfisher
     - libwebp
     - lottie-ios
     - naveridlogin-sdk-ios
@@ -113,6 +116,7 @@ SPEC CHECKSUMS:
   KakaoSDKTalk: ac4d2ec8b7323a50f98d74e6358fc8a296107566
   KakaoSDKTemplate: 23ff3023d189f0962d28e34627a19c0eb8c1c7a6
   KakaoSDKUser: d878977e0ba6b365cfeac3b6319cdf4231713bea
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   naveridlogin-sdk-ios: b9d7c20677981177ed994ecb1c8c2b49f223277d
@@ -128,6 +132,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   XHQWebViewJavascriptBridge: 0ab54a0d091d90434bf1832a0e2bb0ce562449d0
 
-PODFILE CHECKSUM: 7c2fc694ab64eb346f29438c8b435cea3adb11db
+PODFILE CHECKSUM: 4c2f1050cd106987c8d621d34227e40f6148dfc9
 
 COCOAPODS: 1.11.2

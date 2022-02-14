@@ -19,5 +19,6 @@ target 'Chatting' do
   pod 'SDWebImageWebPCoder'
   pod 'SnapKit'
   pod 'Then'
+  pod 'Kingfisher', '~> 7.0'
 
 end
