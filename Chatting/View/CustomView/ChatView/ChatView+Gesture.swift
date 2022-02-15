@@ -17,7 +17,14 @@ extension ChatView: UIGestureRecognizerDelegate {
         
         switch (gestureRecognizer.name) {
         case "like":
-            likeFlag ? animator?.pauseAnimation() : animator?.startAnimation()
+            if animator1?.state.rawValue == 1 {
+                likeFlag ? animator1?.pauseAnimation() : animator1?.startAnimation()
+            } else if animator2?.state.rawValue == 1 {
+                likeFlag ? animator2?.pauseAnimation() : animator2?.startAnimation()
+            } else if animator3?.state.rawValue == 1 {
+                likeFlag ? animator3?.pauseAnimation() : animator3?.startAnimation()
+            }
+            
             likeFlag = !likeFlag
             
         case "tableViewTouch":

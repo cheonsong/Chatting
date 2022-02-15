@@ -32,7 +32,9 @@ class ChatView: UIView{
             tableView.reloadData()
         }
     }
-    var animator: UIViewPropertyAnimator?
+    var animator1: UIViewPropertyAnimator?
+    var animator2: UIViewPropertyAnimator?
+    var animator3: UIViewPropertyAnimator?
     var likeFlag: Bool = true
     
     // MARK: Constants
@@ -174,7 +176,7 @@ class ChatView: UIView{
                 self.likeTimer?.invalidate()
                 self.likeTimer = nil
                 self.list.removeAll()
-                self.animator?.stopAnimation(true)
+                self.animator1?.stopAnimation(true)
                 self.removeFromSuperview()
                 
             })

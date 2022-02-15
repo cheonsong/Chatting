@@ -63,12 +63,12 @@ extension ChatView {
             case "rcvPlayLikeAni":
                 print("좋아요 에니메이션 하세요")
                 
-                if self.animator?.state.rawValue == 0 {
+                if self.animator1?.state.rawValue == 0, self.animator2?.state.rawValue == 0, self.animator3?.state.rawValue == 0 {
                     self.heartList.removeAll()
                     self.setAnimationHeart()
                     self.setHeartTapGesture()
                     self.setLikeAnimation()
-                    self.animator?.startAnimation()
+                    self.animator1?.startAnimation()
                 }
                 
             default:
@@ -152,69 +152,80 @@ extension ChatView {
     }
     
     func setLikeAnimation() {
-        animator = UIViewPropertyAnimator(duration: Constant.animationTotalTime, curve: .easeInOut)
-        animator?.addAnimations { [weak self] in
+        animator1 = UIViewPropertyAnimator(duration: Constant.animationTotalTime*0.3, curve: .easeIn, animations: { [weak self] in
             guard let self = self else { return }
-            UIView.animateKeyframes(withDuration: Constant.animationTotalTime, delay: 0, options: [.calculationModePaced, .allowUserInteraction], animations: {
-                
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.15, animations: {
-                    self.heartList.forEach({
-                        $0.alpha = 1
-                        $0.frame = CGRect(x: $0.frame.origin.x - CGFloat(arc4random() % 75), y: $0.frame.origin.y - CGFloat((arc4random() % 50) + 100), width: 50, height: 50)
-                    })
-                })
-                
-                
-                
-                UIView.addKeyframe(withRelativeStartTime: 0.15, relativeDuration: 0.55, animations: {
-                    self.heartList.forEach({
-                        
-                        let option:CGFloat = arc4random() % 2 == 0 ? -1 : 1
-                        
-                        $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 75)),
-                                          y: $0.frame.origin.y - CGFloat((arc4random() % 50) + 200),
-                                          width: $0.frame.width + CGFloat((arc4random() % 10)) + 20,
-                                          height: $0.frame.height + CGFloat((arc4random() % 10)) + 20)
-                    })
-                })
-                
-                UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.3, animations: {
-                    self.heartList.forEach({
-                        
-                        let option:CGFloat = arc4random() % 2 == 0 ? -1 : 1
-                        
-                        $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 75)),
-                                          y: CGFloat(arc4random() % 80),
-                                          width: $0.frame.width + 20,
-                                          height: $0.frame.height + 20)
-                        
-                        $0.alpha = 0.05
-                    })
-                })
-            })
-        }
+            
+            self.heartList.forEach {
+                $0.alpha = 1
+                $0.frame = CGRect(x: $0.frame.origin.x - CGFloat(arc4random() % 75), y: $0.frame.origin.y - CGFloat((arc4random() % 50) + 100), width: 50, height: 50)
+            }
+        })
         
-        animator?.addCompletion { [weak self] state in
+        animator2 = UIViewPropertyAnimator(duration: Constant.animationTotalTime*0.4, curve: .linear, animations: { [weak self] in
+            guard let self = self else { return
+                
+            }
+            self.heartList.forEach({
+                
+                let option:CGFloat = arc4random() % 2 == 0 ? -1 : 1
+                
+                $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 75)),
+                                  y: $0.frame.origin.y - CGFloat((arc4random() % 50) + 400),
+                                  width: $0.frame.width + CGFloat((arc4random() % 10)) + 20,
+                                  height: $0.frame.height + CGFloat((arc4random() % 10)) + 20)
+            })
+        })
+        
+        animator3 = UIViewPropertyAnimator(duration: Constant.animationTotalTime*0.3, curve: .easeOut, animations: { [weak self] in
             guard let self = self else { return }
+            self.heartList.forEach({
+                
+                let option:CGFloat = arc4random() % 2 == 0 ? -1 : 1
+                
+                $0.frame = CGRect(x: $0.frame.origin.x + (option * CGFloat(arc4random() % 40)),
+                                  y: CGFloat(arc4random() % 80),
+                                  width: $0.frame.width + 20,
+                                  height: $0.frame.height + 20)
+                
+                $0.alpha = 0.05
+            })
+        })
+        
+        animator1?.addCompletion({ [weak self] state in
             switch state {
-            case .current:
-                print("current")
             case .end:
-                self.heartList.forEach {
+                self?.animator2?.startAnimation()
+                
+            default:
+                print("default")
+            }
+        })
+        
+        animator2?.addCompletion({ [weak self] state in
+            switch state {
+            case .end:
+                self?.animator3?.startAnimation()
+            default:
+                print("default")
+            }
+        })
+        
+        animator3?.addCompletion({ [weak self] state in
+            switch state {
+            case .end:
+                self?.heartList.forEach {
                     $0.removeFromSuperview()
                 }
-            case .start:
-                print("start")
-            @unknown default:
-                fatalError()
+            default:
+                print("default")
             }
-        }
+        })
     }
     
     // 좋아요 버튼 활성화 타이머
     func startLikeButtonTimer() {
         print("Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동")
-        likeTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false, block: { [weak self] (Timer) in
+        likeTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { [weak self] (Timer) in
             guard let self = self else { return }
             
             self.likeButton.setImage(self.likeOn, for: .normal)
