@@ -190,7 +190,6 @@ class WebViewController: UIViewController {
                     self.view.addSubview(profileView)
                 })
                 
-                
             default:
                 print("default")
             }

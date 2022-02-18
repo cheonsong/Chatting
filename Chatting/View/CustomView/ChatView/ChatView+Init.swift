@@ -224,8 +224,7 @@ extension ChatView {
     
     // 좋아요 버튼 활성화 타이머
     func startLikeButtonTimer() {
-        print("Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동 Timer 작동 작동 작동")
-        likeTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { [weak self] (Timer) in
+        likeTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false, block: { [weak self] (Timer) in
             guard let self = self else { return }
             
             self.likeButton.setImage(self.likeOn, for: .normal)

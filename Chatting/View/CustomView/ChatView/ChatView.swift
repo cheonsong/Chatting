@@ -102,6 +102,7 @@ class ChatView: UIView{
         
         likeButton.setImage(likeOn, for: .normal)
         
+        // ChatView+Init 파일에 구현
         setTextView()
         
         setGestureRecognizer()
